@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Limiter - Options</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      color: #333;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: #4285f4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    
+    /* Main content styles */
+    main {
+      padding: 20px;
+    }
+    
+    /* Section styles */
+    section {
+      margin-bottom: 30px;
+    }
+    
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    
+    /* Form styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    input[type="number"],
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    
+    .slider-container {
+      margin-top: 10px;
+    }
+    
+    input[type="range"] {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .slider-value {
+      text-align: center;
+      font-weight: bold;
+      color: #4285f4;
+    }
+    
+    /* Toggle switch */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .toggle-slider {
+      background-color: #4285f4;
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(26px);
+    }
+    
+    /* Time settings */
+    .time-settings {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .time-input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .time-input select {
+      width: auto;
+    }
+    
+    /* Site list styles */
+    .site-input {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    
+    .site-input input {
+      flex: 1;
+      border-radius: 4px 0 0 4px;
+    }
+    
+    .site-input button {
+      border-radius: 0 4px 4px 0;
+      padding: 10px 15px;
+    }
+    
+    .site-list {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    
+    .site-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .site-item:last-child {
+      border-bottom: none;
+    }
+    
+    .site-item button {
+      background-color: transparent;
+      color: #f44336;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0 5px;
+    }
+    
+    .site-note {
+      font-size: 14px;
+      color: #777;
+      font-style: italic;
+      margin-top: 10px;
+    }
+    
+    /* Intervention levels */
+    .level-settings {
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .level-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .level-badge {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      color: white;
+      margin-right: 10px;
+    }
+    
+    .level-1 {
+      background-color: #fbbc05;
+    }
+    
+    .level-2 {
+      background-color: #ff9800;
+    }
+    
+    .level-3 {
+      background-color: #f44336;
+    }
+    
+    .level-description {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    
+    /* Button styles */
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    
+    button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #3367d6;
+    }
+    
+    .btn-danger {
+      background-color: #f44336;
+    }
+    
+    .btn-danger:hover {
+      background-color: #d32f2f;
+    }
+    
+    .btn-secondary {
+      background-color: #757575;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #616161;
+    }
+    
+    /* Status message */
+    .status-message {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      border-radius: 4px;
+      color: white;
+      font-weight: 500;
+      z-index: 1000;
+      display: none;
+    }
+    
+    .status-success {
+      background-color: #4CAF50;
+    }
+    
+    .status-error {
+      background-color: #f44336;
+    }
+    
+    /* Footer styles */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #777;
+      font-size: 14px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Scroll Limiter - Options</h1>
+      <p class="subtitle">Configure your scrolling limits and preferences</p>
+    </header>
+    
+    <main>
+      <section id="thresholdSection">
+        <h2>Scroll Threshold Settings</h2>
+        <div class="form-group">
+          <label for="scrollThreshold">Scroll Threshold (pixels)</label>
+          <div class="slider-container">
+            <input type="range" min="1000" max="20000" step="1000" value="5000" id="scrollThreshold">
+            <div class="slider-value">
+              <span id="scrollThresholdValue">5000</span> pixels
+            </div>
+          </div>
+          <p class="site-note">This is the amount of scrolling before interventions begin.</p>
+        </div>
+      </section>
+      
+      <section id="interventionSection">
+        <h2>Intervention Levels</h2>
+        <p>Scroll Limiter uses progressive interventions as you continue scrolling:</p>
+        
+        <div class="level-settings">
+          <div class="level-title">
+            <span class="level-badge level-1">1</span>
+            Level 1: Slow Down
+          </div>
+          <p class="level-description">
+            When you exceed the threshold, scrolling will be slowed down to encourage mindful browsing.
+          </p>
+          <div class="form-group">
+            <label for="level1Multiplier">Level 1 Threshold Multiplier</label>
+            <input type="number" id="level1Multiplier" min="1" max="2" step="0.1" value="1">
+            <p class="site-note">Activates at (Threshold × Multiplier) pixels of scrolling.</p>
+          </div>
+        </div>
+        
+        <div class="level-settings">
+          <div class="level-title">
+            <span class="level-badge level-2">2</span>
+            Level 2: Visual Effects
+          </div>
+          <p class="level-description">
+            If you continue scrolling, visual effects like screen vibration and dimming will be applied.
+          </p>
+          <div class="form-group">
+            <label for="level2Multiplier">Level 2 Threshold Multiplier</label>
+            <input type="number" id="level2Multiplier" min="1.1" max="3" step="0.1" value="2">
+            <p class="site-note">Activates at (Threshold × Multiplier) pixels of scrolling.</p>
+          </div>
+        </div>
+        
+        <div class="level-settings">
+          <div class="level-title">
+            <span class="level-badge level-3">3</span>
+            Level 3: Block Scrolling
+          </div>
+          <p class="level-description">
+            As a final intervention, scrolling will be blocked with a message encouraging you to take a break.
+          </p>
+          <div class="form-group">
+            <label for="level3Multiplier">Level 3 Threshold Multiplier</label>
+            <input type="number" id="level3Multiplier" min="1.2" max="5" step="0.1" value="3">
+            <p class="site-note">Activates at (Threshold × Multiplier) pixels of scrolling.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section id="timeSection">
+        <h2>Time Restrictions</h2>
+        <div class="toggle-container">
+          <label class="toggle">
+            <input type="checkbox" id="timeRestrictionToggle">
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Enable time-based restrictions</span>
+        </div>
+        
+        <div class="time-settings" id="timeSettings">
+          <p>During these hours, scrolling will be restricted more aggressively:</p>
+          
+          <div class="time-input">
+            <label for="afterHour">Restrict after:</label>
+            <select id="afterHour">
+              <option value="20">8:00 PM</option>
+              <option value="21">9:00 PM</option>
+              <option value="22">10:00 PM</option>
+              <option value="23" selected>11:00 PM</option>
+              <option value="0">12:00 AM</option>
+            </select>
+          </div>
+          
+          <div class="time-input">
+            <label for="beforeHour">Until:</label>
+            <select id="beforeHour">
+              <option value="5">5:00 AM</option>
+              <option value="6" selected>6:00 AM</option>
+              <option value="7">7:00 AM</option>
+              <option value="8">8:00 AM</option>
+              <option value="9">9:00 AM</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="restrictionLevel">Restriction Level</label>
+            <select id="restrictionLevel">
+              <option value="1">Level 1 - Slow Down Only</option>
+              <option value="2">Level 2 - Visual Effects</option>
+              <option value="3" selected>Level 3 - Block Scrolling</option>
+            </select>
+          </div>
+        </div>
+      </section>
+      
+      <section id="sitesSection">
+        <h2>Target Specific Sites</h2>
+        <p>Add websites where you want to limit scrolling. Leave empty to monitor all sites.</p>
+        
+        <div class="site-input">
+          <input type="text" id="siteInput" placeholder="e.g., youtube.com, twitter.com">
+          <button id="addSiteBtn">Add Site</button>
+        </div>
+        
+        <div class="site-list" id="siteList">
+          <!-- Sites will be added here dynamically -->
+        </div>
+        
+        <div class="site-note">
+          <p>Enter domain names without "http://" or "www." (e.g., "youtube.com")</p>
+        </div>
+      </section>
+      
+      <section id="notificationSection">
+        <h2>Notification Settings</h2>
+        <div class="toggle-container">
+          <label class="toggle">
+            <input type="checkbox" id="soundToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Enable sound notifications</span>
+        </div>
+        
+        <div class="toggle-container">
+          <label class="toggle">
+            <input type="checkbox" id="visualToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Enable visual notifications</span>
+        </div>
+      </section>
+      
+      <section id="resetSection">
+        <h2>Reset Data</h2>
+        <p>Clear your scrolling statistics and start fresh.</p>
+        
+        <div class="buttons">
+          <button id="resetDailyBtn" class="btn-secondary">Reset Today's Data</button>
+          <button id="resetWeeklyBtn" class="btn-secondary">Reset Weekly Data</button>
+          <button id="resetAllBtn" class="btn-danger">Reset All Data</button>
+        </div>
+      </section>
+      
+      <div class="buttons">
+        <button id="saveBtn">Save Settings</button>
+        <button id="cancelBtn" class="btn-secondary">Cancel</button>
+      </div>
+    </main>
+    
+    <footer>
+      <p>Scroll Limiter &copy; 2023 - Take breaks. Scroll mindfully.</p>
+    </footer>
+  </div>
+  
+  <div id="statusMessage" class="status-message"></div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

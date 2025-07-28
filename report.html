@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Limiter - Detailed Report</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      color: #333;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    /* Header styles */
+    header {
+      background-color: #4285f4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      opacity: 0.8;
+    }
+    
+    /* Navigation styles */
+    .tabs {
+      display: flex;
+      background-color: #f0f0f0;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab-btn {
+      padding: 15px 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-btn:hover {
+      background-color: #e0e0e0;
+    }
+    
+    .tab-btn.active {
+      background-color: #fff;
+      color: #4285f4;
+      border-bottom: 3px solid #4285f4;
+    }
+    
+    /* Content styles */
+    .tab-content {
+      display: none;
+      padding: 20px;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Card styles */
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .stat-box {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 28px;
+      font-weight: bold;
+      color: #4285f4;
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #777;
+    }
+    
+    /* Chart container */
+    .chart-container {
+      height: 300px;
+      margin-bottom: 20px;
+    }
+    
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+      color: #555;
+    }
+    
+    tr:hover {
+      background-color: #f9f9f9;
+    }
+    
+    /* Time period selector */
+    .period-selector {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .period-btn {
+      padding: 8px 15px;
+      margin: 0 5px;
+      background-color: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .period-btn.active {
+      background-color: #4285f4;
+      color: white;
+      border-color: #4285f4;
+    }
+    
+    /* Footer styles */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f5f5f5;
+      color: #777;
+      font-size: 14px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .tabs {
+        flex-wrap: wrap;
+      }
+      
+      .tab-btn {
+        flex: 1 0 auto;
+        padding: 10px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Scroll Limiter - Detailed Report</h1>
+      <p class="subtitle">Track and analyze your scrolling habits</p>
+    </header>
+    
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="daily">Daily</button>
+      <button class="tab-btn" data-tab="weekly">Weekly</button>
+      <button class="tab-btn" data-tab="monthly">Monthly</button>
+      <button class="tab-btn" data-tab="sites">Top Sites</button>
+    </div>
+    
+    <div id="overview" class="tab-content active">
+      <div class="period-selector">
+        <button class="period-btn active" data-period="week">This Week</button>
+        <button class="period-btn" data-period="month">This Month</button>
+        <button class="period-btn" data-period="year">This Year</button>
+        <button class="period-btn" data-period="all">All Time</button>
+      </div>
+      
+      <div class="card">
+        <h2>Scrolling Summary</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-value" id="totalScrollTime">0</div>
+            <div class="stat-label">Total Scroll Time (minutes)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="totalScrollDistance">0</div>
+            <div class="stat-label">Total Scroll Distance (meters)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="thresholdExceededCount">0</div>
+            <div class="stat-label">Threshold Exceeded</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="blockingTriggeredCount">0</div>
+            <div class="stat-label">Blocking Triggered</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>Scrolling Trends</h2>
+        <div class="chart-container" id="trendsChart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>Most Scrolled Sites</h2>
+        <div class="chart-container" id="sitesChart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </div>
+    </div>
+    
+    <div id="daily" class="tab-content">
+      <div class="card">
+        <h2>Daily Scrolling Activity</h2>
+        <div class="chart-container" id="dailyChart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>Daily Statistics</h2>
+        <table id="dailyTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Scroll Time (min)</th>
+              <th>Scroll Distance (m)</th>
+              <th>Threshold Exceeded</th>
+              <th>Blocking Triggered</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div id="weekly" class="tab-content">
+      <div class="card">
+        <h2>Weekly Scrolling Activity</h2>
+        <div class="chart-container" id="weeklyChart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>Weekly Statistics</h2>
+        <table id="weeklyTable">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Scroll Time (min)</th>
+              <th>Scroll Distance (m)</th>
+              <th>Daily Average (min)</th>
+              <th>Threshold Exceeded</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div id="monthly" class="tab-content">
+      <div class="card">
+        <h2>Monthly Scrolling Activity</h2>
+        <div class="chart-container" id="monthlyChart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>Monthly Statistics</h2>
+        <table id="monthlyTable">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Scroll Time (min)</th>
+              <th>Scroll Distance (m)</th>
+              <th>Daily Average (min)</th>
+              <th>Threshold Exceeded</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div id="sites" class="tab-content">
+      <div class="card">
+        <h2>Most Scrolled Sites</h2>
+        <div class="chart-container" id="topSitesChart">
+          <!-- Chart will be rendered here -->
+        </div>
+      </div>
+      
+      <div class="card">
+        <h2>Site Statistics</h2>
+        <table id="sitesTable">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Scroll Time (min)</th>
+              <th>Scroll Distance (m)</th>
+              <th>Threshold Exceeded</th>
+              <th>Blocking Triggered</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table rows will be added dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Scroll Limiter &copy; 2023 - Take breaks. Scroll mindfully.</p>
+    </footer>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>
