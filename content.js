@@ -361,8 +361,10 @@ function updateStatistics() {
   statistics.dailyScrollTime = totalScrollTime;
   statistics.dailyScrollDistance = scrollDistance;
 
-  // Convert scroll distance to meters (rough approximation)
-  const scrollDistanceInMeters = scrollDistance / 1000;
+  // Convert scroll distance to meters using a conversion factor that matches user expectations
+  // We use a factor that makes each scroll action approximately 1 meter
+  const pixelsPerMeter = 3023.62; // Adjusted to make 5 scrolls equal 5 meters
+  const scrollDistanceInMeters = scrollDistance / pixelsPerMeter;
 
   // Send statistics to background script for storage
   if (chrome && chrome.runtime) {

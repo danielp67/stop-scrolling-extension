@@ -17,6 +17,9 @@ let currentPeriod = 'week';
 // Statistics data
 let statisticsData = null;
 
+// Conversion constants
+const PIXELS_PER_METER = 3023.62; // Adjusted to make 5 scrolls equal 5 meters
+
 // Initialize the report page
 document.addEventListener('DOMContentLoaded', function() {
   // Set up tab switching
@@ -192,7 +195,7 @@ function updateSummaryStatistics() {
 
   // Update UI
   document.getElementById('totalScrollTime').textContent = Math.round(totalScrollTime / 60); // Convert to minutes
-  document.getElementById('totalScrollDistance').textContent = Math.round(totalScrollDistance / 1000); // Convert to meters
+  document.getElementById('totalScrollDistance').textContent = Math.round(totalScrollDistance / PIXELS_PER_METER); // Convert to meters
   document.getElementById('thresholdExceededCount').textContent = thresholdExceeded;
   document.getElementById('blockingTriggeredCount').textContent = blockingTriggered;
 }
@@ -259,7 +262,7 @@ function initializeTrendsChart() {
       // Get data for this day if available
       const dayData = statisticsData[dateStr] || { scrollTime: 0, scrollDistance: 0 };
       scrollTimeData.push(Math.round(dayData.scrollTime / 60)); // Convert to minutes
-      scrollDistanceData.push(Math.round(dayData.scrollDistance / 1000)); // Convert to meters
+      scrollDistanceData.push(Math.round(dayData.scrollDistance / PIXELS_PER_METER)); // Convert to meters
     }
   } else if (currentPeriod === 'month') {
     // Last 4 weeks
@@ -275,7 +278,7 @@ function initializeTrendsChart() {
       // Get data for this week if available
       const weekData = statisticsData.weekly[weekKey] || { scrollTime: 0, scrollDistance: 0 };
       scrollTimeData.push(Math.round(weekData.scrollTime / 60)); // Convert to minutes
-      scrollDistanceData.push(Math.round(weekData.scrollDistance / 1000)); // Convert to meters
+      scrollDistanceData.push(Math.round(weekData.scrollDistance / PIXELS_PER_METER)); // Convert to meters
     }
   } else if (currentPeriod === 'year' || currentPeriod === 'all') {
     // Last 12 months
@@ -291,7 +294,7 @@ function initializeTrendsChart() {
       // Get data for this month if available
       const monthData = statisticsData.monthly[monthKey] || { scrollTime: 0, scrollDistance: 0 };
       scrollTimeData.push(Math.round(monthData.scrollTime / 60)); // Convert to minutes
-      scrollDistanceData.push(Math.round(monthData.scrollDistance / 1000)); // Convert to meters
+      scrollDistanceData.push(Math.round(monthData.scrollDistance / PIXELS_PER_METER)); // Convert to meters
     }
   }
 
@@ -641,7 +644,7 @@ function initializeMonthlyChart() {
     // Get data for this month if available
     const monthData = statisticsData.monthly[monthKey] || { scrollTime: 0, scrollDistance: 0 };
     scrollTimeData.push(Math.round(monthData.scrollTime / 60)); // Convert to minutes
-    scrollDistanceData.push(Math.round(monthData.scrollDistance / 1000)); // Convert to meters
+    scrollDistanceData.push(Math.round(monthData.scrollDistance / PIXELS_PER_METER)); // Convert to meters
   }
 
   // Create chart
@@ -704,7 +707,7 @@ function initializeTopSitesChart() {
   // Prepare data
   const labels = topSites.map(site => site.domain);
   const scrollTimeData = topSites.map(site => Math.round(site.scrollTime / 60)); // Convert to minutes
-  const scrollDistanceData = topSites.map(site => Math.round(site.scrollDistance / 1000)); // Convert to meters
+  const scrollDistanceData = topSites.map(site => Math.round(site.scrollDistance / PIXELS_PER_METER)); // Convert to meters
 
   // Create chart
   topSitesChart = new Chart(ctx, {
@@ -807,7 +810,7 @@ function populateDailyTable() {
 
     // Scroll distance
     const distanceCell = document.createElement('td');
-    distanceCell.textContent = Math.round(day.data.scrollDistance / 1000); // Convert to meters
+    distanceCell.textContent = Math.round(day.data.scrollDistance / PIXELS_PER_METER); // Convert to meters
     row.appendChild(distanceCell);
 
     // Threshold exceeded
@@ -879,7 +882,7 @@ function populateWeeklyTable() {
 
     // Scroll distance
     const distanceCell = document.createElement('td');
-    distanceCell.textContent = Math.round(week.data.scrollDistance / 1000); // Convert to meters
+    distanceCell.textContent = Math.round(week.data.scrollDistance / PIXELS_PER_METER); // Convert to meters
     row.appendChild(distanceCell);
 
     // Daily average
@@ -953,7 +956,7 @@ function populateMonthlyTable() {
 
     // Scroll distance
     const distanceCell = document.createElement('td');
-    distanceCell.textContent = Math.round(month.data.scrollDistance / 1000); // Convert to meters
+    distanceCell.textContent = Math.round(month.data.scrollDistance / PIXELS_PER_METER); // Convert to meters
     row.appendChild(distanceCell);
 
     // Daily average
@@ -1008,7 +1011,7 @@ function populateSitesTable() {
 
     // Scroll distance
     const distanceCell = document.createElement('td');
-    distanceCell.textContent = Math.round(site.scrollDistance / 1000); // Convert to meters
+    distanceCell.textContent = Math.round(site.scrollDistance / PIXELS_PER_METER); // Convert to meters
     row.appendChild(distanceCell);
 
     // Threshold exceeded and blocking triggered
