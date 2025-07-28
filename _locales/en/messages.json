@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "Scroll Limiter",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Limits scrolling to encourage breaks and regulate content consumption",
+    "description": "The description of the extension"
+  },
+  "optionsTitle": {
+    "message": "Scroll Limiter - Options",
+    "description": "Title of the options page"
+  },
+  "optionsSubtitle": {
+    "message": "Configure your scrolling limits and preferences",
+    "description": "Subtitle of the options page"
+  },
+  "thresholdSettings": {
+    "message": "Scroll Threshold Settings",
+    "description": "Title of the threshold settings section"
+  },
+  "limitType": {
+    "message": "Limit Type",
+    "description": "Label for limit type selector"
+  },
+  "limitTypePixels": {
+    "message": "Pixels (scrolling distance)",
+    "description": "Option for pixel-based limit"
+  },
+  "limitTypeMeters": {
+    "message": "Meters (estimated distance)",
+    "description": "Option for meter-based limit"
+  },
+  "limitTypeTime": {
+    "message": "Time (seconds)",
+    "description": "Option for time-based limit"
+  },
+  "limitTypeBoth": {
+    "message": "Both (meters and time)",
+    "description": "Option for combined limit"
+  },
+  "pixelsThreshold": {
+    "message": "Scroll Threshold (pixels)",
+    "description": "Label for pixels threshold"
+  },
+  "metersThreshold": {
+    "message": "Scroll Threshold (meters)",
+    "description": "Label for meters threshold"
+  },
+  "timeThreshold": {
+    "message": "Scroll Time Threshold (seconds)",
+    "description": "Label for time threshold"
+  },
+  "thresholdNote": {
+    "message": "This is the amount of scrolling before interventions begin.",
+    "description": "Note about threshold"
+  },
+  "saveSettings": {
+    "message": "Save Settings",
+    "description": "Save button text"
+  },
+  "cancelSettings": {
+    "message": "Cancel",
+    "description": "Cancel button text"
+  }
+}

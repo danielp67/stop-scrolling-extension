@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "Limiteur de Défilement",
+    "description": "Le nom de l'extension"
+  },
+  "appDesc": {
+    "message": "Limite le défilement pour encourager les pauses et réguler la consommation de contenu",
+    "description": "La description de l'extension"
+  },
+  "optionsTitle": {
+    "message": "Limiteur de Défilement - Options",
+    "description": "Titre de la page d'options"
+  },
+  "optionsSubtitle": {
+    "message": "Configurez vos limites de défilement et vos préférences",
+    "description": "Sous-titre de la page d'options"
+  },
+  "thresholdSettings": {
+    "message": "Paramètres de seuil de défilement",
+    "description": "Titre de la section des paramètres de seuil"
+  },
+  "limitType": {
+    "message": "Type de limite",
+    "description": "Étiquette pour le sélecteur de type de limite"
+  },
+  "limitTypePixels": {
+    "message": "Pixels (distance de défilement)",
+    "description": "Option pour la limite basée sur les pixels"
+  },
+  "limitTypeMeters": {
+    "message": "Mètres (distance estimée)",
+    "description": "Option pour la limite basée sur les mètres"
+  },
+  "limitTypeTime": {
+    "message": "Temps (secondes)",
+    "description": "Option pour la limite basée sur le temps"
+  },
+  "limitTypeBoth": {
+    "message": "Les deux (mètres et temps)",
+    "description": "Option pour la limite combinée"
+  },
+  "pixelsThreshold": {
+    "message": "Seuil de défilement (pixels)",
+    "description": "Étiquette pour le seuil en pixels"
+  },
+  "metersThreshold": {
+    "message": "Seuil de défilement (mètres)",
+    "description": "Étiquette pour le seuil en mètres"
+  },
+  "timeThreshold": {
+    "message": "Seuil de temps de défilement (secondes)",
+    "description": "Étiquette pour le seuil de temps"
+  },
+  "thresholdNote": {
+    "message": "C'est la quantité de défilement avant que les interventions ne commencent.",
+    "description": "Note sur le seuil"
+  },
+  "saveSettings": {
+    "message": "Enregistrer les paramètres",
+    "description": "Texte du bouton d'enregistrement"
+  },
+  "cancelSettings": {
+    "message": "Annuler",
+    "description": "Texte du bouton d'annulation"
+  }
+}

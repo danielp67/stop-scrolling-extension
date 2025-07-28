@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "Scroll-Begrenzer",
+    "description": "Der Name der Erweiterung"
+  },
+  "appDesc": {
+    "message": "Begrenzt das Scrollen, um Pausen zu fördern und den Inhaltskonsum zu regulieren",
+    "description": "Die Beschreibung der Erweiterung"
+  },
+  "optionsTitle": {
+    "message": "Scroll-Begrenzer - Optionen",
+    "description": "Titel der Optionsseite"
+  },
+  "optionsSubtitle": {
+    "message": "Konfigurieren Sie Ihre Scroll-Limits und Präferenzen",
+    "description": "Untertitel der Optionsseite"
+  },
+  "thresholdSettings": {
+    "message": "Schwellenwert-Einstellungen",
+    "description": "Titel des Abschnitts für Schwellenwert-Einstellungen"
+  },
+  "limitType": {
+    "message": "Limit-Typ",
+    "description": "Bezeichnung für den Limit-Typ-Selektor"
+  },
+  "limitTypePixels": {
+    "message": "Pixel (Scroll-Distanz)",
+    "description": "Option für pixelbasiertes Limit"
+  },
+  "limitTypeMeters": {
+    "message": "Meter (geschätzte Distanz)",
+    "description": "Option für meterbasiertes Limit"
+  },
+  "limitTypeTime": {
+    "message": "Zeit (Sekunden)",
+    "description": "Option für zeitbasiertes Limit"
+  },
+  "limitTypeBoth": {
+    "message": "Beides (Meter und Zeit)",
+    "description": "Option für kombiniertes Limit"
+  },
+  "pixelsThreshold": {
+    "message": "Scroll-Schwellenwert (Pixel)",
+    "description": "Bezeichnung für den Pixel-Schwellenwert"
+  },
+  "metersThreshold": {
+    "message": "Scroll-Schwellenwert (Meter)",
+    "description": "Bezeichnung für den Meter-Schwellenwert"
+  },
+  "timeThreshold": {
+    "message": "Scroll-Zeit-Schwellenwert (Sekunden)",
+    "description": "Bezeichnung für den Zeit-Schwellenwert"
+  },
+  "thresholdNote": {
+    "message": "Dies ist die Menge an Scrollen, bevor Interventionen beginnen.",
+    "description": "Hinweis zum Schwellenwert"
+  },
+  "saveSettings": {
+    "message": "Einstellungen speichern",
+    "description": "Text des Speichern-Buttons"
+  },
+  "cancelSettings": {
+    "message": "Abbrechen",
+    "description": "Text des Abbrechen-Buttons"
+  }
+}

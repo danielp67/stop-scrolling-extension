@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "Limitador de Desplazamiento",
+    "description": "El nombre de la extensión"
+  },
+  "appDesc": {
+    "message": "Limita el desplazamiento para fomentar descansos y regular el consumo de contenido",
+    "description": "La descripción de la extensión"
+  },
+  "optionsTitle": {
+    "message": "Limitador de Desplazamiento - Opciones",
+    "description": "Título de la página de opciones"
+  },
+  "optionsSubtitle": {
+    "message": "Configure sus límites de desplazamiento y preferencias",
+    "description": "Subtítulo de la página de opciones"
+  },
+  "thresholdSettings": {
+    "message": "Configuración del umbral de desplazamiento",
+    "description": "Título de la sección de configuración del umbral"
+  },
+  "limitType": {
+    "message": "Tipo de límite",
+    "description": "Etiqueta para el selector de tipo de límite"
+  },
+  "limitTypePixels": {
+    "message": "Píxeles (distancia de desplazamiento)",
+    "description": "Opción para límite basado en píxeles"
+  },
+  "limitTypeMeters": {
+    "message": "Metros (distancia estimada)",
+    "description": "Opción para límite basado en metros"
+  },
+  "limitTypeTime": {
+    "message": "Tiempo (segundos)",
+    "description": "Opción para límite basado en tiempo"
+  },
+  "limitTypeBoth": {
+    "message": "Ambos (metros y tiempo)",
+    "description": "Opción para límite combinado"
+  },
+  "pixelsThreshold": {
+    "message": "Umbral de desplazamiento (píxeles)",
+    "description": "Etiqueta para el umbral en píxeles"
+  },
+  "metersThreshold": {
+    "message": "Umbral de desplazamiento (metros)",
+    "description": "Etiqueta para el umbral en metros"
+  },
+  "timeThreshold": {
+    "message": "Umbral de tiempo de desplazamiento (segundos)",
+    "description": "Etiqueta para el umbral de tiempo"
+  },
+  "thresholdNote": {
+    "message": "Esta es la cantidad de desplazamiento antes de que comiencen las intervenciones.",
+    "description": "Nota sobre el umbral"
+  },
+  "saveSettings": {
+    "message": "Guardar configuración",
+    "description": "Texto del botón de guardar"
+  },
+  "cancelSettings": {
+    "message": "Cancelar",
+    "description": "Texto del botón de cancelar"
+  }
+}

@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Scroll Limiter",
+  "name": "__MSG_appName__",
   "version": "1.0",
-  "description": "Limits scrolling to encourage breaks and regulate content consumption",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
   "permissions": [
     "storage",
     "tabs",

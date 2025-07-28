@@ -4,6 +4,9 @@ let totalScrollTime = 0;
 let scrollDistance = 0;
 let lastScrollPosition = 0;
 let scrollThreshold = 5000; // Default threshold in pixels
+let metersThreshold = 5; // Default threshold in meters
+let timeThreshold = 300; // Default threshold in seconds
+let limitType = 'pixels'; // Default limit type: 'pixels', 'meters', 'time', or 'both'
 let activeMode = 0; // 0: No intervention, 1: Slow, 2: Visual effects, 3: Block
 let isTimeRestricted = false;
 let targetedSites = []; // Sites to monitor
@@ -24,12 +27,18 @@ function initialize() {
   if (chrome && chrome.storage) {
     try {
       chrome.storage.sync.get([
+        'limitType',
         'scrollThreshold',
+        'metersThreshold',
+        'timeThreshold',
         'targetedSites',
         'timeRestrictions',
         'statistics'
       ], function(result) {
+        if (result.limitType) limitType = result.limitType;
         if (result.scrollThreshold) scrollThreshold = result.scrollThreshold;
+        if (result.metersThreshold) metersThreshold = result.metersThreshold;
+        if (result.timeThreshold) timeThreshold = result.timeThreshold;
         if (result.targetedSites) targetedSites = result.targetedSites;
         if (result.statistics) statistics = result.statistics;
 
@@ -58,6 +67,7 @@ function initialize() {
   if (savedPosition) {
     lastScrollPosition = parseInt(savedPosition);
     scrollDistance = parseInt(sessionStorage.getItem('scrollDistance') || '0');
+    totalScrollTime = parseFloat(sessionStorage.getItem('totalScrollTime') || '0');
   }
 }
 
@@ -71,9 +81,16 @@ function setupScrollListeners() {
 
 // Handle scroll events
 function handleScroll() {
+  const now = Date.now();
+
   // Start tracking time if not already started
   if (!scrollStartTime) {
-    scrollStartTime = Date.now();
+    scrollStartTime = now;
+  } else {
+    // Update total scroll time
+    const timeElapsed = (now - scrollStartTime) / 1000; // Convert to seconds
+    totalScrollTime += timeElapsed;
+    scrollStartTime = now;
   }
 
   // Calculate scroll distance
@@ -82,23 +99,63 @@ function handleScroll() {
   scrollDistance += delta;
   lastScrollPosition = currentPosition;
 
-  // Save current position to session storage
+  // Save current position and metrics to session storage
   sessionStorage.setItem('scrollPosition', currentPosition.toString());
   sessionStorage.setItem('scrollDistance', scrollDistance.toString());
+  sessionStorage.setItem('totalScrollTime', totalScrollTime.toString());
 
-  // Check if threshold is exceeded
-  if (scrollDistance > scrollThreshold) {
+  // Convert scroll distance to meters
+  const pixelsPerMeter = 1000; // A more conservative estimate
+  const scrollDistanceInMeters = scrollDistance / pixelsPerMeter;
+
+  // Check if threshold is exceeded based on limit type
+  let thresholdExceeded = false;
+
+  switch (limitType) {
+    case 'pixels':
+      thresholdExceeded = scrollDistance > scrollThreshold;
+      break;
+    case 'meters':
+      thresholdExceeded = scrollDistanceInMeters > metersThreshold;
+      break;
+    case 'time':
+      thresholdExceeded = totalScrollTime > timeThreshold;
+      break;
+    case 'both':
+      thresholdExceeded = scrollDistanceInMeters > metersThreshold || totalScrollTime > timeThreshold;
+      break;
+  }
+
+  if (thresholdExceeded) {
     applyInterventions();
   }
 }
 
-// Apply progressive interventions based on scroll amount
+// Apply progressive interventions based on scroll amount or time
 function applyInterventions() {
-  // Calculate how much the threshold has been exceeded
-  const excessScroll = scrollDistance - scrollThreshold;
+  // Calculate how much the threshold has been exceeded based on limit type
+  let excessPercentage = 0;
+
+  switch (limitType) {
+    case 'pixels':
+      excessPercentage = (scrollDistance - scrollThreshold) / scrollThreshold;
+      break;
+    case 'meters':
+      const scrollDistanceInMeters = scrollDistance / 1000; // Convert to meters
+      excessPercentage = (scrollDistanceInMeters - metersThreshold) / metersThreshold;
+      break;
+    case 'time':
+      excessPercentage = (totalScrollTime - timeThreshold) / timeThreshold;
+      break;
+    case 'both':
+      const distanceExcess = (scrollDistance / 1000 - metersThreshold) / metersThreshold;
+      const timeExcess = (totalScrollTime - timeThreshold) / timeThreshold;
+      excessPercentage = Math.max(distanceExcess, timeExcess);
+      break;
+  }
 
   // Level 1: Slow down scrolling (exceeded by 0-100%)
-  if (excessScroll <= scrollThreshold) {
+  if (excessPercentage <= 1.0) {
     if (activeMode < 1) {
       activeMode = 1;
       statistics.thresholdExceeded++;
@@ -106,7 +163,7 @@ function applyInterventions() {
     }
   } 
   // Level 2: Visual effects (exceeded by 100-200%)
-  else if (excessScroll <= scrollThreshold * 2) {
+  else if (excessPercentage <= 2.0) {
     if (activeMode < 2) {
       activeMode = 2;
       applyVisualEffects();
@@ -350,20 +407,13 @@ function checkTimeRestrictions() {
 
 // Update statistics
 function updateStatistics() {
-  // Calculate scroll time
-  if (scrollStartTime) {
-    const now = Date.now();
-    totalScrollTime += (now - scrollStartTime) / 1000; // in seconds
-    scrollStartTime = now;
-  }
-
   // Update daily statistics
   statistics.dailyScrollTime = totalScrollTime;
   statistics.dailyScrollDistance = scrollDistance;
 
-  // Convert scroll distance to meters using a conversion factor that matches user expectations
-  // We use a factor that makes each scroll action approximately 1 meter
-  const pixelsPerMeter = 3023.62; // Adjusted to make 5 scrolls equal 5 meters
+  // Convert scroll distance to meters using a more accurate conversion factor
+  // Note: This is an approximation as actual distance depends on screen size, resolution, and scroll speed
+  const pixelsPerMeter = 1000; // A more conservative estimate
   const scrollDistanceInMeters = scrollDistance / pixelsPerMeter;
 
   // Send statistics to background script for storage
@@ -376,7 +426,8 @@ function updateStatistics() {
           scrollTime: totalScrollTime,
           scrollDistance: scrollDistanceInMeters,
           thresholdExceeded: statistics.thresholdExceeded,
-          blockingTriggered: statistics.blockingTriggered
+          blockingTriggered: statistics.blockingTriggered,
+          limitType: limitType
         }
       });
     } catch (e) {
@@ -399,21 +450,43 @@ if (chrome && chrome.runtime) {
   try {
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.action === 'getStatistics') {
+        // Convert scroll distance to meters
+        const pixelsPerMeter = 1000;
+        const scrollDistanceInMeters = scrollDistance / pixelsPerMeter;
+
         sendResponse({
           scrollDistance: scrollDistance,
+          scrollDistanceInMeters: scrollDistanceInMeters,
           scrollTime: totalScrollTime,
-          activeMode: activeMode
+          activeMode: activeMode,
+          limitType: limitType
         });
       } else if (message.action === 'resetInterventions') {
         resetInterventions();
         scrollDistance = 0;
+        totalScrollTime = 0;
+        scrollStartTime = null;
+        sessionStorage.removeItem('scrollDistance');
+        sessionStorage.removeItem('totalScrollTime');
         sendResponse({ success: true });
       } else if (message.action === 'updateSettings') {
+        if (message.settings.limitType) {
+          limitType = message.settings.limitType;
+        }
         if (message.settings.scrollThreshold) {
           scrollThreshold = message.settings.scrollThreshold;
         }
+        if (message.settings.metersThreshold) {
+          metersThreshold = message.settings.metersThreshold;
+        }
+        if (message.settings.timeThreshold) {
+          timeThreshold = message.settings.timeThreshold;
+        }
         if (message.settings.targetedSites) {
           targetedSites = message.settings.targetedSites;
+        }
+        if (message.settings.timeRestrictions) {
+          checkTimeRestrictions();
         }
         sendResponse({ success: true });
       }
