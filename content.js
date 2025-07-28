@@ -21,25 +21,38 @@ let messageElement = null;
 // Initialize when the content script loads
 function initialize() {
   // Load user settings from storage
-  chrome.storage.sync.get([
-    'scrollThreshold',
-    'targetedSites',
-    'timeRestrictions',
-    'statistics'
-  ], function(result) {
-    if (result.scrollThreshold) scrollThreshold = result.scrollThreshold;
-    if (result.targetedSites) targetedSites = result.targetedSites;
-    if (result.statistics) statistics = result.statistics;
-    
-    // Check if current site is in targeted sites
-    const currentHost = window.location.hostname;
-    if (targetedSites.length === 0 || targetedSites.includes(currentHost)) {
+  if (chrome && chrome.storage) {
+    try {
+      chrome.storage.sync.get([
+        'scrollThreshold',
+        'targetedSites',
+        'timeRestrictions',
+        'statistics'
+      ], function(result) {
+        if (result.scrollThreshold) scrollThreshold = result.scrollThreshold;
+        if (result.targetedSites) targetedSites = result.targetedSites;
+        if (result.statistics) statistics = result.statistics;
+
+        // Check if current site is in targeted sites
+        const currentHost = window.location.hostname;
+        if (targetedSites.length === 0 || targetedSites.includes(currentHost)) {
+          setupScrollListeners();
+          createOverlayElements();
+          checkTimeRestrictions();
+        }
+      });
+    } catch (e) {
+      console.log('Error loading settings:', e);
+      // Set up default behavior even if we can't load settings
       setupScrollListeners();
       createOverlayElements();
-      checkTimeRestrictions();
     }
-  });
-  
+  } else {
+    // Set up default behavior even if chrome.storage is not available
+    setupScrollListeners();
+    createOverlayElements();
+  }
+
   // Get last scroll position from session storage if available
   const savedPosition = sessionStorage.getItem('scrollPosition');
   if (savedPosition) {
@@ -51,7 +64,7 @@ function initialize() {
 // Set up scroll event listeners
 function setupScrollListeners() {
   window.addEventListener('scroll', handleScroll, { passive: true });
-  
+
   // Save data when user leaves the page
   window.addEventListener('beforeunload', saveScrollData);
 }
@@ -62,17 +75,17 @@ function handleScroll() {
   if (!scrollStartTime) {
     scrollStartTime = Date.now();
   }
-  
+
   // Calculate scroll distance
   const currentPosition = window.scrollY;
   const delta = Math.abs(currentPosition - lastScrollPosition);
   scrollDistance += delta;
   lastScrollPosition = currentPosition;
-  
+
   // Save current position to session storage
   sessionStorage.setItem('scrollPosition', currentPosition.toString());
   sessionStorage.setItem('scrollDistance', scrollDistance.toString());
-  
+
   // Check if threshold is exceeded
   if (scrollDistance > scrollThreshold) {
     applyInterventions();
@@ -83,7 +96,7 @@ function handleScroll() {
 function applyInterventions() {
   // Calculate how much the threshold has been exceeded
   const excessScroll = scrollDistance - scrollThreshold;
-  
+
   // Level 1: Slow down scrolling (exceeded by 0-100%)
   if (excessScroll <= scrollThreshold) {
     if (activeMode < 1) {
@@ -107,7 +120,7 @@ function applyInterventions() {
       blockScrolling();
     }
   }
-  
+
   // Update statistics
   updateStatistics();
 }
@@ -123,7 +136,7 @@ function slowDownScrolling() {
     }
   `;
   document.head.appendChild(style);
-  
+
   // Show a subtle notification
   showNotification("Scrolling slowed down. Consider taking a break soon.", "warning");
 }
@@ -132,13 +145,13 @@ function slowDownScrolling() {
 function applyVisualEffects() {
   // Add screen vibration effect
   document.body.classList.add('scroll-vibration');
-  
+
   // Add dim effect to the overlay
   if (overlayElement) {
     overlayElement.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
     overlayElement.style.display = 'block';
   }
-  
+
   // Add CSS for vibration
   const style = document.createElement('style');
   style.innerHTML = `
@@ -155,10 +168,10 @@ function applyVisualEffects() {
     }
   `;
   document.head.appendChild(style);
-  
+
   // Show a stronger notification
   showNotification("You've been scrolling for a while. Time for a break?", "alert");
-  
+
   // Play a sound if possible
   playAlertSound();
 }
@@ -167,14 +180,14 @@ function applyVisualEffects() {
 function blockScrolling() {
   // Prevent further scrolling
   document.body.style.overflow = 'hidden';
-  
+
   // Show full overlay with message
   if (overlayElement && messageElement) {
     overlayElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     overlayElement.style.display = 'flex';
     messageElement.textContent = "You need a break! You've been scrolling too much.";
     messageElement.style.display = 'block';
-    
+
     // Add a continue button that appears after 5 seconds
     setTimeout(() => {
       const continueButton = document.createElement('button');
@@ -186,18 +199,18 @@ function blockScrolling() {
       continueButton.style.borderRadius = '5px';
       continueButton.style.color = 'white';
       continueButton.style.cursor = 'pointer';
-      
+
       continueButton.addEventListener('click', () => {
         // Reset intervention
         resetInterventions();
         // But keep tracking
         scrollDistance = scrollThreshold; // Reset to threshold level
       });
-      
+
       messageElement.appendChild(continueButton);
     }, 5000);
   }
-  
+
   // Play a more noticeable sound
   playBlockSound();
 }
@@ -217,7 +230,7 @@ function createOverlayElements() {
   overlayElement.style.justifyContent = 'center';
   overlayElement.style.alignItems = 'center';
   overlayElement.style.transition = 'background-color 0.5s ease';
-  
+
   // Create message element
   messageElement = document.createElement('div');
   messageElement.style.color = 'white';
@@ -229,7 +242,7 @@ function createOverlayElements() {
   messageElement.style.borderRadius = '10px';
   messageElement.style.maxWidth = '80%';
   messageElement.style.display = 'none';
-  
+
   overlayElement.appendChild(messageElement);
   document.body.appendChild(overlayElement);
 }
@@ -245,7 +258,7 @@ function showNotification(message, type) {
   notification.style.borderRadius = '5px';
   notification.style.zIndex = '10000';
   notification.style.fontSize = '16px';
-  
+
   if (type === 'warning') {
     notification.style.backgroundColor = '#FFC107';
     notification.style.color = 'black';
@@ -253,9 +266,9 @@ function showNotification(message, type) {
     notification.style.backgroundColor = '#F44336';
     notification.style.color = 'white';
   }
-  
+
   document.body.appendChild(notification);
-  
+
   // Remove after 3 seconds
   setTimeout(() => {
     notification.style.opacity = '0';
@@ -268,53 +281,71 @@ function showNotification(message, type) {
 
 // Play alert sound
 function playAlertSound() {
-  const audio = new Audio(chrome.runtime.getURL('sounds/alert.mp3'));
-  audio.play().catch(e => console.log('Sound play failed:', e));
+  if (chrome && chrome.runtime) {
+    try {
+      const audio = new Audio(chrome.runtime.getURL('sounds/alert.mp3'));
+      audio.play().catch(e => console.log('Sound play failed:', e));
+    } catch (e) {
+      console.log('Error playing alert sound:', e);
+    }
+  }
 }
 
 // Play block sound
 function playBlockSound() {
-  const audio = new Audio(chrome.runtime.getURL('sounds/block.mp3'));
-  audio.play().catch(e => console.log('Sound play failed:', e));
+  if (chrome && chrome.runtime) {
+    try {
+      const audio = new Audio(chrome.runtime.getURL('sounds/block.mp3'));
+      audio.play().catch(e => console.log('Sound play failed:', e));
+    } catch (e) {
+      console.log('Error playing block sound:', e);
+    }
+  }
 }
 
 // Reset interventions
 function resetInterventions() {
   // Remove slow scrolling
   document.body.style.scrollBehavior = '';
-  
+
   // Remove vibration
   document.body.classList.remove('scroll-vibration');
-  
+
   // Hide overlay
   if (overlayElement) {
     overlayElement.style.display = 'none';
   }
-  
+
   // Re-enable scrolling
   document.body.style.overflow = '';
-  
+
   // Reset active mode
   activeMode = 0;
 }
 
 // Check time restrictions
 function checkTimeRestrictions() {
-  chrome.storage.sync.get('timeRestrictions', function(result) {
-    if (result.timeRestrictions) {
-      const now = new Date();
-      const currentHour = now.getHours();
-      
-      // Example: restrict after 11 PM (23:00)
-      if (result.timeRestrictions.afterHour && currentHour >= result.timeRestrictions.afterHour) {
-        isTimeRestricted = true;
-        blockScrolling();
-        if (messageElement) {
-          messageElement.textContent = "Scrolling is restricted during this time. Come back tomorrow!";
+  if (chrome && chrome.storage) {
+    try {
+      chrome.storage.sync.get('timeRestrictions', function(result) {
+        if (result.timeRestrictions) {
+          const now = new Date();
+          const currentHour = now.getHours();
+
+          // Example: restrict after 11 PM (23:00)
+          if (result.timeRestrictions.afterHour && currentHour >= result.timeRestrictions.afterHour) {
+            isTimeRestricted = true;
+            blockScrolling();
+            if (messageElement) {
+              messageElement.textContent = "Scrolling is restricted during this time. Come back tomorrow!";
+            }
+          }
         }
-      }
+      });
+    } catch (e) {
+      console.log('Error checking time restrictions:', e);
     }
-  });
+  }
 }
 
 // Update statistics
@@ -325,59 +356,71 @@ function updateStatistics() {
     totalScrollTime += (now - scrollStartTime) / 1000; // in seconds
     scrollStartTime = now;
   }
-  
+
   // Update daily statistics
   statistics.dailyScrollTime = totalScrollTime;
   statistics.dailyScrollDistance = scrollDistance;
-  
+
   // Convert scroll distance to meters (rough approximation)
   const scrollDistanceInMeters = scrollDistance / 1000;
-  
+
   // Send statistics to background script for storage
-  chrome.runtime.sendMessage({
-    action: 'updateStatistics',
-    data: {
-      site: window.location.hostname,
-      scrollTime: totalScrollTime,
-      scrollDistance: scrollDistanceInMeters,
-      thresholdExceeded: statistics.thresholdExceeded,
-      blockingTriggered: statistics.blockingTriggered
+  if (chrome && chrome.runtime) {
+    try {
+      chrome.runtime.sendMessage({
+        action: 'updateStatistics',
+        data: {
+          site: window.location.hostname,
+          scrollTime: totalScrollTime,
+          scrollDistance: scrollDistanceInMeters,
+          thresholdExceeded: statistics.thresholdExceeded,
+          blockingTriggered: statistics.blockingTriggered
+        }
+      });
+    } catch (e) {
+      console.log('Error sending statistics:', e);
     }
-  });
+  }
 }
 
 // Save scroll data before unloading the page
 function saveScrollData() {
   // Update final statistics
   updateStatistics();
-  
+
   // Reset scroll start time
   scrollStartTime = null;
 }
 
 // Listen for messages from popup or background script
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'getStatistics') {
-    sendResponse({
-      scrollDistance: scrollDistance,
-      scrollTime: totalScrollTime,
-      activeMode: activeMode
+if (chrome && chrome.runtime) {
+  try {
+    chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      if (message.action === 'getStatistics') {
+        sendResponse({
+          scrollDistance: scrollDistance,
+          scrollTime: totalScrollTime,
+          activeMode: activeMode
+        });
+      } else if (message.action === 'resetInterventions') {
+        resetInterventions();
+        scrollDistance = 0;
+        sendResponse({ success: true });
+      } else if (message.action === 'updateSettings') {
+        if (message.settings.scrollThreshold) {
+          scrollThreshold = message.settings.scrollThreshold;
+        }
+        if (message.settings.targetedSites) {
+          targetedSites = message.settings.targetedSites;
+        }
+        sendResponse({ success: true });
+      }
+      return true;
     });
-  } else if (message.action === 'resetInterventions') {
-    resetInterventions();
-    scrollDistance = 0;
-    sendResponse({ success: true });
-  } else if (message.action === 'updateSettings') {
-    if (message.settings.scrollThreshold) {
-      scrollThreshold = message.settings.scrollThreshold;
-    }
-    if (message.settings.targetedSites) {
-      targetedSites = message.settings.targetedSites;
-    }
-    sendResponse({ success: true });
+  } catch (e) {
+    console.log('Error setting up message listener:', e);
   }
-  return true;
-});
+}
 
 // Initialize the content script
 initialize();
