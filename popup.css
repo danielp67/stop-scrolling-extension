@@ -23,6 +23,8 @@
   --button-hover: #3367d6;
   --button-danger: #f44336;
   --button-danger-hover: #d32f2f;
+  --button-secondary: #757575;
+  --button-secondary-hover: #616161;
   --footer-bg: #f5f5f5;
   --footer-text: #777;
   --stat-item-bg: #f9f9f9;
@@ -53,6 +55,8 @@
   --button-hover: #1765cc;
   --button-danger: #cf6679;
   --button-danger-hover: #b4505f;
+  --button-secondary: #5c5c5c;
+  --button-secondary-hover: #4a4a4a;
   --footer-bg: #1e1e1e;
   --footer-text: #999;
   --stat-item-bg: #3d3d3d;
@@ -234,6 +238,14 @@ button:hover {
 
 #resetBtn:hover {
   background-color: var(--button-danger-hover);
+}
+
+.btn-secondary {
+  background-color: var(--button-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--button-secondary-hover);
 }
 
 /* Settings styles */

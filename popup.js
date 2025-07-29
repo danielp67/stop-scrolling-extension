@@ -11,6 +11,7 @@ const siteInput = document.getElementById('siteInput');
 const addSiteBtn = document.getElementById('addSiteBtn');
 const siteList = document.getElementById('siteList');
 const saveSettingsBtn = document.getElementById('saveSettingsBtn');
+const moreOptionsBtn = document.getElementById('moreOptionsBtn');
 const resetBtn = document.getElementById('resetBtn');
 const viewReportBtn = document.getElementById('viewReportBtn');
 const todayTimeElement = document.getElementById('todayTime');
@@ -335,6 +336,11 @@ function setupEventListeners() {
   // View report button
   viewReportBtn.addEventListener('click', function() {
     openReportPage();
+  });
+
+  // More options button
+  moreOptionsBtn.addEventListener('click', function() {
+    chrome.runtime.openOptionsPage();
   });
 }
 
