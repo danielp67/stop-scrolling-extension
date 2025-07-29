@@ -63,12 +63,82 @@ let currentSettings = {
 
 // Initialize options page
 document.addEventListener('DOMContentLoaded', function() {
-  // Load settings
+  // Load settings first
   loadSettings();
 
   // Set up event listeners
   setupEventListeners();
 });
+
+// Replace i18n message placeholders
+function replaceI18nMessages() {
+  // Process all text nodes in the document
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.nodeValue && node.nodeValue.includes('__MSG_')) {
+      const matches = node.nodeValue.match(/__MSG_(\w+)__/g);
+      if (matches) {
+        let newValue = node.nodeValue;
+        matches.forEach(match => {
+          const messageName = match.replace(/__MSG_(\w+)__/, '$1');
+          const translation = chrome.i18n.getMessage(messageName);
+          if (translation) {
+            newValue = newValue.replace(match, translation);
+          }
+        });
+        node.nodeValue = newValue;
+      }
+    }
+  }
+
+  // Check for message placeholders in attributes
+  const elements = document.querySelectorAll('*');
+  elements.forEach(element => {
+    // Check attributes like title, placeholder, etc.
+    ['title', 'placeholder', 'alt', 'aria-label'].forEach(attr => {
+      if (element.hasAttribute(attr)) {
+        const attrValue = element.getAttribute(attr);
+        if (attrValue && attrValue.includes('__MSG_')) {
+          const matches = attrValue.match(/__MSG_(\w+)__/g);
+          if (matches) {
+            let newValue = attrValue;
+            matches.forEach(match => {
+              const messageName = match.replace(/__MSG_(\w+)__/, '$1');
+              const translation = chrome.i18n.getMessage(messageName);
+              if (translation) {
+                newValue = newValue.replace(match, translation);
+              }
+            });
+            element.setAttribute(attr, newValue);
+          }
+        }
+      }
+    });
+  });
+
+  // Update document title
+  if (document.title && document.title.includes('__MSG_')) {
+    const matches = document.title.match(/__MSG_(\w+)__/g);
+    if (matches) {
+      let newTitle = document.title;
+      matches.forEach(match => {
+        const messageName = match.replace(/__MSG_(\w+)__/, '$1');
+        const translation = chrome.i18n.getMessage(messageName);
+        if (translation) {
+          newTitle = newTitle.replace(match, translation);
+        }
+      });
+      document.title = newTitle;
+    }
+  }
+}
 
 // Load settings from storage
 function loadSettings() {
@@ -129,6 +199,9 @@ function loadSettings() {
 
     // Update UI with loaded settings
     updateUI();
+
+    // Replace i18n message placeholders after settings are loaded
+    replaceI18nMessages();
   });
 }
 
@@ -196,7 +269,16 @@ function updateUI() {
   visualToggle.checked = currentSettings.notifications.visual;
 
   // Appearance settings
-  languageSelect.value = currentSettings.appearance.language;
+  // Set language dropdown to match the actual language being used by Chrome's i18n system
+  const currentUILanguage = chrome.i18n.getUILanguage();
+  // Check if the UI language is available in our dropdown
+  const languageOptions = Array.from(languageSelect.options).map(option => option.value);
+  if (languageOptions.includes(currentUILanguage)) {
+    languageSelect.value = currentUILanguage;
+    currentSettings.appearance.language = currentUILanguage;
+  } else {
+    languageSelect.value = currentSettings.appearance.language;
+  }
   darkModeToggle.checked = currentSettings.appearance.darkMode;
   systemThemeToggle.checked = currentSettings.appearance.useSystemTheme;
 
@@ -289,6 +371,8 @@ function setupEventListeners() {
   // Language select
   languageSelect.addEventListener('change', function() {
     currentSettings.appearance.language = this.value;
+    // Show message about reloading immediately when language is changed
+    showStatusMessage('Language changed. Changes will take effect after saving settings and reloading the extension.', 'success');
   });
 
   // Dark mode toggle
@@ -365,7 +449,7 @@ function renderSiteList() {
     const emptyMessage = document.createElement('div');
     emptyMessage.className = 'site-item';
     emptyMessage.textContent = 'No sites added. All sites will be monitored.';
-    emptyMessage.style.color = '#777';
+    emptyMessage.style.color = 'var(--site-note)';
     emptyMessage.style.fontStyle = 'italic';
     siteList.appendChild(emptyMessage);
     return;
@@ -460,9 +544,9 @@ function saveSettings() {
     // Update settings in active tabs
     updateActiveTabsSettings();
 
-    // If language changed, show message about reloading
+    // If language changed, show message about reloading with more specific instructions
     if (currentSettings.appearance.language !== chrome.i18n.getUILanguage()) {
-      showStatusMessage('Language changed. Please reload the extension for changes to take effect.', 'success');
+      showStatusMessage('Language changed. Please close this options page and reopen it from the extension menu for changes to take effect.', 'success');
     }
   });
 }

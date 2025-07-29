@@ -55,6 +55,206 @@
     "message": "C'est la quantité de défilement avant que les interventions ne commencent.",
     "description": "Note sur le seuil"
   },
+  "interventionLevels": {
+    "message": "Niveaux d'Intervention",
+    "description": "Titre de la section des niveaux d'intervention"
+  },
+  "interventionDescription": {
+    "message": "Le Limiteur de Défilement utilise des interventions progressives à mesure que vous continuez à défiler :",
+    "description": "Description des niveaux d'intervention"
+  },
+  "level1Title": {
+    "message": "Niveau 1 : Ralentissement",
+    "description": "Titre pour l'intervention de niveau 1"
+  },
+  "level1Description": {
+    "message": "Lorsque vous dépassez le seuil, le défilement sera ralenti pour encourager une navigation plus attentive.",
+    "description": "Description pour l'intervention de niveau 1"
+  },
+  "level1Multiplier": {
+    "message": "Multiplicateur de seuil de niveau 1",
+    "description": "Étiquette pour le multiplicateur de niveau 1"
+  },
+  "level2Title": {
+    "message": "Niveau 2 : Effets visuels",
+    "description": "Titre pour l'intervention de niveau 2"
+  },
+  "level2Description": {
+    "message": "Si vous continuez à défiler, des effets visuels comme la vibration de l'écran et l'assombrissement seront appliqués.",
+    "description": "Description pour l'intervention de niveau 2"
+  },
+  "level2Multiplier": {
+    "message": "Multiplicateur de seuil de niveau 2",
+    "description": "Étiquette pour le multiplicateur de niveau 2"
+  },
+  "level3Title": {
+    "message": "Niveau 3 : Blocage du défilement",
+    "description": "Titre pour l'intervention de niveau 3"
+  },
+  "level3Description": {
+    "message": "Comme intervention finale, le défilement sera bloqué avec un message vous encourageant à faire une pause.",
+    "description": "Description pour l'intervention de niveau 3"
+  },
+  "level3Multiplier": {
+    "message": "Multiplicateur de seuil de niveau 3",
+    "description": "Étiquette pour le multiplicateur de niveau 3"
+  },
+  "multiplierNote": {
+    "message": "S'active à (Seuil × Multiplicateur) pixels de défilement.",
+    "description": "Note sur le multiplicateur"
+  },
+  "timeRestrictions": {
+    "message": "Restrictions de temps",
+    "description": "Titre de la section des restrictions de temps"
+  },
+  "enableTimeRestrictions": {
+    "message": "Activer les restrictions basées sur le temps",
+    "description": "Étiquette pour l'activation des restrictions de temps"
+  },
+  "timeRestrictionsDescription": {
+    "message": "Pendant ces heures, le défilement sera restreint plus agressivement :",
+    "description": "Description des restrictions de temps"
+  },
+  "restrictAfter": {
+    "message": "Restreindre après :",
+    "description": "Étiquette pour l'heure de début de restriction"
+  },
+  "restrictUntil": {
+    "message": "Jusqu'à :",
+    "description": "Étiquette pour l'heure de fin de restriction"
+  },
+  "time8pm": {
+    "message": "20h00",
+    "description": "Option d'heure"
+  },
+  "time9pm": {
+    "message": "21h00",
+    "description": "Option d'heure"
+  },
+  "time10pm": {
+    "message": "22h00",
+    "description": "Option d'heure"
+  },
+  "time11pm": {
+    "message": "23h00",
+    "description": "Option d'heure"
+  },
+  "time12am": {
+    "message": "00h00",
+    "description": "Option d'heure"
+  },
+  "time5am": {
+    "message": "05h00",
+    "description": "Option d'heure"
+  },
+  "time6am": {
+    "message": "06h00",
+    "description": "Option d'heure"
+  },
+  "time7am": {
+    "message": "07h00",
+    "description": "Option d'heure"
+  },
+  "time8am": {
+    "message": "08h00",
+    "description": "Option d'heure"
+  },
+  "time9am": {
+    "message": "09h00",
+    "description": "Option d'heure"
+  },
+  "restrictionLevel": {
+    "message": "Niveau de restriction",
+    "description": "Étiquette pour le niveau de restriction"
+  },
+  "restrictionLevel1": {
+    "message": "Niveau 1 - Ralentissement uniquement",
+    "description": "Option de niveau de restriction"
+  },
+  "restrictionLevel2": {
+    "message": "Niveau 2 - Effets visuels",
+    "description": "Option de niveau de restriction"
+  },
+  "restrictionLevel3": {
+    "message": "Niveau 3 - Blocage du défilement",
+    "description": "Option de niveau de restriction"
+  },
+  "targetSites": {
+    "message": "Cibler des sites spécifiques",
+    "description": "Titre de la section des sites ciblés"
+  },
+  "targetSitesDescription": {
+    "message": "Ajoutez des sites web où vous souhaitez limiter le défilement. Laissez vide pour surveiller tous les sites.",
+    "description": "Description des sites ciblés"
+  },
+  "siteInputPlaceholder": {
+    "message": "ex., youtube.com, twitter.com",
+    "description": "Texte d'exemple pour l'entrée de site"
+  },
+  "addSite": {
+    "message": "Ajouter un site",
+    "description": "Texte du bouton pour ajouter un site"
+  },
+  "siteInputNote": {
+    "message": "Entrez les noms de domaine sans \"http://\" ou \"www.\" (ex., \"youtube.com\")",
+    "description": "Note sur le format d'entrée de site"
+  },
+  "appearanceSettings": {
+    "message": "Paramètres d'apparence",
+    "description": "Titre de la section des paramètres d'apparence"
+  },
+  "language": {
+    "message": "Langue",
+    "description": "Étiquette pour le sélecteur de langue"
+  },
+  "languageNote": {
+    "message": "Les changements prendront effet après avoir rechargé l'extension.",
+    "description": "Note sur les changements de langue"
+  },
+  "darkMode": {
+    "message": "Mode sombre",
+    "description": "Étiquette pour l'activation du mode sombre"
+  },
+  "useSystemTheme": {
+    "message": "Utiliser les préférences de thème du système",
+    "description": "Étiquette pour l'utilisation du thème système"
+  },
+  "notificationSettings": {
+    "message": "Paramètres de notification",
+    "description": "Titre de la section des paramètres de notification"
+  },
+  "enableSoundNotifications": {
+    "message": "Activer les notifications sonores",
+    "description": "Étiquette pour l'activation des notifications sonores"
+  },
+  "enableVisualNotifications": {
+    "message": "Activer les notifications visuelles",
+    "description": "Étiquette pour l'activation des notifications visuelles"
+  },
+  "resetData": {
+    "message": "Réinitialiser les données",
+    "description": "Titre de la section de réinitialisation des données"
+  },
+  "resetDataDescription": {
+    "message": "Effacez vos statistiques de défilement et repartez à zéro.",
+    "description": "Description de la réinitialisation des données"
+  },
+  "resetDailyData": {
+    "message": "Réinitialiser les données du jour",
+    "description": "Texte du bouton pour réinitialiser les données quotidiennes"
+  },
+  "resetWeeklyData": {
+    "message": "Réinitialiser les données de la semaine",
+    "description": "Texte du bouton pour réinitialiser les données hebdomadaires"
+  },
+  "resetAllData": {
+    "message": "Réinitialiser toutes les données",
+    "description": "Texte du bouton pour réinitialiser toutes les données"
+  },
+  "footerText": {
+    "message": "Limiteur de Défilement © 2023 - Faites des pauses. Défilez consciemment.",
+    "description": "Texte du pied de page"
+  },
   "saveSettings": {
     "message": "Enregistrer les paramètres",
     "description": "Texte du bouton d'enregistrement"

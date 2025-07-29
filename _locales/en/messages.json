@@ -55,6 +55,206 @@
     "message": "This is the amount of scrolling before interventions begin.",
     "description": "Note about threshold"
   },
+  "interventionLevels": {
+    "message": "Intervention Levels",
+    "description": "Title of the intervention levels section"
+  },
+  "interventionDescription": {
+    "message": "Scroll Limiter uses progressive interventions as you continue scrolling:",
+    "description": "Description of intervention levels"
+  },
+  "level1Title": {
+    "message": "Level 1: Slow Down",
+    "description": "Title for level 1 intervention"
+  },
+  "level1Description": {
+    "message": "When you exceed the threshold, scrolling will be slowed down to encourage mindful browsing.",
+    "description": "Description for level 1 intervention"
+  },
+  "level1Multiplier": {
+    "message": "Level 1 Threshold Multiplier",
+    "description": "Label for level 1 multiplier"
+  },
+  "level2Title": {
+    "message": "Level 2: Visual Effects",
+    "description": "Title for level 2 intervention"
+  },
+  "level2Description": {
+    "message": "If you continue scrolling, visual effects like screen vibration and dimming will be applied.",
+    "description": "Description for level 2 intervention"
+  },
+  "level2Multiplier": {
+    "message": "Level 2 Threshold Multiplier",
+    "description": "Label for level 2 multiplier"
+  },
+  "level3Title": {
+    "message": "Level 3: Block Scrolling",
+    "description": "Title for level 3 intervention"
+  },
+  "level3Description": {
+    "message": "As a final intervention, scrolling will be blocked with a message encouraging you to take a break.",
+    "description": "Description for level 3 intervention"
+  },
+  "level3Multiplier": {
+    "message": "Level 3 Threshold Multiplier",
+    "description": "Label for level 3 multiplier"
+  },
+  "multiplierNote": {
+    "message": "Activates at (Threshold × Multiplier) pixels of scrolling.",
+    "description": "Note about multiplier"
+  },
+  "timeRestrictions": {
+    "message": "Time Restrictions",
+    "description": "Title of the time restrictions section"
+  },
+  "enableTimeRestrictions": {
+    "message": "Enable time-based restrictions",
+    "description": "Label for time restrictions toggle"
+  },
+  "timeRestrictionsDescription": {
+    "message": "During these hours, scrolling will be restricted more aggressively:",
+    "description": "Description of time restrictions"
+  },
+  "restrictAfter": {
+    "message": "Restrict after:",
+    "description": "Label for restrict after time"
+  },
+  "restrictUntil": {
+    "message": "Until:",
+    "description": "Label for restrict until time"
+  },
+  "time8pm": {
+    "message": "8:00 PM",
+    "description": "Time option"
+  },
+  "time9pm": {
+    "message": "9:00 PM",
+    "description": "Time option"
+  },
+  "time10pm": {
+    "message": "10:00 PM",
+    "description": "Time option"
+  },
+  "time11pm": {
+    "message": "11:00 PM",
+    "description": "Time option"
+  },
+  "time12am": {
+    "message": "12:00 AM",
+    "description": "Time option"
+  },
+  "time5am": {
+    "message": "5:00 AM",
+    "description": "Time option"
+  },
+  "time6am": {
+    "message": "6:00 AM",
+    "description": "Time option"
+  },
+  "time7am": {
+    "message": "7:00 AM",
+    "description": "Time option"
+  },
+  "time8am": {
+    "message": "8:00 AM",
+    "description": "Time option"
+  },
+  "time9am": {
+    "message": "9:00 AM",
+    "description": "Time option"
+  },
+  "restrictionLevel": {
+    "message": "Restriction Level",
+    "description": "Label for restriction level"
+  },
+  "restrictionLevel1": {
+    "message": "Level 1 - Slow Down Only",
+    "description": "Restriction level option"
+  },
+  "restrictionLevel2": {
+    "message": "Level 2 - Visual Effects",
+    "description": "Restriction level option"
+  },
+  "restrictionLevel3": {
+    "message": "Level 3 - Block Scrolling",
+    "description": "Restriction level option"
+  },
+  "targetSites": {
+    "message": "Target Specific Sites",
+    "description": "Title of the target sites section"
+  },
+  "targetSitesDescription": {
+    "message": "Add websites where you want to limit scrolling. Leave empty to monitor all sites.",
+    "description": "Description of target sites"
+  },
+  "siteInputPlaceholder": {
+    "message": "e.g., youtube.com, twitter.com",
+    "description": "Placeholder for site input"
+  },
+  "addSite": {
+    "message": "Add Site",
+    "description": "Button text for adding a site"
+  },
+  "siteInputNote": {
+    "message": "Enter domain names without \"http://\" or \"www.\" (e.g., \"youtube.com\")",
+    "description": "Note about site input format"
+  },
+  "appearanceSettings": {
+    "message": "Appearance Settings",
+    "description": "Title of the appearance settings section"
+  },
+  "language": {
+    "message": "Language",
+    "description": "Label for language selector"
+  },
+  "languageNote": {
+    "message": "Changes will take effect after reloading the extension.",
+    "description": "Note about language changes"
+  },
+  "darkMode": {
+    "message": "Dark Mode",
+    "description": "Label for dark mode toggle"
+  },
+  "useSystemTheme": {
+    "message": "Use system theme preferences",
+    "description": "Label for system theme toggle"
+  },
+  "notificationSettings": {
+    "message": "Notification Settings",
+    "description": "Title of the notification settings section"
+  },
+  "enableSoundNotifications": {
+    "message": "Enable sound notifications",
+    "description": "Label for sound notifications toggle"
+  },
+  "enableVisualNotifications": {
+    "message": "Enable visual notifications",
+    "description": "Label for visual notifications toggle"
+  },
+  "resetData": {
+    "message": "Reset Data",
+    "description": "Title of the reset data section"
+  },
+  "resetDataDescription": {
+    "message": "Clear your scrolling statistics and start fresh.",
+    "description": "Description of reset data"
+  },
+  "resetDailyData": {
+    "message": "Reset Today's Data",
+    "description": "Button text for resetting daily data"
+  },
+  "resetWeeklyData": {
+    "message": "Reset Weekly Data",
+    "description": "Button text for resetting weekly data"
+  },
+  "resetAllData": {
+    "message": "Reset All Data",
+    "description": "Button text for resetting all data"
+  },
+  "footerText": {
+    "message": "Scroll Limiter © 2023 - Take breaks. Scroll mindfully.",
+    "description": "Footer text"
+  },
   "saveSettings": {
     "message": "Save Settings",
     "description": "Save button text"

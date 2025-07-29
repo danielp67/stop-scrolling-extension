@@ -22,6 +22,9 @@ const PIXELS_PER_METER = 3023.62; // Adjusted to make 5 scrolls equal 5 meters
 
 // Initialize the report page
 document.addEventListener('DOMContentLoaded', function() {
+  // Check dark mode setting
+  checkDarkModeSetting();
+
   // Set up tab switching
   setupTabs();
 
@@ -31,6 +34,31 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load statistics
   loadStatistics();
 });
+
+// Check dark mode setting from storage
+function checkDarkModeSetting() {
+  chrome.storage.sync.get('appearance', function(result) {
+    if (result.appearance) {
+      if (result.appearance.useSystemTheme) {
+        // Check system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          applyDarkMode(true);
+        }
+      } else if (result.appearance.darkMode) {
+        applyDarkMode(true);
+      }
+    }
+  });
+}
+
+// Apply dark mode
+function applyDarkMode(isDark) {
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
+}
 
 // Set up tab switching
 function setupTabs() {
@@ -107,8 +135,9 @@ function showNoDataMessage() {
     .no-data {
       text-align: center;
       padding: 50px 20px;
-      color: #777;
+      color: var(--no-data-text);
       font-style: italic;
+      transition: color 0.3s ease;
     }
   `;
   document.head.appendChild(style);
@@ -834,7 +863,7 @@ function populateDailyTable() {
     cell.textContent = 'No daily data available yet.';
     cell.style.textAlign = 'center';
     cell.style.padding = '20px';
-    cell.style.color = '#777';
+    cell.style.color = 'var(--no-data-text)';
     row.appendChild(cell);
     tbody.appendChild(row);
   }
@@ -907,7 +936,7 @@ function populateWeeklyTable() {
     cell.textContent = 'No weekly data available yet.';
     cell.style.textAlign = 'center';
     cell.style.padding = '20px';
-    cell.style.color = '#777';
+    cell.style.color = 'var(--no-data-text)';
     row.appendChild(cell);
     tbody.appendChild(row);
   }
@@ -981,7 +1010,7 @@ function populateMonthlyTable() {
     cell.textContent = 'No monthly data available yet.';
     cell.style.textAlign = 'center';
     cell.style.padding = '20px';
-    cell.style.color = '#777';
+    cell.style.color = 'var(--no-data-text)';
     row.appendChild(cell);
     tbody.appendChild(row);
   }
@@ -1035,7 +1064,7 @@ function populateSitesTable() {
     cell.textContent = 'No site data available yet.';
     cell.style.textAlign = 'center';
     cell.style.padding = '20px';
-    cell.style.color = '#777';
+    cell.style.color = 'var(--no-data-text)';
     row.appendChild(cell);
     tbody.appendChild(row);
   }

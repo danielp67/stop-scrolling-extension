@@ -495,108 +495,108 @@
       </section>
 
       <section id="interventionSection">
-        <h2>Intervention Levels</h2>
-        <p>Scroll Limiter uses progressive interventions as you continue scrolling:</p>
+        <h2>__MSG_interventionLevels__</h2>
+        <p>__MSG_interventionDescription__</p>
 
         <div class="level-settings">
           <div class="level-title">
             <span class="level-badge level-1">1</span>
-            Level 1: Slow Down
+            __MSG_level1Title__
           </div>
           <p class="level-description">
-            When you exceed the threshold, scrolling will be slowed down to encourage mindful browsing.
+            __MSG_level1Description__
           </p>
           <div class="form-group">
-            <label for="level1Multiplier">Level 1 Threshold Multiplier</label>
+            <label for="level1Multiplier">__MSG_level1Multiplier__</label>
             <input type="number" id="level1Multiplier" min="1" max="2" step="0.1" value="1">
-            <p class="site-note">Activates at (Threshold × Multiplier) pixels of scrolling.</p>
+            <p class="site-note">__MSG_multiplierNote__</p>
           </div>
         </div>
 
         <div class="level-settings">
           <div class="level-title">
             <span class="level-badge level-2">2</span>
-            Level 2: Visual Effects
+            __MSG_level2Title__
           </div>
           <p class="level-description">
-            If you continue scrolling, visual effects like screen vibration and dimming will be applied.
+            __MSG_level2Description__
           </p>
           <div class="form-group">
-            <label for="level2Multiplier">Level 2 Threshold Multiplier</label>
+            <label for="level2Multiplier">__MSG_level2Multiplier__</label>
             <input type="number" id="level2Multiplier" min="1.1" max="3" step="0.1" value="2">
-            <p class="site-note">Activates at (Threshold × Multiplier) pixels of scrolling.</p>
+            <p class="site-note">__MSG_multiplierNote__</p>
           </div>
         </div>
 
         <div class="level-settings">
           <div class="level-title">
             <span class="level-badge level-3">3</span>
-            Level 3: Block Scrolling
+            __MSG_level3Title__
           </div>
           <p class="level-description">
-            As a final intervention, scrolling will be blocked with a message encouraging you to take a break.
+            __MSG_level3Description__
           </p>
           <div class="form-group">
-            <label for="level3Multiplier">Level 3 Threshold Multiplier</label>
+            <label for="level3Multiplier">__MSG_level3Multiplier__</label>
             <input type="number" id="level3Multiplier" min="1.2" max="5" step="0.1" value="3">
-            <p class="site-note">Activates at (Threshold × Multiplier) pixels of scrolling.</p>
+            <p class="site-note">__MSG_multiplierNote__</p>
           </div>
         </div>
       </section>
 
       <section id="timeSection">
-        <h2>Time Restrictions</h2>
+        <h2>__MSG_timeRestrictions__</h2>
         <div class="toggle-container">
           <label class="toggle">
             <input type="checkbox" id="timeRestrictionToggle">
             <span class="toggle-slider"></span>
           </label>
-          <span>Enable time-based restrictions</span>
+          <span>__MSG_enableTimeRestrictions__</span>
         </div>
 
         <div class="time-settings" id="timeSettings">
-          <p>During these hours, scrolling will be restricted more aggressively:</p>
+          <p>__MSG_timeRestrictionsDescription__</p>
 
           <div class="time-input">
-            <label for="afterHour">Restrict after:</label>
+            <label for="afterHour">__MSG_restrictAfter__</label>
             <select id="afterHour">
-              <option value="20">8:00 PM</option>
-              <option value="21">9:00 PM</option>
-              <option value="22">10:00 PM</option>
-              <option value="23" selected>11:00 PM</option>
-              <option value="0">12:00 AM</option>
+              <option value="20">__MSG_time8pm__</option>
+              <option value="21">__MSG_time9pm__</option>
+              <option value="22">__MSG_time10pm__</option>
+              <option value="23" selected>__MSG_time11pm__</option>
+              <option value="0">__MSG_time12am__</option>
             </select>
           </div>
 
           <div class="time-input">
-            <label for="beforeHour">Until:</label>
+            <label for="beforeHour">__MSG_restrictUntil__</label>
             <select id="beforeHour">
-              <option value="5">5:00 AM</option>
-              <option value="6" selected>6:00 AM</option>
-              <option value="7">7:00 AM</option>
-              <option value="8">8:00 AM</option>
-              <option value="9">9:00 AM</option>
+              <option value="5">__MSG_time5am__</option>
+              <option value="6" selected>__MSG_time6am__</option>
+              <option value="7">__MSG_time7am__</option>
+              <option value="8">__MSG_time8am__</option>
+              <option value="9">__MSG_time9am__</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="restrictionLevel">Restriction Level</label>
+            <label for="restrictionLevel">__MSG_restrictionLevel__</label>
             <select id="restrictionLevel">
-              <option value="1">Level 1 - Slow Down Only</option>
-              <option value="2">Level 2 - Visual Effects</option>
-              <option value="3" selected>Level 3 - Block Scrolling</option>
+              <option value="1">__MSG_restrictionLevel1__</option>
+              <option value="2">__MSG_restrictionLevel2__</option>
+              <option value="3" selected>__MSG_restrictionLevel3__</option>
             </select>
           </div>
         </div>
       </section>
 
       <section id="sitesSection">
-        <h2>Target Specific Sites</h2>
-        <p>Add websites where you want to limit scrolling. Leave empty to monitor all sites.</p>
+        <h2>__MSG_targetSites__</h2>
+        <p>__MSG_targetSitesDescription__</p>
 
         <div class="site-input">
-          <input type="text" id="siteInput" placeholder="e.g., youtube.com, twitter.com">
-          <button id="addSiteBtn">Add Site</button>
+          <input type="text" id="siteInput" placeholder="__MSG_siteInputPlaceholder__">
+          <button id="addSiteBtn">__MSG_addSite__</button>
         </div>
 
         <div class="site-list" id="siteList">
@@ -604,24 +604,30 @@
         </div>
 
         <div class="site-note">
-          <p>Enter domain names without "http://" or "www." (e.g., "youtube.com")</p>
+          <p>__MSG_siteInputNote__</p>
         </div>
       </section>
 
       <section id="appearanceSection">
-        <h2>Appearance Settings</h2>
+        <h2>__MSG_appearanceSettings__</h2>
 
         <div class="form-group">
-          <label for="languageSelect">Language</label>
+          <label for="languageSelect">__MSG_language__</label>
           <select id="languageSelect">
-            <option value="en">English</option>
-            <option value="fr">Français</option>
+            <option value="ar">العربية</option>
             <option value="de">Deutsch</option>
+            <option value="en">English</option>
             <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="hi">हिन्दी</option>
             <option value="it">Italiano</option>
+            <option value="ja">日本語</option>
             <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+            <option value="zh_CN">中文 (简体)</option>
+            <option value="zh_TW">中文 (繁體)</option>
           </select>
-          <p class="site-note">Changes will take effect after reloading the extension.</p>
+          <p class="site-note">__MSG_languageNote__</p>
         </div>
 
         <div class="toggle-container">
@@ -629,7 +635,7 @@
             <input type="checkbox" id="darkModeToggle">
             <span class="toggle-slider"></span>
           </label>
-          <span>Dark Mode</span>
+          <span>__MSG_darkMode__</span>
         </div>
 
         <div class="toggle-container">
@@ -637,18 +643,18 @@
             <input type="checkbox" id="systemThemeToggle" checked>
             <span class="toggle-slider"></span>
           </label>
-          <span>Use system theme preferences</span>
+          <span>__MSG_useSystemTheme__</span>
         </div>
       </section>
 
       <section id="notificationSection">
-        <h2>Notification Settings</h2>
+        <h2>__MSG_notificationSettings__</h2>
         <div class="toggle-container">
           <label class="toggle">
             <input type="checkbox" id="soundToggle" checked>
             <span class="toggle-slider"></span>
           </label>
-          <span>Enable sound notifications</span>
+          <span>__MSG_enableSoundNotifications__</span>
         </div>
 
         <div class="toggle-container">
@@ -656,18 +662,18 @@
             <input type="checkbox" id="visualToggle" checked>
             <span class="toggle-slider"></span>
           </label>
-          <span>Enable visual notifications</span>
+          <span>__MSG_enableVisualNotifications__</span>
         </div>
       </section>
 
       <section id="resetSection">
-        <h2>Reset Data</h2>
-        <p>Clear your scrolling statistics and start fresh.</p>
+        <h2>__MSG_resetData__</h2>
+        <p>__MSG_resetDataDescription__</p>
 
         <div class="buttons">
-          <button id="resetDailyBtn" class="btn-secondary">Reset Today's Data</button>
-          <button id="resetWeeklyBtn" class="btn-secondary">Reset Weekly Data</button>
-          <button id="resetAllBtn" class="btn-danger">Reset All Data</button>
+          <button id="resetDailyBtn" class="btn-secondary">__MSG_resetDailyData__</button>
+          <button id="resetWeeklyBtn" class="btn-secondary">__MSG_resetWeeklyData__</button>
+          <button id="resetAllBtn" class="btn-danger">__MSG_resetAllData__</button>
         </div>
       </section>
 
@@ -678,7 +684,7 @@
     </main>
 
     <footer>
-      <p>Scroll Limiter &copy; 2023 - Take breaks. Scroll mindfully.</p>
+      <p>__MSG_footerText__</p>
     </footer>
   </div>
 
