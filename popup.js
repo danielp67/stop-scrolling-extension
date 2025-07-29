@@ -196,19 +196,36 @@ function loadStatistics() {
 function getCurrentTabStatistics() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     if (tabs[0]) {
-      chrome.tabs.sendMessage(tabs[0].id, {action: 'getStatistics'}, function(response) {
-        if (response) {
-          currentStatistics.session.scrollTime = response.scrollTime || 0;
-          currentStatistics.session.scrollDistance = response.scrollDistance || 0;
-          currentStatistics.session.activeMode = response.activeMode || 0;
+      // Check if the tab URL is one where content scripts can run
+      const url = tabs[0].url || '';
+      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('file://')) {
+        chrome.tabs.sendMessage(tabs[0].id, {action: 'getStatistics'}, function(response) {
+          if (chrome.runtime.lastError) {
+            // Handle the error silently - content script might not be loaded yet
+            console.log('Could not connect to content script:', chrome.runtime.lastError.message);
+            // Still update UI with default values
+            updateSessionUI();
+            updateInterventionStatus();
+            return;
+          }
 
-          // Update session statistics in UI
-          updateSessionUI();
+          if (response) {
+            currentStatistics.session.scrollTime = response.scrollTime || 0;
+            currentStatistics.session.scrollDistance = response.scrollDistance || 0;
+            currentStatistics.session.activeMode = response.activeMode || 0;
 
-          // Update intervention status
-          updateInterventionStatus();
-        }
-      });
+            // Update session statistics in UI
+            updateSessionUI();
+
+            // Update intervention status
+            updateInterventionStatus();
+          }
+        });
+      } else {
+        // For URLs where content scripts don't run, just update UI with default values
+        updateSessionUI();
+        updateInterventionStatus();
+      }
     }
   });
 }
@@ -386,10 +403,19 @@ function saveSettings() {
     // Update settings in active tabs
     chrome.tabs.query({}, function(tabs) {
       tabs.forEach(tab => {
-        chrome.tabs.sendMessage(tab.id, {
-          action: 'updateSettings',
-          settings: currentSettings
-        });
+        // Only send messages to tabs where content scripts can run
+        const url = tab.url || '';
+        if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('file://')) {
+          chrome.tabs.sendMessage(tab.id, {
+            action: 'updateSettings',
+            settings: currentSettings
+          }, function() {
+            // Ignore any runtime errors that occur when the content script isn't available
+            if (chrome.runtime.lastError) {
+              console.log('Could not send settings to tab:', chrome.runtime.lastError.message);
+            }
+          });
+        }
       });
     });
   });
@@ -399,20 +425,46 @@ function saveSettings() {
 function resetSession() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     if (tabs[0]) {
-      chrome.tabs.sendMessage(tabs[0].id, {action: 'resetInterventions'}, function(response) {
-        if (response && response.success) {
-          // Reset session statistics
-          currentStatistics.session = {
-            scrollTime: 0,
-            scrollDistance: 0,
-            activeMode: 0
-          };
+      // Check if the tab URL is one where content scripts can run
+      const url = tabs[0].url || '';
+      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('file://')) {
+        chrome.tabs.sendMessage(tabs[0].id, {action: 'resetInterventions'}, function(response) {
+          if (chrome.runtime.lastError) {
+            console.log('Could not reset session:', chrome.runtime.lastError.message);
+            // Still reset local statistics and update UI
+            currentStatistics.session = {
+              scrollTime: 0,
+              scrollDistance: 0,
+              activeMode: 0
+            };
+            updateSessionUI();
+            updateInterventionStatus();
+            return;
+          }
 
-          // Update UI
-          updateSessionUI();
-          updateInterventionStatus();
-        }
-      });
+          if (response && response.success) {
+            // Reset session statistics
+            currentStatistics.session = {
+              scrollTime: 0,
+              scrollDistance: 0,
+              activeMode: 0
+            };
+
+            // Update UI
+            updateSessionUI();
+            updateInterventionStatus();
+          }
+        });
+      } else {
+        // For URLs where content scripts don't run, just reset local statistics and update UI
+        currentStatistics.session = {
+          scrollTime: 0,
+          scrollDistance: 0,
+          activeMode: 0
+        };
+        updateSessionUI();
+        updateInterventionStatus();
+      }
     }
   });
 }
