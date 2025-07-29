@@ -196,6 +196,18 @@ function loadSettings() {
     if (result.appearance) {
       currentSettings.appearance = result.appearance;
 
+      // Apply language preference if set
+      if (currentSettings.appearance.language) {
+        // Override Chrome's i18n.getUILanguage to use our specified language
+        const originalGetUILanguage = chrome.i18n.getUILanguage;
+        chrome.i18n.getUILanguage = function() {
+          return currentSettings.appearance.language;
+        };
+
+        // Re-apply i18n messages with the new language
+        replaceI18nMessages();
+      }
+
       // Apply dark mode if enabled or check system preference
       if (currentSettings.appearance.useSystemTheme) {
         checkSystemThemePreference();
