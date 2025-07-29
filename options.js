@@ -63,6 +63,9 @@ let currentSettings = {
 
 // Initialize options page
 document.addEventListener('DOMContentLoaded', function() {
+  // Replace i18n messages immediately to avoid showing placeholders
+  replaceI18nMessages();
+
   // Load settings first
   loadSettings();
 

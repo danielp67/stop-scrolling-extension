@@ -3,6 +3,28 @@ const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 const periodButtons = document.querySelectorAll('.period-btn');
 
+// Chart colors
+const chartColors = {
+  light: {
+    text: '#333',
+    grid: '#ddd',
+    primary: '#4285f4',
+    secondary: '#34a853',
+    tertiary: '#fbbc05',
+    quaternary: '#ea4335',
+    background: 'rgba(255, 255, 255, 0.8)'
+  },
+  dark: {
+    text: '#e0e0e0',
+    grid: '#555',
+    primary: '#1a73e8',
+    secondary: '#34a853',
+    tertiary: '#fbbc05',
+    quaternary: '#ea4335',
+    background: 'rgba(45, 45, 45, 0.8)'
+  }
+};
+
 // Chart objects
 let trendsChart = null;
 let sitesChart = null;
@@ -58,6 +80,26 @@ function applyDarkMode(isDark) {
   } else {
     document.documentElement.removeAttribute('data-theme');
   }
+
+  // Refresh charts if they exist to update their colors
+  if (trendsChart || sitesChart || dailyChart || weeklyChart || monthlyChart || topSitesChart) {
+    refreshAllCharts();
+  }
+}
+
+// Get current theme colors
+function getCurrentThemeColors() {
+  const isDarkTheme = document.documentElement.getAttribute('data-theme') === 'dark';
+  return isDarkTheme ? chartColors.dark : chartColors.light;
+}
+
+// Refresh all charts to update their colors
+function refreshAllCharts() {
+  if (trendsChart) refreshCharts('overview');
+  if (dailyChart) refreshCharts('daily');
+  if (weeklyChart) refreshCharts('weekly');
+  if (monthlyChart) refreshCharts('monthly');
+  if (topSitesChart) refreshCharts('sites');
 }
 
 // Set up tab switching
@@ -327,6 +369,9 @@ function initializeTrendsChart() {
     }
   }
 
+  // Get current theme colors
+  const colors = getCurrentThemeColors();
+
   // Create chart
   trendsChart = new Chart(ctx, {
     type: 'line',
@@ -336,8 +381,8 @@ function initializeTrendsChart() {
         {
           label: 'Scroll Time (minutes)',
           data: scrollTimeData,
-          borderColor: '#4285f4',
-          backgroundColor: 'rgba(66, 133, 244, 0.1)',
+          borderColor: colors.primary,
+          backgroundColor: `${colors.primary}20`,
           borderWidth: 2,
           fill: true,
           tension: 0.4
@@ -345,8 +390,8 @@ function initializeTrendsChart() {
         {
           label: 'Scroll Distance (meters)',
           data: scrollDistanceData,
-          borderColor: '#34a853',
-          backgroundColor: 'rgba(52, 168, 83, 0.1)',
+          borderColor: colors.secondary,
+          backgroundColor: `${colors.secondary}20`,
           borderWidth: 2,
           fill: true,
           tension: 0.4
@@ -362,15 +407,37 @@ function initializeTrendsChart() {
         },
         tooltip: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          backgroundColor: colors.background,
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1
         },
         legend: {
-          position: 'top'
+          position: 'top',
+          labels: {
+            color: colors.text
+          }
         }
       },
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
+        },
+        x: {
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
         }
       }
     }
@@ -393,6 +460,9 @@ function initializeSitesChart() {
   const labels = topSites.map(site => site.domain);
   const scrollTimeData = topSites.map(site => Math.round(site.scrollTime / 60)); // Convert to minutes
 
+  // Get current theme colors
+  const colors = getCurrentThemeColors();
+
   // Create chart
   sitesChart = new Chart(ctx, {
     type: 'bar',
@@ -403,10 +473,10 @@ function initializeSitesChart() {
           label: 'Scroll Time (minutes)',
           data: scrollTimeData,
           backgroundColor: [
-            '#4285f4',
-            '#ea4335',
-            '#fbbc05',
-            '#34a853',
+            colors.primary,
+            colors.quaternary,
+            colors.tertiary,
+            colors.secondary,
             '#673ab7'
           ],
           borderWidth: 0
@@ -422,6 +492,13 @@ function initializeSitesChart() {
         },
         legend: {
           display: false
+        },
+        tooltip: {
+          backgroundColor: colors.background,
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1
         }
       },
       scales: {
@@ -429,7 +506,22 @@ function initializeSitesChart() {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Minutes'
+            text: 'Minutes',
+            color: colors.text
+          },
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
+        },
+        x: {
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
           }
         }
       }
@@ -486,6 +578,9 @@ function initializeDailyChart() {
     thresholdExceededData.push(dayData.thresholdExceeded);
   }
 
+  // Get current theme colors
+  const colors = getCurrentThemeColors();
+
   // Create chart
   dailyChart = new Chart(ctx, {
     type: 'bar',
@@ -495,7 +590,7 @@ function initializeDailyChart() {
         {
           label: 'Scroll Time (minutes)',
           data: scrollTimeData,
-          backgroundColor: '#4285f4',
+          backgroundColor: colors.primary,
           borderWidth: 0,
           order: 2
         },
@@ -503,10 +598,10 @@ function initializeDailyChart() {
           label: 'Threshold Exceeded',
           data: thresholdExceededData,
           type: 'line',
-          borderColor: '#ea4335',
+          borderColor: colors.quaternary,
           backgroundColor: 'transparent',
           borderWidth: 2,
-          pointBackgroundColor: '#ea4335',
+          pointBackgroundColor: colors.quaternary,
           order: 1
         }
       ]
@@ -520,7 +615,17 @@ function initializeDailyChart() {
         },
         tooltip: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          backgroundColor: colors.background,
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1
+        },
+        legend: {
+          labels: {
+            color: colors.text
+          }
         }
       },
       scales: {
@@ -528,7 +633,22 @@ function initializeDailyChart() {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Minutes / Count'
+            text: 'Minutes / Count',
+            color: colors.text
+          },
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
+        },
+        x: {
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
           }
         }
       }
@@ -578,6 +698,9 @@ function initializeWeeklyChart() {
     dailyAverageData.push(dailyAverage);
   }
 
+  // Get current theme colors
+  const colors = getCurrentThemeColors();
+
   // Create chart
   weeklyChart = new Chart(ctx, {
     type: 'bar',
@@ -587,7 +710,7 @@ function initializeWeeklyChart() {
         {
           label: 'Total Scroll Time (minutes)',
           data: scrollTimeData,
-          backgroundColor: '#4285f4',
+          backgroundColor: colors.primary,
           borderWidth: 0,
           order: 2
         },
@@ -595,10 +718,10 @@ function initializeWeeklyChart() {
           label: 'Daily Average (minutes)',
           data: dailyAverageData,
           type: 'line',
-          borderColor: '#fbbc05',
+          borderColor: colors.tertiary,
           backgroundColor: 'transparent',
           borderWidth: 2,
-          pointBackgroundColor: '#fbbc05',
+          pointBackgroundColor: colors.tertiary,
           order: 1
         }
       ]
@@ -612,7 +735,17 @@ function initializeWeeklyChart() {
         },
         tooltip: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          backgroundColor: colors.background,
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1
+        },
+        legend: {
+          labels: {
+            color: colors.text
+          }
         }
       },
       scales: {
@@ -620,7 +753,22 @@ function initializeWeeklyChart() {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Minutes'
+            text: 'Minutes',
+            color: colors.text
+          },
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
+        },
+        x: {
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
           }
         }
       }
@@ -676,6 +824,9 @@ function initializeMonthlyChart() {
     scrollDistanceData.push(Math.round(monthData.scrollDistance / PIXELS_PER_METER)); // Convert to meters
   }
 
+  // Get current theme colors
+  const colors = getCurrentThemeColors();
+
   // Create chart
   monthlyChart = new Chart(ctx, {
     type: 'bar',
@@ -685,13 +836,13 @@ function initializeMonthlyChart() {
         {
           label: 'Scroll Time (minutes)',
           data: scrollTimeData,
-          backgroundColor: '#4285f4',
+          backgroundColor: colors.primary,
           borderWidth: 0
         },
         {
           label: 'Scroll Distance (meters)',
           data: scrollDistanceData,
-          backgroundColor: '#34a853',
+          backgroundColor: colors.secondary,
           borderWidth: 0
         }
       ]
@@ -705,7 +856,17 @@ function initializeMonthlyChart() {
         },
         tooltip: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          backgroundColor: colors.background,
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1
+        },
+        legend: {
+          labels: {
+            color: colors.text
+          }
         }
       },
       scales: {
@@ -713,7 +874,22 @@ function initializeMonthlyChart() {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Minutes / Meters'
+            text: 'Minutes / Meters',
+            color: colors.text
+          },
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
+        },
+        x: {
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
           }
         }
       }
@@ -738,6 +914,9 @@ function initializeTopSitesChart() {
   const scrollTimeData = topSites.map(site => Math.round(site.scrollTime / 60)); // Convert to minutes
   const scrollDistanceData = topSites.map(site => Math.round(site.scrollDistance / PIXELS_PER_METER)); // Convert to meters
 
+  // Get current theme colors
+  const colors = getCurrentThemeColors();
+
   // Create chart
   topSitesChart = new Chart(ctx, {
     type: 'bar',
@@ -747,13 +926,13 @@ function initializeTopSitesChart() {
         {
           label: 'Scroll Time (minutes)',
           data: scrollTimeData,
-          backgroundColor: '#4285f4',
+          backgroundColor: colors.primary,
           borderWidth: 0
         },
         {
           label: 'Scroll Distance (meters)',
           data: scrollDistanceData,
-          backgroundColor: '#34a853',
+          backgroundColor: colors.secondary,
           borderWidth: 0
         }
       ]
@@ -768,7 +947,17 @@ function initializeTopSitesChart() {
         },
         tooltip: {
           mode: 'index',
-          intersect: false
+          intersect: false,
+          backgroundColor: colors.background,
+          titleColor: colors.text,
+          bodyColor: colors.text,
+          borderColor: colors.grid,
+          borderWidth: 1
+        },
+        legend: {
+          labels: {
+            color: colors.text
+          }
         }
       },
       scales: {
@@ -776,7 +965,22 @@ function initializeTopSitesChart() {
           beginAtZero: true,
           title: {
             display: true,
-            text: 'Minutes / Meters'
+            text: 'Minutes / Meters',
+            color: colors.text
+          },
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
+          }
+        },
+        y: {
+          grid: {
+            color: `${colors.grid}40`
+          },
+          ticks: {
+            color: colors.text
           }
         }
       }
