@@ -248,6 +248,19 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   } else if (message.action === 'ping') {
     // This is just to wake up the service worker
     sendResponse({ success: true });
+  } else if (message.action === 'languageChanged') {
+    // Handle language change
+    console.log('Language changed to:', message.language);
+    // Store the language preference
+    chrome.storage.sync.get('appearance', function(result) {
+      const appearance = result.appearance || {};
+      appearance.language = message.language;
+      chrome.storage.sync.set({ appearance: appearance }, function() {
+        console.log('Language preference saved');
+        sendResponse({ success: true });
+      });
+    });
+    return true; // Required for async sendResponse
   }
 });
 

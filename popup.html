@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scroll Limiter</title>
+  <title>Stop Scrolling</title>
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Scroll Limiter</h1>
+      <h1>Stop Scrolling</h1>
       <div class="tabs">
-        <button class="tab-btn active" data-tab="stats">Statistics</button>
-        <button class="tab-btn" data-tab="settings">Settings</button>
+        <button class="tab-btn active" data-tab="stats">__MSG_statistics__</button>
+        <button class="tab-btn" data-tab="settings">__MSG_settings__</button>
       </div>
     </header>
 
@@ -20,111 +20,111 @@
       <!-- Statistics Tab -->
       <section id="stats" class="tab-content active">
         <div class="stat-card">
-          <h2>Today's Scrolling</h2>
+          <h2>__MSG_todaysScrolling__</h2>
           <div class="stat-grid">
             <div class="stat-item">
               <span class="stat-value" id="todayTime">0</span>
-              <span class="stat-label">Minutes</span>
+              <span class="stat-label">__MSG_minutes__</span>
             </div>
             <div class="stat-item">
               <span class="stat-value" id="todayDistance">0</span>
-              <span class="stat-label">Meters</span>
+              <span class="stat-label">__MSG_meters__</span>
             </div>
           </div>
         </div>
 
         <div class="stat-card">
-          <h2>Current Session</h2>
+          <h2>__MSG_currentSession__</h2>
           <div class="stat-grid">
             <div class="stat-item">
               <span class="stat-value" id="sessionTime">0</span>
-              <span class="stat-label">Minutes</span>
+              <span class="stat-label">__MSG_minutes__</span>
             </div>
             <div class="stat-item">
               <span class="stat-value" id="sessionDistance">0</span>
-              <span class="stat-label">Meters</span>
+              <span class="stat-label">__MSG_meters__</span>
             </div>
           </div>
         </div>
 
         <div class="stat-card">
-          <h2>Intervention Status</h2>
+          <h2>__MSG_interventionStatus__</h2>
           <div class="intervention-status">
             <div class="progress-bar">
               <div class="progress" id="thresholdProgress"></div>
             </div>
-            <div class="status-text" id="statusText">No intervention active</div>
+            <div class="status-text" id="statusText">__MSG_noInterventionActive__</div>
           </div>
         </div>
 
         <div class="buttons">
-          <button id="viewReportBtn">View Full Report</button>
-          <button id="resetBtn">Reset Session</button>
+          <button id="viewReportBtn">__MSG_viewFullReport__</button>
+          <button id="resetBtn">__MSG_resetSession__</button>
         </div>
       </section>
 
       <!-- Settings Tab -->
       <section id="settings" class="tab-content">
         <div class="setting-card">
-          <h2>Scroll Threshold</h2>
+          <h2>__MSG_scrollThreshold__</h2>
           <div class="slider-container">
             <input type="range" min="1000" max="20000" step="1000" value="5000" id="thresholdSlider">
             <div class="slider-value">
-              <span id="thresholdValue">5000</span> pixels
+              <span id="thresholdValue">5000</span> __MSG_pixels__
             </div>
           </div>
         </div>
 
         <div class="setting-card">
-          <h2>Time Restrictions</h2>
+          <h2>__MSG_timeRestrictions__</h2>
           <div class="toggle-container">
             <label class="toggle">
               <input type="checkbox" id="timeRestrictionToggle">
               <span class="toggle-slider"></span>
             </label>
-            <span>Enable time restrictions</span>
+            <span>__MSG_enableTimeRestrictions__</span>
           </div>
           <div class="time-settings" id="timeSettings">
             <div class="time-input">
-              <label for="afterHour">Restrict after:</label>
+              <label for="afterHour">__MSG_restrictAfter__</label>
               <select id="afterHour">
-                <option value="20">8:00 PM</option>
-                <option value="21">9:00 PM</option>
-                <option value="22">10:00 PM</option>
-                <option value="23" selected>11:00 PM</option>
-                <option value="0">12:00 AM</option>
+                <option value="20">__MSG_time8pm__</option>
+                <option value="21">__MSG_time9pm__</option>
+                <option value="22">__MSG_time10pm__</option>
+                <option value="23" selected>__MSG_time11pm__</option>
+                <option value="0">__MSG_time12am__</option>
               </select>
             </div>
             <div class="time-input">
-              <label for="beforeHour">Until:</label>
+              <label for="beforeHour">__MSG_restrictUntil__</label>
               <select id="beforeHour">
-                <option value="5">5:00 AM</option>
-                <option value="6" selected>6:00 AM</option>
-                <option value="7">7:00 AM</option>
-                <option value="8">8:00 AM</option>
-                <option value="9">9:00 AM</option>
+                <option value="5">__MSG_time5am__</option>
+                <option value="6" selected>__MSG_time6am__</option>
+                <option value="7">__MSG_time7am__</option>
+                <option value="8">__MSG_time8am__</option>
+                <option value="9">__MSG_time9am__</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="setting-card">
-          <h2>Target Specific Sites</h2>
+          <h2>__MSG_targetSites__</h2>
           <div class="site-input">
-            <input type="text" id="siteInput" placeholder="e.g., youtube.com">
-            <button id="addSiteBtn">Add</button>
+            <input type="text" id="siteInput" placeholder="__MSG_siteInputPlaceholder__">
+            <button id="addSiteBtn">__MSG_addSite__</button>
           </div>
           <div class="site-list" id="siteList">
             <!-- Sites will be added here dynamically -->
           </div>
           <div class="site-note">
-            <p>Leave empty to monitor all sites</p>
+            <p>__MSG_siteInputNote__</p>
           </div>
         </div>
 
         <div class="buttons">
-          <button id="saveSettingsBtn">Save Settings</button>
-          <button id="moreOptionsBtn" class="btn-secondary">More Options</button>
+          <button id="saveSettingsBtn">__MSG_saveSettings__</button>
+          <button id="moreOptionsBtn" class="btn-secondary">__MSG_moreOptions__</button>
         </div>
       </section>
     </main>

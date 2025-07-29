@@ -262,5 +262,53 @@
   "cancelSettings": {
     "message": "Annuler",
     "description": "Texte du bouton d'annulation"
+  },
+  "statistics": {
+    "message": "Statistiques",
+    "description": "Titre de l'onglet des statistiques"
+  },
+  "settings": {
+    "message": "Paramètres",
+    "description": "Titre de l'onglet des paramètres"
+  },
+  "todaysScrolling": {
+    "message": "Défilement d'aujourd'hui",
+    "description": "Titre des statistiques de défilement du jour"
+  },
+  "minutes": {
+    "message": "Minutes",
+    "description": "Étiquette pour les minutes"
+  },
+  "meters": {
+    "message": "Mètres",
+    "description": "Étiquette pour les mètres"
+  },
+  "currentSession": {
+    "message": "Session actuelle",
+    "description": "Titre des statistiques de la session actuelle"
+  },
+  "interventionStatus": {
+    "message": "État d'intervention",
+    "description": "Titre de l'état d'intervention"
+  },
+  "noInterventionActive": {
+    "message": "Aucune intervention active",
+    "description": "État lorsqu'aucune intervention n'est active"
+  },
+  "viewFullReport": {
+    "message": "Voir le rapport complet",
+    "description": "Texte du bouton pour voir le rapport complet"
+  },
+  "resetSession": {
+    "message": "Réinitialiser la session",
+    "description": "Texte du bouton pour réinitialiser la session"
+  },
+  "pixels": {
+    "message": "pixels",
+    "description": "Étiquette pour les pixels"
+  },
+  "moreOptions": {
+    "message": "Plus d'options",
+    "description": "Texte du bouton pour plus d'options"
   }
 }

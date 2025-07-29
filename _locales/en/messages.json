@@ -262,5 +262,53 @@
   "cancelSettings": {
     "message": "Cancel",
     "description": "Cancel button text"
+  },
+  "statistics": {
+    "message": "Statistics",
+    "description": "Tab title for statistics"
+  },
+  "settings": {
+    "message": "Settings",
+    "description": "Tab title for settings"
+  },
+  "todaysScrolling": {
+    "message": "Today's Scrolling",
+    "description": "Title for today's scrolling statistics"
+  },
+  "minutes": {
+    "message": "Minutes",
+    "description": "Label for minutes"
+  },
+  "meters": {
+    "message": "Meters",
+    "description": "Label for meters"
+  },
+  "currentSession": {
+    "message": "Current Session",
+    "description": "Title for current session statistics"
+  },
+  "interventionStatus": {
+    "message": "Intervention Status",
+    "description": "Title for intervention status"
+  },
+  "noInterventionActive": {
+    "message": "No intervention active",
+    "description": "Status when no intervention is active"
+  },
+  "viewFullReport": {
+    "message": "View Full Report",
+    "description": "Button text for viewing full report"
+  },
+  "resetSession": {
+    "message": "Reset Session",
+    "description": "Button text for resetting session"
+  },
+  "pixels": {
+    "message": "pixels",
+    "description": "Label for pixels"
+  },
+  "moreOptions": {
+    "message": "More Options",
+    "description": "Button text for more options"
   }
 }

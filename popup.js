@@ -51,8 +51,93 @@ let currentStatistics = {
   }
 };
 
+// Replace i18n message placeholders
+function replaceI18nMessages() {
+  // Process all text nodes in the document
+  const walker = document.createTreeWalker(
+    document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.nodeValue && node.nodeValue.includes('__MSG_')) {
+      const matches = node.nodeValue.match(/__MSG_(\w+)__/g);
+      if (matches) {
+        let newValue = node.nodeValue;
+        matches.forEach(match => {
+          const messageName = match.replace(/__MSG_(\w+)__/, '$1');
+          const translation = chrome.i18n.getMessage(messageName);
+          if (translation) {
+            newValue = newValue.replace(match, translation);
+          }
+        });
+        node.nodeValue = newValue;
+      }
+    }
+  }
+
+  // Check for message placeholders in attributes
+  const elements = document.querySelectorAll('*');
+  elements.forEach(element => {
+    // Check attributes like title, placeholder, etc.
+    ['title', 'placeholder', 'alt', 'aria-label'].forEach(attr => {
+      if (element.hasAttribute(attr)) {
+        const attrValue = element.getAttribute(attr);
+        if (attrValue && attrValue.includes('__MSG_')) {
+          const matches = attrValue.match(/__MSG_(\w+)__/g);
+          if (matches) {
+            let newValue = attrValue;
+            matches.forEach(match => {
+              const messageName = match.replace(/__MSG_(\w+)__/, '$1');
+              const translation = chrome.i18n.getMessage(messageName);
+              if (translation) {
+                newValue = newValue.replace(match, translation);
+              }
+            });
+            element.setAttribute(attr, newValue);
+          }
+        }
+      }
+    });
+  });
+
+  // Update document title
+  if (document.title && document.title.includes('__MSG_')) {
+    const matches = document.title.match(/__MSG_(\w+)__/g);
+    if (matches) {
+      let newTitle = document.title;
+      matches.forEach(match => {
+        const messageName = match.replace(/__MSG_(\w+)__/, '$1');
+        const translation = chrome.i18n.getMessage(messageName);
+        if (translation) {
+          newTitle = newTitle.replace(match, translation);
+        }
+      });
+      document.title = newTitle;
+    }
+  }
+}
+
 // Initialize popup
 document.addEventListener('DOMContentLoaded', function() {
+  // Check if we have a language override from URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const langOverride = urlParams.get('lang');
+
+  if (langOverride) {
+    // Override Chrome's i18n.getUILanguage to use our specified language
+    const originalGetUILanguage = chrome.i18n.getUILanguage;
+    chrome.i18n.getUILanguage = function() {
+      return langOverride;
+    };
+  }
+
+  // Replace i18n messages immediately to avoid showing placeholders
+  replaceI18nMessages();
+
   // Set up tab switching
   setupTabs();
 
@@ -271,19 +356,19 @@ function updateInterventionStatus() {
   // Update status text based on active mode
   switch(activeMode) {
     case 0:
-      statusTextElement.textContent = "No intervention active";
+      statusTextElement.textContent = chrome.i18n.getMessage("noInterventionActive");
       thresholdProgressElement.style.backgroundColor = isDarkMode ? "#1a73e8" : "#4285f4";
       break;
     case 1:
-      statusTextElement.textContent = "Level 1: Scrolling slowed down";
+      statusTextElement.textContent = chrome.i18n.getMessage("level1Title");
       thresholdProgressElement.style.backgroundColor = isDarkMode ? "#c79a05" : "#fbbc05";
       break;
     case 2:
-      statusTextElement.textContent = "Level 2: Visual effects active";
+      statusTextElement.textContent = chrome.i18n.getMessage("level2Title");
       thresholdProgressElement.style.backgroundColor = isDarkMode ? "#d68100" : "#ff9800";
       break;
     case 3:
-      statusTextElement.textContent = "Level 3: Scrolling blocked";
+      statusTextElement.textContent = chrome.i18n.getMessage("level3Title");
       thresholdProgressElement.style.backgroundColor = isDarkMode ? "#cf6679" : "#f44336";
       break;
   }

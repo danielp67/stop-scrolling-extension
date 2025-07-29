@@ -63,6 +63,18 @@ let currentSettings = {
 
 // Initialize options page
 document.addEventListener('DOMContentLoaded', function() {
+  // Check if we have a language override from URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const langOverride = urlParams.get('lang');
+
+  if (langOverride) {
+    // Override Chrome's i18n.getUILanguage to use our specified language
+    const originalGetUILanguage = chrome.i18n.getUILanguage;
+    chrome.i18n.getUILanguage = function() {
+      return langOverride;
+    };
+  }
+
   // Replace i18n messages immediately to avoid showing placeholders
   replaceI18nMessages();
 
@@ -558,9 +570,22 @@ function saveSettings() {
     // Update settings in active tabs
     updateActiveTabsSettings();
 
-    // If language changed, show message about reloading with more specific instructions
+    // If language changed, reload the page to apply the new language
     if (currentSettings.appearance.language !== chrome.i18n.getUILanguage()) {
-      showStatusMessage('Language changed. Please close this options page and reopen it from the extension menu for changes to take effect.', 'success');
+      showStatusMessage('Language changed. Refreshing page to apply changes...', 'success');
+
+      // Wait a moment for the user to see the message, then refresh the page
+      setTimeout(() => {
+        // First, notify the background script about the language change
+        chrome.runtime.sendMessage({
+          action: 'languageChanged',
+          language: currentSettings.appearance.language
+        }, function() {
+          // Then reload the current page with the language parameter
+          window.location.href = `${window.location.pathname}?lang=${currentSettings.appearance.language}`;
+          // Don't reload the entire extension, just refresh the current page
+        });
+      }, 1500);
     }
   });
 }
