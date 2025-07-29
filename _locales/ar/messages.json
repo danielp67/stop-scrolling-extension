@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "محدد التمرير",
+    "description": "اسم الإضافة"
+  },
+  "appDesc": {
+    "message": "يحد من التمرير لتشجيع فترات الراحة وتنظيم استهلاك المحتوى",
+    "description": "وصف الإضافة"
+  },
+  "optionsTitle": {
+    "message": "محدد التمرير - الخيارات",
+    "description": "عنوان صفحة الخيارات"
+  },
+  "optionsSubtitle": {
+    "message": "تكوين حدود التمرير والتفضيلات الخاصة بك",
+    "description": "العنوان الفرعي لصفحة الخيارات"
+  },
+  "thresholdSettings": {
+    "message": "إعدادات حد التمرير",
+    "description": "عنوان قسم إعدادات الحد"
+  },
+  "limitType": {
+    "message": "نوع الحد",
+    "description": "تسمية محدد نوع الحد"
+  },
+  "limitTypePixels": {
+    "message": "بكسل (مسافة التمرير)",
+    "description": "خيار للحد المستند إلى البكسل"
+  },
+  "limitTypeMeters": {
+    "message": "أمتار (المسافة التقديرية)",
+    "description": "خيار للحد المستند إلى المتر"
+  },
+  "limitTypeTime": {
+    "message": "الوقت (ثواني)",
+    "description": "خيار للحد المستند إلى الوقت"
+  },
+  "limitTypeBoth": {
+    "message": "كلاهما (الأمتار والوقت)",
+    "description": "خيار للحد المشترك"
+  },
+  "pixelsThreshold": {
+    "message": "حد التمرير (بكسل)",
+    "description": "تسمية حد البكسل"
+  },
+  "metersThreshold": {
+    "message": "حد التمرير (أمتار)",
+    "description": "تسمية حد المتر"
+  },
+  "timeThreshold": {
+    "message": "حد وقت التمرير (ثواني)",
+    "description": "تسمية حد الوقت"
+  },
+  "thresholdNote": {
+    "message": "هذه هي كمية التمرير قبل بدء التدخلات.",
+    "description": "ملاحظة حول الحد"
+  },
+  "saveSettings": {
+    "message": "حفظ الإعدادات",
+    "description": "نص زر الحفظ"
+  },
+  "cancelSettings": {
+    "message": "إلغاء",
+    "description": "نص زر الإلغاء"
+  }
+}

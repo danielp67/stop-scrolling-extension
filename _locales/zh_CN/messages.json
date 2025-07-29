@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "滚动限制器",
+    "description": "扩展名称"
+  },
+  "appDesc": {
+    "message": "限制滚动以鼓励休息和调节内容消费",
+    "description": "扩展描述"
+  },
+  "optionsTitle": {
+    "message": "滚动限制器 - 选项",
+    "description": "选项页面标题"
+  },
+  "optionsSubtitle": {
+    "message": "配置您的滚动限制和偏好设置",
+    "description": "选项页面副标题"
+  },
+  "thresholdSettings": {
+    "message": "滚动阈值设置",
+    "description": "阈值设置部分标题"
+  },
+  "limitType": {
+    "message": "限制类型",
+    "description": "限制类型选择器标签"
+  },
+  "limitTypePixels": {
+    "message": "像素（滚动距离）",
+    "description": "基于像素限制的选项"
+  },
+  "limitTypeMeters": {
+    "message": "米（估计距离）",
+    "description": "基于米限制的选项"
+  },
+  "limitTypeTime": {
+    "message": "时间（秒）",
+    "description": "基于时间限制的选项"
+  },
+  "limitTypeBoth": {
+    "message": "两者（米和时间）",
+    "description": "组合限制的选项"
+  },
+  "pixelsThreshold": {
+    "message": "滚动阈值（像素）",
+    "description": "像素阈值标签"
+  },
+  "metersThreshold": {
+    "message": "滚动阈值（米）",
+    "description": "米阈值标签"
+  },
+  "timeThreshold": {
+    "message": "滚动时间阈值（秒）",
+    "description": "时间阈值标签"
+  },
+  "thresholdNote": {
+    "message": "这是干预开始前的滚动量。",
+    "description": "关于阈值的注释"
+  },
+  "saveSettings": {
+    "message": "保存设置",
+    "description": "保存按钮文本"
+  },
+  "cancelSettings": {
+    "message": "取消",
+    "description": "取消按钮文本"
+  }
+}

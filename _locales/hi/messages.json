@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "स्क्रॉल लिमिटर",
+    "description": "एक्सटेंशन का नाम"
+  },
+  "appDesc": {
+    "message": "ब्रेक को प्रोत्साहित करने और सामग्री की खपत को नियंत्रित करने के लिए स्क्रॉलिंग को सीमित करता है",
+    "description": "एक्सटेंशन का विवरण"
+  },
+  "optionsTitle": {
+    "message": "स्क्रॉल लिमिटर - विकल्प",
+    "description": "विकल्प पृष्ठ का शीर्षक"
+  },
+  "optionsSubtitle": {
+    "message": "अपनी स्क्रॉलिंग सीमाओं और प्राथमिकताओं को कॉन्फ़िगर करें",
+    "description": "विकल्प पृष्ठ का उपशीर्षक"
+  },
+  "thresholdSettings": {
+    "message": "स्क्रॉल थ्रेशोल्ड सेटिंग्स",
+    "description": "थ्रेशोल्ड सेटिंग्स अनुभाग का शीर्षक"
+  },
+  "limitType": {
+    "message": "सीमा प्रकार",
+    "description": "सीमा प्रकार चयनकर्ता के लिए लेबल"
+  },
+  "limitTypePixels": {
+    "message": "पिक्सेल (स्क्रॉलिंग दूरी)",
+    "description": "पिक्सेल-आधारित सीमा के लिए विकल्प"
+  },
+  "limitTypeMeters": {
+    "message": "मीटर (अनुमानित दूरी)",
+    "description": "मीटर-आधारित सीमा के लिए विकल्प"
+  },
+  "limitTypeTime": {
+    "message": "समय (सेकंड)",
+    "description": "समय-आधारित सीमा के लिए विकल्प"
+  },
+  "limitTypeBoth": {
+    "message": "दोनों (मीटर और समय)",
+    "description": "संयुक्त सीमा के लिए विकल्प"
+  },
+  "pixelsThreshold": {
+    "message": "स्क्रॉल थ्रेशोल्ड (पिक्सेल)",
+    "description": "पिक्सेल थ्रेशोल्ड के लिए लेबल"
+  },
+  "metersThreshold": {
+    "message": "स्क्रॉल थ्रेशोल्ड (मीटर)",
+    "description": "मीटर थ्रेशोल्ड के लिए लेबल"
+  },
+  "timeThreshold": {
+    "message": "स्क्रॉल समय थ्रेशोल्ड (सेकंड)",
+    "description": "समय थ्रेशोल्ड के लिए लेबल"
+  },
+  "thresholdNote": {
+    "message": "यह हस्तक्षेप शुरू होने से पहले स्क्रॉलिंग की मात्रा है।",
+    "description": "थ्रेशोल्ड के बारे में नोट"
+  },
+  "saveSettings": {
+    "message": "सेटिंग्स सहेजें",
+    "description": "सहेजें बटन टेक्स्ट"
+  },
+  "cancelSettings": {
+    "message": "रद्द करें",
+    "description": "रद्द करें बटन टेक्स्ट"
+  }
+}

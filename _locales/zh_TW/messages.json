@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "捲動限制器",
+    "description": "擴充功能名稱"
+  },
+  "appDesc": {
+    "message": "限制捲動以鼓勵休息和調節內容消費",
+    "description": "擴充功能描述"
+  },
+  "optionsTitle": {
+    "message": "捲動限制器 - 選項",
+    "description": "選項頁面標題"
+  },
+  "optionsSubtitle": {
+    "message": "配置您的捲動限制和偏好設定",
+    "description": "選項頁面副標題"
+  },
+  "thresholdSettings": {
+    "message": "捲動閾值設定",
+    "description": "閾值設定部分標題"
+  },
+  "limitType": {
+    "message": "限制類型",
+    "description": "限制類型選擇器標籤"
+  },
+  "limitTypePixels": {
+    "message": "像素（捲動距離）",
+    "description": "基於像素限制的選項"
+  },
+  "limitTypeMeters": {
+    "message": "公尺（估計距離）",
+    "description": "基於公尺限制的選項"
+  },
+  "limitTypeTime": {
+    "message": "時間（秒）",
+    "description": "基於時間限制的選項"
+  },
+  "limitTypeBoth": {
+    "message": "兩者（公尺和時間）",
+    "description": "組合限制的選項"
+  },
+  "pixelsThreshold": {
+    "message": "捲動閾值（像素）",
+    "description": "像素閾值標籤"
+  },
+  "metersThreshold": {
+    "message": "捲動閾值（公尺）",
+    "description": "公尺閾值標籤"
+  },
+  "timeThreshold": {
+    "message": "捲動時間閾值（秒）",
+    "description": "時間閾值標籤"
+  },
+  "thresholdNote": {
+    "message": "這是干預開始前的捲動量。",
+    "description": "關於閾值的註釋"
+  },
+  "saveSettings": {
+    "message": "儲存設定",
+    "description": "儲存按鈕文字"
+  },
+  "cancelSettings": {
+    "message": "取消",
+    "description": "取消按鈕文字"
+  }
+}

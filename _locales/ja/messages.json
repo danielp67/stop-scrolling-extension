@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "スクロール リミッター",
+    "description": "拡張機能の名前"
+  },
+  "appDesc": {
+    "message": "休憩を促し、コンテンツの消費を調整するためにスクロールを制限します",
+    "description": "拡張機能の説明"
+  },
+  "optionsTitle": {
+    "message": "スクロール リミッター - オプション",
+    "description": "オプションページのタイトル"
+  },
+  "optionsSubtitle": {
+    "message": "スクロール制限と設定を構成する",
+    "description": "オプションページのサブタイトル"
+  },
+  "thresholdSettings": {
+    "message": "スクロールしきい値設定",
+    "description": "しきい値設定セクションのタイトル"
+  },
+  "limitType": {
+    "message": "制限タイプ",
+    "description": "制限タイプセレクタのラベル"
+  },
+  "limitTypePixels": {
+    "message": "ピクセル（スクロール距離）",
+    "description": "ピクセルベースの制限のオプション"
+  },
+  "limitTypeMeters": {
+    "message": "メートル（推定距離）",
+    "description": "メートルベースの制限のオプション"
+  },
+  "limitTypeTime": {
+    "message": "時間（秒）",
+    "description": "時間ベースの制限のオプション"
+  },
+  "limitTypeBoth": {
+    "message": "両方（メートルと時間）",
+    "description": "複合制限のオプション"
+  },
+  "pixelsThreshold": {
+    "message": "スクロールしきい値（ピクセル）",
+    "description": "ピクセルしきい値のラベル"
+  },
+  "metersThreshold": {
+    "message": "スクロールしきい値（メートル）",
+    "description": "メートルしきい値のラベル"
+  },
+  "timeThreshold": {
+    "message": "スクロール時間しきい値（秒）",
+    "description": "時間しきい値のラベル"
+  },
+  "thresholdNote": {
+    "message": "これは介入が始まる前のスクロール量です。",
+    "description": "しきい値に関する注記"
+  },
+  "saveSettings": {
+    "message": "設定を保存",
+    "description": "保存ボタンのテキスト"
+  },
+  "cancelSettings": {
+    "message": "キャンセル",
+    "description": "キャンセルボタンのテキスト"
+  }
+}
