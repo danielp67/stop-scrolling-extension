@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "Limitador de Rolagem",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Limita a rolagem para incentivar pausas e regular o consumo de conteúdo",
+    "description": "The description of the extension"
+  },
+  "optionsTitle": {
+    "message": "Limitador de Rolagem - Opções",
+    "description": "Title of the options page"
+  },
+  "optionsSubtitle": {
+    "message": "Configure seus limites de rolagem e preferências",
+    "description": "Subtitle of the options page"
+  },
+  "thresholdSettings": {
+    "message": "Configurações de Limite de Rolagem",
+    "description": "Title of the threshold settings section"
+  },
+  "limitType": {
+    "message": "Tipo de Limite",
+    "description": "Label for limit type selector"
+  },
+  "limitTypePixels": {
+    "message": "Pixels (distância de rolagem)",
+    "description": "Option for pixel-based limit"
+  },
+  "limitTypeMeters": {
+    "message": "Metros (distância estimada)",
+    "description": "Option for meter-based limit"
+  },
+  "limitTypeTime": {
+    "message": "Tempo (segundos)",
+    "description": "Option for time-based limit"
+  },
+  "limitTypeBoth": {
+    "message": "Ambos (metros e tempo)",
+    "description": "Option for combined limit"
+  },
+  "pixelsThreshold": {
+    "message": "Limite de Rolagem (pixels)",
+    "description": "Label for pixels threshold"
+  },
+  "metersThreshold": {
+    "message": "Limite de Rolagem (metros)",
+    "description": "Label for meters threshold"
+  },
+  "timeThreshold": {
+    "message": "Limite de Tempo de Rolagem (segundos)",
+    "description": "Label for time threshold"
+  },
+  "thresholdNote": {
+    "message": "Esta é a quantidade de rolagem antes que as intervenções comecem.",
+    "description": "Note about threshold"
+  },
+  "saveSettings": {
+    "message": "Salvar Configurações",
+    "description": "Save button text"
+  },
+  "cancelSettings": {
+    "message": "Cancelar",
+    "description": "Cancel button text"
+  }
+}

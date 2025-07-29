@@ -1,6 +1,7 @@
 // Global variables to track scrolling
 let scrollStartTime = null;
 let totalScrollTime = 0;
+let incrementalScrollTime = 0; // Track incremental time for reporting to background
 let scrollDistance = 0;
 let lastScrollPosition = 0;
 let scrollThreshold = 5000; // Default threshold in pixels
@@ -68,6 +69,8 @@ function initialize() {
     lastScrollPosition = parseInt(savedPosition);
     scrollDistance = parseInt(sessionStorage.getItem('scrollDistance') || '0');
     totalScrollTime = parseFloat(sessionStorage.getItem('totalScrollTime') || '0');
+    // Initialize incremental time to 0 when loading from session storage
+    incrementalScrollTime = 0;
   }
 }
 
@@ -90,6 +93,7 @@ function handleScroll() {
     // Update total scroll time
     const timeElapsed = (now - scrollStartTime) / 1000; // Convert to seconds
     totalScrollTime += timeElapsed;
+    incrementalScrollTime += timeElapsed; // Add to incremental time for reporting
     scrollStartTime = now;
   }
 
@@ -419,17 +423,21 @@ function updateStatistics() {
   // Send statistics to background script for storage
   if (chrome && chrome.runtime) {
     try {
+      // Only send the incremental time, not the total time
       chrome.runtime.sendMessage({
         action: 'updateStatistics',
         data: {
           site: window.location.hostname,
-          scrollTime: totalScrollTime,
+          scrollTime: incrementalScrollTime,
           scrollDistance: scrollDistanceInMeters,
           thresholdExceeded: statistics.thresholdExceeded,
           blockingTriggered: statistics.blockingTriggered,
           limitType: limitType
         }
       });
+
+      // Reset incremental time after sending
+      incrementalScrollTime = 0;
     } catch (e) {
       console.log('Error sending statistics:', e);
     }
@@ -438,11 +446,17 @@ function updateStatistics() {
 
 // Save scroll data before unloading the page
 function saveScrollData() {
+  // Update total time if scrolling is in progress
+  if (scrollStartTime) {
+    const now = Date.now();
+    const timeElapsed = (now - scrollStartTime) / 1000; // Convert to seconds
+    totalScrollTime += timeElapsed;
+    incrementalScrollTime += timeElapsed;
+    scrollStartTime = null;
+  }
+
   // Update final statistics
   updateStatistics();
-
-  // Reset scroll start time
-  scrollStartTime = null;
 }
 
 // Listen for messages from popup or background script
@@ -453,6 +467,15 @@ if (chrome && chrome.runtime) {
         // Convert scroll distance to meters
         const pixelsPerMeter = 1000;
         const scrollDistanceInMeters = scrollDistance / pixelsPerMeter;
+
+        // Update total time if scrolling is in progress
+        if (scrollStartTime) {
+          const now = Date.now();
+          const timeElapsed = (now - scrollStartTime) / 1000; // Convert to seconds
+          totalScrollTime += timeElapsed;
+          incrementalScrollTime += timeElapsed;
+          scrollStartTime = now;
+        }
 
         sendResponse({
           scrollDistance: scrollDistance,
@@ -465,6 +488,7 @@ if (chrome && chrome.runtime) {
         resetInterventions();
         scrollDistance = 0;
         totalScrollTime = 0;
+        incrementalScrollTime = 0; // Reset incremental time when resetting interventions
         scrollStartTime = null;
         sessionStorage.removeItem('scrollDistance');
         sessionStorage.removeItem('totalScrollTime');

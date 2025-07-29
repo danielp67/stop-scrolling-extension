@@ -28,6 +28,9 @@ const resetAllBtn = document.getElementById('resetAllBtn');
 const saveBtn = document.getElementById('saveBtn');
 const cancelBtn = document.getElementById('cancelBtn');
 const statusMessage = document.getElementById('statusMessage');
+const languageSelect = document.getElementById('languageSelect');
+const darkModeToggle = document.getElementById('darkModeToggle');
+const systemThemeToggle = document.getElementById('systemThemeToggle');
 
 // Current settings
 let currentSettings = {
@@ -50,6 +53,11 @@ let currentSettings = {
   notifications: {
     sound: true,
     visual: true
+  },
+  appearance: {
+    language: 'en',
+    darkMode: false,
+    useSystemTheme: true
   }
 };
 
@@ -72,7 +80,8 @@ function loadSettings() {
     'levelMultipliers',
     'timeRestrictions',
     'targetedSites',
-    'notifications'
+    'notifications',
+    'appearance'
   ], function(result) {
     // Update current settings with stored values
     if (result.limitType) {
@@ -107,9 +116,40 @@ function loadSettings() {
       currentSettings.notifications = result.notifications;
     }
 
+    if (result.appearance) {
+      currentSettings.appearance = result.appearance;
+    }
+
+    // Check system theme preference if enabled
+    if (currentSettings.appearance.useSystemTheme) {
+      checkSystemThemePreference();
+    } else if (currentSettings.appearance.darkMode) {
+      applyDarkMode(true);
+    }
+
     // Update UI with loaded settings
     updateUI();
   });
+}
+
+// Check system theme preference
+function checkSystemThemePreference() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyDarkMode(true);
+    currentSettings.appearance.darkMode = true;
+  } else {
+    applyDarkMode(false);
+    currentSettings.appearance.darkMode = false;
+  }
+}
+
+// Apply dark mode
+function applyDarkMode(isDark) {
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
 }
 
 // Update UI with current settings
@@ -154,6 +194,14 @@ function updateUI() {
   // Notification settings
   soundToggle.checked = currentSettings.notifications.sound;
   visualToggle.checked = currentSettings.notifications.visual;
+
+  // Appearance settings
+  languageSelect.value = currentSettings.appearance.language;
+  darkModeToggle.checked = currentSettings.appearance.darkMode;
+  systemThemeToggle.checked = currentSettings.appearance.useSystemTheme;
+
+  // Disable dark mode toggle if system theme is enabled
+  darkModeToggle.disabled = currentSettings.appearance.useSystemTheme;
 }
 
 // Update threshold visibility based on limit type
@@ -237,6 +285,38 @@ function setupEventListeners() {
       resetStatistics('all');
     }
   });
+
+  // Language select
+  languageSelect.addEventListener('change', function() {
+    currentSettings.appearance.language = this.value;
+  });
+
+  // Dark mode toggle
+  darkModeToggle.addEventListener('change', function() {
+    currentSettings.appearance.darkMode = this.checked;
+    applyDarkMode(this.checked);
+  });
+
+  // System theme toggle
+  systemThemeToggle.addEventListener('change', function() {
+    currentSettings.appearance.useSystemTheme = this.checked;
+    darkModeToggle.disabled = this.checked;
+
+    if (this.checked) {
+      checkSystemThemePreference();
+    }
+  });
+
+  // Listen for system theme changes if system theme is enabled
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (currentSettings.appearance.useSystemTheme) {
+        applyDarkMode(e.matches);
+        currentSettings.appearance.darkMode = e.matches;
+        darkModeToggle.checked = e.matches;
+      }
+    });
+  }
 
   // Save button
   saveBtn.addEventListener('click', function() {
@@ -351,6 +431,12 @@ function saveSettings() {
     visual: visualToggle.checked
   };
 
+  currentSettings.appearance = {
+    language: languageSelect.value,
+    darkMode: darkModeToggle.checked,
+    useSystemTheme: systemThemeToggle.checked
+  };
+
   // Validate settings
   if (!validateSettings()) {
     return;
@@ -365,13 +451,19 @@ function saveSettings() {
     levelMultipliers: currentSettings.levelMultipliers,
     timeRestrictions: currentSettings.timeRestrictions,
     targetedSites: currentSettings.targetedSites,
-    notifications: currentSettings.notifications
+    notifications: currentSettings.notifications,
+    appearance: currentSettings.appearance
   }, function() {
     // Show success message
     showStatusMessage('Settings saved successfully', 'success');
 
     // Update settings in active tabs
     updateActiveTabsSettings();
+
+    // If language changed, show message about reloading
+    if (currentSettings.appearance.language !== chrome.i18n.getUILanguage()) {
+      showStatusMessage('Language changed. Please reload the extension for changes to take effect.', 'success');
+    }
   });
 }
 

@@ -28,6 +28,11 @@ let currentSettings = {
     enabled: false,
     afterHour: 23,
     beforeHour: 6
+  },
+  appearance: {
+    language: 'en',
+    darkMode: false,
+    useSystemTheme: true
   }
 };
 
@@ -49,14 +54,14 @@ let currentStatistics = {
 document.addEventListener('DOMContentLoaded', function() {
   // Set up tab switching
   setupTabs();
-  
+
   // Load settings and statistics
   loadSettings();
   loadStatistics();
-  
+
   // Set up event listeners
   setupEventListeners();
-  
+
   // Get current tab statistics
   getCurrentTabStatistics();
 });
@@ -68,7 +73,7 @@ function setupTabs() {
       // Remove active class from all buttons and contents
       tabButtons.forEach(btn => btn.classList.remove('active'));
       tabContents.forEach(content => content.classList.remove('active'));
-      
+
       // Add active class to clicked button and corresponding content
       button.classList.add('active');
       const tabId = button.getAttribute('data-tab');
@@ -79,29 +84,99 @@ function setupTabs() {
 
 // Load settings from storage
 function loadSettings() {
-  chrome.storage.sync.get(['scrollThreshold', 'targetedSites', 'timeRestrictions'], function(result) {
+  chrome.storage.sync.get(['scrollThreshold', 'targetedSites', 'timeRestrictions', 'appearance'], function(result) {
     if (result.scrollThreshold) {
       currentSettings.scrollThreshold = result.scrollThreshold;
       thresholdSlider.value = result.scrollThreshold;
       thresholdValue.textContent = result.scrollThreshold;
     }
-    
+
     if (result.targetedSites) {
       currentSettings.targetedSites = result.targetedSites;
       renderSiteList();
     }
-    
+
     if (result.timeRestrictions) {
       currentSettings.timeRestrictions = result.timeRestrictions;
       timeRestrictionToggle.checked = result.timeRestrictions.enabled;
       afterHourSelect.value = result.timeRestrictions.afterHour;
       beforeHourSelect.value = result.timeRestrictions.beforeHour;
-      
+
       if (result.timeRestrictions.enabled) {
         timeSettings.style.display = 'block';
       }
     }
+
+    if (result.appearance) {
+      currentSettings.appearance = result.appearance;
+
+      // Apply dark mode if enabled or check system preference
+      if (currentSettings.appearance.useSystemTheme) {
+        checkSystemThemePreference();
+      } else if (currentSettings.appearance.darkMode) {
+        applyDarkMode(true);
+      }
+    } else {
+      // If no appearance settings, check system preference by default
+      checkSystemThemePreference();
+    }
   });
+}
+
+// Check system theme preference
+function checkSystemThemePreference() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyDarkMode(true);
+  } else {
+    applyDarkMode(false);
+  }
+}
+
+// Apply dark mode
+function applyDarkMode(isDark) {
+  if (isDark) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+
+    // Update progress bar colors for dark mode
+    if (thresholdProgressElement) {
+      const activeMode = currentStatistics.session.activeMode;
+      switch(activeMode) {
+        case 0:
+          thresholdProgressElement.style.backgroundColor = "#1a73e8"; // Dark mode blue
+          break;
+        case 1:
+          thresholdProgressElement.style.backgroundColor = "#c79a05"; // Dark mode yellow
+          break;
+        case 2:
+          thresholdProgressElement.style.backgroundColor = "#d68100"; // Dark mode orange
+          break;
+        case 3:
+          thresholdProgressElement.style.backgroundColor = "#cf6679"; // Dark mode red
+          break;
+      }
+    }
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+
+    // Restore progress bar colors for light mode
+    if (thresholdProgressElement) {
+      const activeMode = currentStatistics.session.activeMode;
+      switch(activeMode) {
+        case 0:
+          thresholdProgressElement.style.backgroundColor = "#4285f4"; // Light mode blue
+          break;
+        case 1:
+          thresholdProgressElement.style.backgroundColor = "#fbbc05"; // Light mode yellow
+          break;
+        case 2:
+          thresholdProgressElement.style.backgroundColor = "#ff9800"; // Light mode orange
+          break;
+        case 3:
+          thresholdProgressElement.style.backgroundColor = "#f44336"; // Light mode red
+          break;
+      }
+    }
+  }
 }
 
 // Load statistics from storage
@@ -109,7 +184,7 @@ function loadStatistics() {
   chrome.storage.local.get('statistics', function(result) {
     if (result.statistics && result.statistics.daily) {
       currentStatistics.daily = result.statistics.daily;
-      
+
       // Update UI with daily statistics
       updateStatisticsUI();
     }
@@ -125,10 +200,10 @@ function getCurrentTabStatistics() {
           currentStatistics.session.scrollTime = response.scrollTime || 0;
           currentStatistics.session.scrollDistance = response.scrollDistance || 0;
           currentStatistics.session.activeMode = response.activeMode || 0;
-          
+
           // Update session statistics in UI
           updateSessionUI();
-          
+
           // Update intervention status
           updateInterventionStatus();
         }
@@ -142,7 +217,7 @@ function updateStatisticsUI() {
   // Convert seconds to minutes for display
   const timeInMinutes = Math.round(currentStatistics.daily.scrollTime / 60);
   todayTimeElement.textContent = timeInMinutes;
-  
+
   // Convert pixels to meters for display (rough approximation)
   const distanceInMeters = Math.round(currentStatistics.daily.scrollDistance / 1000);
   todayDistanceElement.textContent = distanceInMeters;
@@ -153,7 +228,7 @@ function updateSessionUI() {
   // Convert seconds to minutes for display
   const timeInMinutes = Math.round(currentStatistics.session.scrollTime / 60);
   sessionTimeElement.textContent = timeInMinutes;
-  
+
   // Convert pixels to meters for display
   const distanceInMeters = Math.round(currentStatistics.session.scrollDistance / 1000);
   sessionDistanceElement.textContent = distanceInMeters;
@@ -164,31 +239,34 @@ function updateInterventionStatus() {
   const threshold = currentSettings.scrollThreshold;
   const scrollDistance = currentStatistics.session.scrollDistance;
   const activeMode = currentStatistics.session.activeMode;
-  
+
   // Calculate progress percentage
   let progressPercentage = (scrollDistance / threshold) * 100;
   progressPercentage = Math.min(progressPercentage, 100); // Cap at 100%
-  
+
   // Update progress bar
   thresholdProgressElement.style.width = `${progressPercentage}%`;
-  
+
+  // Check if dark mode is active
+  const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+
   // Update status text based on active mode
   switch(activeMode) {
     case 0:
       statusTextElement.textContent = "No intervention active";
-      thresholdProgressElement.style.backgroundColor = "#4285f4";
+      thresholdProgressElement.style.backgroundColor = isDarkMode ? "#1a73e8" : "#4285f4";
       break;
     case 1:
       statusTextElement.textContent = "Level 1: Scrolling slowed down";
-      thresholdProgressElement.style.backgroundColor = "#fbbc05";
+      thresholdProgressElement.style.backgroundColor = isDarkMode ? "#c79a05" : "#fbbc05";
       break;
     case 2:
       statusTextElement.textContent = "Level 2: Visual effects active";
-      thresholdProgressElement.style.backgroundColor = "#ff9800";
+      thresholdProgressElement.style.backgroundColor = isDarkMode ? "#d68100" : "#ff9800";
       break;
     case 3:
       statusTextElement.textContent = "Level 3: Scrolling blocked";
-      thresholdProgressElement.style.backgroundColor = "#f44336";
+      thresholdProgressElement.style.backgroundColor = isDarkMode ? "#cf6679" : "#f44336";
       break;
   }
 }
@@ -196,20 +274,20 @@ function updateInterventionStatus() {
 // Render site list
 function renderSiteList() {
   siteList.innerHTML = '';
-  
+
   currentSettings.targetedSites.forEach(site => {
     const siteItem = document.createElement('div');
     siteItem.className = 'site-item';
-    
+
     const siteName = document.createElement('span');
     siteName.textContent = site;
-    
+
     const removeButton = document.createElement('button');
     removeButton.textContent = '×';
     removeButton.addEventListener('click', () => {
       removeSite(site);
     });
-    
+
     siteItem.appendChild(siteName);
     siteItem.appendChild(removeButton);
     siteList.appendChild(siteItem);
@@ -228,12 +306,12 @@ function setupEventListeners() {
   thresholdSlider.addEventListener('input', function() {
     thresholdValue.textContent = this.value;
   });
-  
+
   // Time restriction toggle
   timeRestrictionToggle.addEventListener('change', function() {
     timeSettings.style.display = this.checked ? 'block' : 'none';
   });
-  
+
   // Add site button
   addSiteBtn.addEventListener('click', function() {
     const site = siteInput.value.trim();
@@ -243,17 +321,17 @@ function setupEventListeners() {
       siteInput.value = '';
     }
   });
-  
+
   // Save settings button
   saveSettingsBtn.addEventListener('click', function() {
     saveSettings();
   });
-  
+
   // Reset button
   resetBtn.addEventListener('click', function() {
     resetSession();
   });
-  
+
   // View report button
   viewReportBtn.addEventListener('click', function() {
     openReportPage();
@@ -267,17 +345,21 @@ function saveSettings() {
   currentSettings.timeRestrictions.enabled = timeRestrictionToggle.checked;
   currentSettings.timeRestrictions.afterHour = parseInt(afterHourSelect.value);
   currentSettings.timeRestrictions.beforeHour = parseInt(beforeHourSelect.value);
-  
+
   // Save to storage
   chrome.storage.sync.set({
     scrollThreshold: currentSettings.scrollThreshold,
     targetedSites: currentSettings.targetedSites,
-    timeRestrictions: currentSettings.timeRestrictions
+    timeRestrictions: currentSettings.timeRestrictions,
+    appearance: currentSettings.appearance
   }, function() {
     // Show success message
     const successMessage = document.createElement('div');
     successMessage.textContent = 'Settings saved!';
-    successMessage.style.backgroundColor = '#4CAF50';
+
+    // Use theme-appropriate colors for success message
+    const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+    successMessage.style.backgroundColor = isDarkMode ? 'var(--status-success)' : '#4CAF50';
     successMessage.style.color = 'white';
     successMessage.style.padding = '10px';
     successMessage.style.textAlign = 'center';
@@ -287,14 +369,14 @@ function saveSettings() {
     successMessage.style.transform = 'translateX(-50%)';
     successMessage.style.borderRadius = '4px';
     successMessage.style.zIndex = '1000';
-    
+
     document.body.appendChild(successMessage);
-    
+
     // Remove after 2 seconds
     setTimeout(() => {
       document.body.removeChild(successMessage);
     }, 2000);
-    
+
     // Update settings in active tabs
     chrome.tabs.query({}, function(tabs) {
       tabs.forEach(tab => {
@@ -319,7 +401,7 @@ function resetSession() {
             scrollDistance: 0,
             activeMode: 0
           };
-          
+
           // Update UI
           updateSessionUI();
           updateInterventionStatus();

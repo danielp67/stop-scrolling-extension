@@ -12,30 +12,95 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --bg-color: #f5f5f5;
+      --container-bg: #fff;
+      --text-color: #333;
+      --header-bg: #4285f4;
+      --header-text: white;
+      --card-bg: #fff;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+      --border-color: #eee;
+      --input-bg: #fff;
+      --input-border: #ddd;
+      --slider-bg: #ccc;
+      --slider-active: #4285f4;
+      --button-bg: #4285f4;
+      --button-text: white;
+      --button-hover: #3367d6;
+      --button-danger: #f44336;
+      --button-danger-hover: #d32f2f;
+      --button-secondary: #757575;
+      --button-secondary-hover: #616161;
+      --footer-bg: #f5f5f5;
+      --footer-text: #777;
+      --level1-bg: #fbbc05;
+      --level2-bg: #ff9800;
+      --level3-bg: #f44336;
+      --site-item-bg: #f9f9f9;
+      --site-note: #777;
+      --status-success: #4CAF50;
+      --status-error: #f44336;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --container-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --header-bg: #1a73e8;
+      --header-text: #ffffff;
+      --card-bg: #2d2d2d;
+      --card-shadow: rgba(0, 0, 0, 0.3);
+      --border-color: #333;
+      --input-bg: #3d3d3d;
+      --input-border: #555;
+      --slider-bg: #555;
+      --slider-active: #1a73e8;
+      --button-bg: #1a73e8;
+      --button-text: white;
+      --button-hover: #1765cc;
+      --button-danger: #cf6679;
+      --button-danger-hover: #b4505f;
+      --button-secondary: #5c5c5c;
+      --button-secondary-hover: #4a4a4a;
+      --footer-bg: #1e1e1e;
+      --footer-text: #999;
+      --level1-bg: #c79a05;
+      --level2-bg: #d68100;
+      --level3-bg: #cf6679;
+      --site-item-bg: #3d3d3d;
+      --site-note: #aaa;
+      --status-success: #4CAF50;
+      --status-error: #cf6679;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 16px;
-      color: #333;
-      background-color: #f5f5f5;
+      color: var(--text-color);
+      background-color: var(--bg-color);
       line-height: 1.6;
       padding: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .container {
       max-width: 800px;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: var(--container-bg);
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px var(--card-shadow);
       overflow: hidden;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     /* Header styles */
     header {
-      background-color: #4285f4;
-      color: white;
+      background-color: var(--header-bg);
+      color: var(--header-text);
       padding: 20px;
       text-align: center;
+      transition: background-color 0.3s ease;
     }
 
     h1 {
@@ -61,9 +126,10 @@
     h2 {
       font-size: 20px;
       margin-bottom: 15px;
-      color: #333;
-      border-bottom: 1px solid #eee;
+      color: var(--text-color);
+      border-bottom: 1px solid var(--border-color);
       padding-bottom: 10px;
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
 
     /* Form styles */
@@ -75,6 +141,8 @@
       display: block;
       margin-bottom: 8px;
       font-weight: 500;
+      color: var(--text-color);
+      transition: color 0.3s ease;
     }
 
     input[type="number"],
@@ -82,9 +150,12 @@
     select {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid var(--input-border);
       border-radius: 4px;
       font-size: 16px;
+      background-color: var(--input-bg);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
     .slider-container {
@@ -94,12 +165,15 @@
     input[type="range"] {
       width: 100%;
       margin-bottom: 10px;
+      background-color: var(--slider-bg);
+      transition: background-color 0.3s ease;
     }
 
     .slider-value {
       text-align: center;
       font-weight: bold;
-      color: #4285f4;
+      color: var(--slider-active);
+      transition: color 0.3s ease;
     }
 
     /* Toggle switch */
@@ -130,7 +204,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #ccc;
+      background-color: var(--slider-bg);
       transition: .4s;
       border-radius: 24px;
     }
@@ -148,7 +222,7 @@
     }
 
     input:checked + .toggle-slider {
-      background-color: #4285f4;
+      background-color: var(--slider-active);
     }
 
     input:checked + .toggle-slider:before {
@@ -159,9 +233,10 @@
     .time-settings {
       margin-top: 15px;
       padding: 15px;
-      background-color: #f9f9f9;
+      background-color: var(--site-item-bg);
       border-radius: 4px;
       display: none;
+      transition: background-color 0.3s ease;
     }
 
     .time-input {
@@ -194,9 +269,10 @@
     .site-list {
       max-height: 200px;
       overflow-y: auto;
-      border: 1px solid #ddd;
+      border: 1px solid var(--input-border);
       border-radius: 4px;
       margin-bottom: 15px;
+      transition: border-color 0.3s ease;
     }
 
     .site-item {
@@ -204,7 +280,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 15px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
+      transition: border-color 0.3s ease;
     }
 
     .site-item:last-child {
@@ -213,26 +290,29 @@
 
     .site-item button {
       background-color: transparent;
-      color: #f44336;
+      color: var(--button-danger);
       border: none;
       cursor: pointer;
       font-size: 18px;
       padding: 0 5px;
+      transition: color 0.3s ease;
     }
 
     .site-note {
       font-size: 14px;
-      color: #777;
+      color: var(--site-note);
       font-style: italic;
       margin-top: 10px;
+      transition: color 0.3s ease;
     }
 
     /* Intervention levels */
     .level-settings {
-      background-color: #f9f9f9;
+      background-color: var(--site-item-bg);
       border-radius: 4px;
       padding: 15px;
       margin-bottom: 15px;
+      transition: background-color 0.3s ease;
     }
 
     .level-title {
@@ -240,6 +320,8 @@
       margin-bottom: 10px;
       display: flex;
       align-items: center;
+      color: var(--text-color);
+      transition: color 0.3s ease;
     }
 
     .level-badge {
@@ -254,21 +336,25 @@
     }
 
     .level-1 {
-      background-color: #fbbc05;
+      background-color: var(--level1-bg);
+      transition: background-color 0.3s ease;
     }
 
     .level-2 {
-      background-color: #ff9800;
+      background-color: var(--level2-bg);
+      transition: background-color 0.3s ease;
     }
 
     .level-3 {
-      background-color: #f44336;
+      background-color: var(--level3-bg);
+      transition: background-color 0.3s ease;
     }
 
     .level-description {
       margin-bottom: 10px;
       font-size: 14px;
-      color: #555;
+      color: var(--text-color);
+      transition: color 0.3s ease;
     }
 
     /* Button styles */
@@ -279,34 +365,34 @@
     }
 
     button {
-      background-color: #4285f4;
-      color: white;
+      background-color: var(--button-bg);
+      color: var(--button-text);
       border: none;
       padding: 10px 20px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 16px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     button:hover {
-      background-color: #3367d6;
+      background-color: var(--button-hover);
     }
 
     .btn-danger {
-      background-color: #f44336;
+      background-color: var(--button-danger);
     }
 
     .btn-danger:hover {
-      background-color: #d32f2f;
+      background-color: var(--button-danger-hover);
     }
 
     .btn-secondary {
-      background-color: #757575;
+      background-color: var(--button-secondary);
     }
 
     .btn-secondary:hover {
-      background-color: #616161;
+      background-color: var(--button-secondary-hover);
     }
 
     /* Status message */
@@ -324,20 +410,21 @@
     }
 
     .status-success {
-      background-color: #4CAF50;
+      background-color: var(--status-success);
     }
 
     .status-error {
-      background-color: #f44336;
+      background-color: var(--status-error);
     }
 
     /* Footer styles */
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #f5f5f5;
-      color: #777;
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
       font-size: 14px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* Responsive adjustments */
@@ -518,6 +605,39 @@
 
         <div class="site-note">
           <p>Enter domain names without "http://" or "www." (e.g., "youtube.com")</p>
+        </div>
+      </section>
+
+      <section id="appearanceSection">
+        <h2>Appearance Settings</h2>
+
+        <div class="form-group">
+          <label for="languageSelect">Language</label>
+          <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+          </select>
+          <p class="site-note">Changes will take effect after reloading the extension.</p>
+        </div>
+
+        <div class="toggle-container">
+          <label class="toggle">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Dark Mode</span>
+        </div>
+
+        <div class="toggle-container">
+          <label class="toggle">
+            <input type="checkbox" id="systemThemeToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Use system theme preferences</span>
         </div>
       </section>
 

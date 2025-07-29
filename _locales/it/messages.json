@@ -1,0 +1,66 @@
+{
+  "appName": {
+    "message": "Limitatore di Scorrimento",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "Limita lo scorrimento per incoraggiare pause e regolare il consumo di contenuti",
+    "description": "The description of the extension"
+  },
+  "optionsTitle": {
+    "message": "Limitatore di Scorrimento - Opzioni",
+    "description": "Title of the options page"
+  },
+  "optionsSubtitle": {
+    "message": "Configura i tuoi limiti di scorrimento e preferenze",
+    "description": "Subtitle of the options page"
+  },
+  "thresholdSettings": {
+    "message": "Impostazioni Soglia di Scorrimento",
+    "description": "Title of the threshold settings section"
+  },
+  "limitType": {
+    "message": "Tipo di Limite",
+    "description": "Label for limit type selector"
+  },
+  "limitTypePixels": {
+    "message": "Pixel (distanza di scorrimento)",
+    "description": "Option for pixel-based limit"
+  },
+  "limitTypeMeters": {
+    "message": "Metri (distanza stimata)",
+    "description": "Option for meter-based limit"
+  },
+  "limitTypeTime": {
+    "message": "Tempo (secondi)",
+    "description": "Option for time-based limit"
+  },
+  "limitTypeBoth": {
+    "message": "Entrambi (metri e tempo)",
+    "description": "Option for combined limit"
+  },
+  "pixelsThreshold": {
+    "message": "Soglia di Scorrimento (pixel)",
+    "description": "Label for pixels threshold"
+  },
+  "metersThreshold": {
+    "message": "Soglia di Scorrimento (metri)",
+    "description": "Label for meters threshold"
+  },
+  "timeThreshold": {
+    "message": "Soglia di Tempo di Scorrimento (secondi)",
+    "description": "Label for time threshold"
+  },
+  "thresholdNote": {
+    "message": "Questa è la quantità di scorrimento prima che inizino gli interventi.",
+    "description": "Note about threshold"
+  },
+  "saveSettings": {
+    "message": "Salva Impostazioni",
+    "description": "Save button text"
+  },
+  "cancelSettings": {
+    "message": "Annulla",
+    "description": "Cancel button text"
+  }
+}
