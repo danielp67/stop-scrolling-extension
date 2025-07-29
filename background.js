@@ -21,7 +21,7 @@ function initializeStorage() {
   chrome.storage.local.get(['statistics', 'statsInitialized'], function(result) {
     if (!result.statsInitialized) {
       const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
-      
+
       chrome.storage.local.set({
         statistics: {
           daily: {
@@ -48,12 +48,12 @@ function updateStatistics(data) {
   chrome.storage.local.get('statistics', function(result) {
     const stats = result.statistics;
     const today = new Date().toISOString().split('T')[0];
-    
+
     // Check if we need to reset daily statistics (new day)
     if (stats.daily.date !== today) {
       // Archive yesterday's data before resetting
       archiveDailyStatistics(stats);
-      
+
       // Reset daily statistics
       stats.daily = {
         date: today,
@@ -64,13 +64,13 @@ function updateStatistics(data) {
         siteData: {}
       };
     }
-    
+
     // Update daily statistics
     stats.daily.scrollTime += data.scrollTime || 0;
     stats.daily.scrollDistance += data.scrollDistance || 0;
     stats.daily.thresholdExceeded += data.thresholdExceeded || 0;
     stats.daily.blockingTriggered += data.blockingTriggered || 0;
-    
+
     // Update site-specific data
     if (data.site) {
       if (!stats.daily.siteData[data.site]) {
@@ -81,12 +81,12 @@ function updateStatistics(data) {
           blockingTriggered: 0
         };
       }
-      
+
       stats.daily.siteData[data.site].scrollTime += data.scrollTime || 0;
       stats.daily.siteData[data.site].scrollDistance += data.scrollDistance || 0;
       stats.daily.siteData[data.site].thresholdExceeded += data.thresholdExceeded || 0;
       stats.daily.siteData[data.site].blockingTriggered += data.blockingTriggered || 0;
-      
+
       // Update site ranking
       if (!stats.siteRanking[data.site]) {
         stats.siteRanking[data.site] = {
@@ -94,11 +94,11 @@ function updateStatistics(data) {
           scrollDistance: 0
         };
       }
-      
+
       stats.siteRanking[data.site].scrollTime += data.scrollTime || 0;
       stats.siteRanking[data.site].scrollDistance += data.scrollDistance || 0;
     }
-    
+
     // Save updated statistics
     chrome.storage.local.set({ statistics: stats });
   });
@@ -108,12 +108,12 @@ function updateStatistics(data) {
 function archiveDailyStatistics(stats) {
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  
+
   const yesterdayStr = yesterday.toISOString().split('T')[0];
   const weekNum = getWeekNumber(yesterday);
   const month = yesterday.getMonth() + 1; // 1-12
   const year = yesterday.getFullYear();
-  
+
   // Weekly statistics
   const weekKey = `${year}-W${weekNum}`;
   if (!stats.weekly[weekKey]) {
@@ -125,13 +125,13 @@ function archiveDailyStatistics(stats) {
       days: 0
     };
   }
-  
+
   stats.weekly[weekKey].scrollTime += stats.daily.scrollTime;
   stats.weekly[weekKey].scrollDistance += stats.daily.scrollDistance;
   stats.weekly[weekKey].thresholdExceeded += stats.daily.thresholdExceeded;
   stats.weekly[weekKey].blockingTriggered += stats.daily.blockingTriggered;
   stats.weekly[weekKey].days += 1;
-  
+
   // Monthly statistics
   const monthKey = `${year}-${month.toString().padStart(2, '0')}`;
   if (!stats.monthly[monthKey]) {
@@ -143,13 +143,13 @@ function archiveDailyStatistics(stats) {
       days: 0
     };
   }
-  
+
   stats.monthly[monthKey].scrollTime += stats.daily.scrollTime;
   stats.monthly[monthKey].scrollDistance += stats.daily.scrollDistance;
   stats.monthly[monthKey].thresholdExceeded += stats.daily.thresholdExceeded;
   stats.monthly[monthKey].blockingTriggered += stats.daily.blockingTriggered;
   stats.monthly[monthKey].days += 1;
-  
+
   // Yearly statistics
   const yearKey = year.toString();
   if (!stats.yearly[yearKey]) {
@@ -161,13 +161,13 @@ function archiveDailyStatistics(stats) {
       days: 0
     };
   }
-  
+
   stats.yearly[yearKey].scrollTime += stats.daily.scrollTime;
   stats.yearly[yearKey].scrollDistance += stats.daily.scrollDistance;
   stats.yearly[yearKey].thresholdExceeded += stats.daily.thresholdExceeded;
   stats.yearly[yearKey].blockingTriggered += stats.daily.blockingTriggered;
   stats.yearly[yearKey].days += 1;
-  
+
   // Archive daily data with date as key for historical reference
   stats[yesterdayStr] = stats.daily;
 }
@@ -207,10 +207,10 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
     chrome.storage.local.get('statistics', function(result) {
       const stats = result.statistics;
       const today = new Date().toISOString().split('T')[0];
-      
+
       if (stats.daily.date !== today) {
         archiveDailyStatistics(stats);
-        
+
         // Reset daily statistics
         stats.daily = {
           date: today,
@@ -220,7 +220,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
           blockingTriggered: 0,
           siteData: {}
         };
-        
+
         chrome.storage.local.set({ statistics: stats });
       }
     });
@@ -245,6 +245,9 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       sendResponse({ settings: result });
     });
     return true; // Required for async sendResponse
+  } else if (message.action === 'ping') {
+    // This is just to wake up the service worker
+    sendResponse({ success: true });
   }
 });
 
@@ -253,7 +256,7 @@ function resetStatistics(type) {
   chrome.storage.local.get('statistics', function(result) {
     const stats = result.statistics;
     const today = new Date().toISOString().split('T')[0];
-    
+
     if (type === 'daily' || type === 'all') {
       stats.daily = {
         date: today,
@@ -264,23 +267,23 @@ function resetStatistics(type) {
         siteData: {}
       };
     }
-    
+
     if (type === 'weekly' || type === 'all') {
       stats.weekly = {};
     }
-    
+
     if (type === 'monthly' || type === 'all') {
       stats.monthly = {};
     }
-    
+
     if (type === 'yearly' || type === 'all') {
       stats.yearly = {};
     }
-    
+
     if (type === 'sites' || type === 'all') {
       stats.siteRanking = {};
     }
-    
+
     chrome.storage.local.set({ statistics: stats });
   });
 }

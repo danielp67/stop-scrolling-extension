@@ -480,15 +480,26 @@ function renderSiteList() {
 
 // Reset statistics
 function resetStatistics(type) {
-  chrome.runtime.sendMessage({
-    action: 'resetStatistics',
-    type: type
-  }, function(response) {
-    if (response && response.success) {
-      showStatusMessage(`${type.charAt(0).toUpperCase() + type.slice(1)} statistics reset successfully`, 'success');
-    } else {
-      showStatusMessage('Failed to reset statistics', 'error');
-    }
+  // First, try to wake up the service worker by sending a ping
+  chrome.runtime.sendMessage({ action: 'ping' }, function() {
+    // Ignore any error from the ping, it's just to wake up the service worker
+    // Now send the actual reset message
+    chrome.runtime.sendMessage({
+      action: 'resetStatistics',
+      type: type
+    }, function(response) {
+      if (chrome.runtime.lastError) {
+        console.error("Error resetting statistics:", chrome.runtime.lastError);
+        showStatusMessage('Failed to reset statistics. Please try again.', 'error');
+        return;
+      }
+
+      if (response && response.success) {
+        showStatusMessage(`${type.charAt(0).toUpperCase() + type.slice(1)} statistics reset successfully`, 'success');
+      } else {
+        showStatusMessage('Failed to reset statistics', 'error');
+      }
+    });
   });
 }
 
