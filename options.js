@@ -1,3 +1,5 @@
+// Import custom i18n module
+import { initI18n, getMessage, setLanguage } from './i18n.js';
 // DOM Elements
 const limitTypeSelect = document.getElementById('limitType');
 const pixelsThresholdGroup = document.getElementById('pixelsThresholdGroup');
@@ -61,22 +63,28 @@ let currentSettings = {
   }
 };
 
+// Store the original language when settings are loaded
+let originalLanguage = 'en';
+
 // Initialize options page
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   // Check if we have a language override from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
-  const langOverride = urlParams.get('lang');
-
-  if (langOverride) {
+  console.log("urlParams", urlParams);
+ // const langOverride = urlParams.get('lang');
+let langOverride = 'en';
+/*  if (langOverride) {
     // Override Chrome's i18n.getUILanguage to use our specified language
-    const originalGetUILanguage = chrome.i18n.getUILanguage;
+    const originalGetUILanguage = chrome.i18n.getUILanguage();
+    console.log("originalGetUILanguage", originalGetUILanguage);
     chrome.i18n.getUILanguage = function() {
+      console.log("langOverride",langOverride);
       return langOverride;
     };
-  }
+  }*/
 
   // Replace i18n messages immediately to avoid showing placeholders
-  replaceI18nMessages();
+  await replaceI18nMessages();
 
   // Load settings first
   loadSettings();
@@ -86,75 +94,48 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Replace i18n message placeholders
-function replaceI18nMessages() {
-  // Process all text nodes in the document
-  const walker = document.createTreeWalker(
-    document.body,
-    NodeFilter.SHOW_TEXT,
-    null,
-    false
-  );
+async function replaceI18nMessages() {
+  // Initialize i18n module
+  await initI18n();
 
-  let node;
-  while (node = walker.nextNode()) {
-    if (node.nodeValue && node.nodeValue.includes('__MSG_')) {
-      const matches = node.nodeValue.match(/__MSG_(\w+)__/g);
-      if (matches) {
-        let newValue = node.nodeValue;
-        matches.forEach(match => {
-          const messageName = match.replace(/__MSG_(\w+)__/, '$1');
-          const translation = chrome.i18n.getMessage(messageName);
-          if (translation) {
-            newValue = newValue.replace(match, translation);
-          }
-        });
-        node.nodeValue = newValue;
+  // First, handle elements with direct text content
+  document.querySelectorAll('*').forEach( async element => {
+    if (element.childNodes.length === 1 && element.childNodes[0].nodeType === Node.TEXT_NODE) {
+      const text = element.textContent.trim();
+      if (text.match(/^__MSG_\w+__$/)) {
+        const messageName = text.match(/__MSG_(\w+)__/)[1];
+        const translatedMessage = await getMessage(messageName);
+        if (translatedMessage) {
+          element.textContent = translatedMessage;
+        }
       }
+    }
+  });
+
+  // Then, title tag specifically
+  const title = document.querySelector('title');
+  if (title && title.textContent.trim().match(/^__MSG_\w+__$/)) {
+    const messageName = title.textContent.trim().match(/__MSG_(\w+)__/)[1];
+    const translatedMessage = await getMessage(messageName);
+    if (translatedMessage) {
+      title.textContent = translatedMessage;
     }
   }
 
-  // Check for message placeholders in attributes
-  const elements = document.querySelectorAll('*');
-  elements.forEach(element => {
-    // Check attributes like title, placeholder, etc.
-    ['title', 'placeholder', 'alt', 'aria-label'].forEach(attr => {
-      if (element.hasAttribute(attr)) {
-        const attrValue = element.getAttribute(attr);
-        if (attrValue && attrValue.includes('__MSG_')) {
-          const matches = attrValue.match(/__MSG_(\w+)__/g);
-          if (matches) {
-            let newValue = attrValue;
-            matches.forEach(match => {
-              const messageName = match.replace(/__MSG_(\w+)__/, '$1');
-              const translation = chrome.i18n.getMessage(messageName);
-              if (translation) {
-                newValue = newValue.replace(match, translation);
-              }
-            });
-            element.setAttribute(attr, newValue);
-          }
-        }
+  // Finally, handle text nodes that are direct children of elements
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while (node = walker.nextNode()) {
+    const text = node.nodeValue.trim();
+    if (text.match(/^__MSG_\w+__$/)) {
+      const messageName = text.match(/__MSG_(\w+)__/)[1];
+      const translatedMessage = await getMessage(messageName);
+      if (translatedMessage) {
+        node.nodeValue = translatedMessage;
       }
-    });
-  });
-
-  // Update document title
-  if (document.title && document.title.includes('__MSG_')) {
-    const matches = document.title.match(/__MSG_(\w+)__/g);
-    if (matches) {
-      let newTitle = document.title;
-      matches.forEach(match => {
-        const messageName = match.replace(/__MSG_(\w+)__/, '$1');
-        const translation = chrome.i18n.getMessage(messageName);
-        if (translation) {
-          newTitle = newTitle.replace(match, translation);
-        }
-      });
-      document.title = newTitle;
     }
   }
 }
-
 // Load settings from storage
 function loadSettings() {
   chrome.storage.sync.get([
@@ -203,6 +184,8 @@ function loadSettings() {
 
     if (result.appearance) {
       currentSettings.appearance = result.appearance;
+      // Store the original language for comparison when saving
+      originalLanguage = currentSettings.appearance.language;
     }
 
     // Check system theme preference if enabled
@@ -286,6 +269,8 @@ function updateUI() {
   // Appearance settings
   // Set language dropdown to match the actual language being used by Chrome's i18n system
   const currentUILanguage = chrome.i18n.getUILanguage();
+  console.log('Current UI Language:', currentUILanguage);
+  console.log('Original Language:', chrome.i18n.getUILanguage());
   // Check if the UI language is available in our dropdown
   const languageOptions = Array.from(languageSelect.options).map(option => option.value);
   if (languageOptions.includes(currentUILanguage)) {
@@ -386,6 +371,8 @@ function setupEventListeners() {
   // Language select
   languageSelect.addEventListener('change', function() {
     currentSettings.appearance.language = this.value;
+    console.log('Language changed to', this.value);
+    console.log('Current settings:', currentSettings);
     // Show message about reloading immediately when language is changed
     showStatusMessage('Language changed. Changes will take effect after saving settings and reloading the extension.', 'success');
   });
@@ -493,9 +480,15 @@ function renderSiteList() {
 // Reset statistics
 function resetStatistics(type) {
   // First, try to wake up the service worker by sending a ping
-  chrome.runtime.sendMessage({ action: 'ping' }, function() {
-    // Ignore any error from the ping, it's just to wake up the service worker
-    // Now send the actual reset message
+  chrome.runtime.sendMessage({ action: 'ping' }, function(pingResponse) {
+    // Check if there was an error with the ping
+    if (chrome.runtime.lastError) {
+      console.error("Error pinging service worker:", chrome.runtime.lastError);
+      showStatusMessage('Failed to connect to the extension. Please try again.', 'error');
+      return;
+    }
+
+    // Now that we know the service worker is awake, send the actual reset message
     chrome.runtime.sendMessage({
       action: 'resetStatistics',
       type: type
@@ -570,22 +563,17 @@ function saveSettings() {
     // Update settings in active tabs
     updateActiveTabsSettings();
 
-    // If language changed, reload the page to apply the new language
-    if (currentSettings.appearance.language !== chrome.i18n.getUILanguage()) {
-      showStatusMessage('Language changed. Refreshing page to apply changes...', 'success');
+    // Update the current language in the i18n module
+    setLanguage(currentSettings.appearance.language);
 
-      // Wait a moment for the user to see the message, then refresh the page
+    // Reload the page to apply changes
+    if (currentSettings.appearance.language !== originalLanguage) {
+      // Reload all extension pages to apply the new language
+      chrome.runtime.sendMessage({ action: "reloadExtension" });
+      // Reload the current options page
       setTimeout(() => {
-        // First, notify the background script about the language change
-        chrome.runtime.sendMessage({
-          action: 'languageChanged',
-          language: currentSettings.appearance.language
-        }, function() {
-          // Then reload the current page with the language parameter
-          window.location.href = `${window.location.pathname}?lang=${currentSettings.appearance.language}`;
-          // Don't reload the entire extension, just refresh the current page
-        });
-      }, 1500);
+        window.location.reload();
+      }, 1600);
     }
   });
 }

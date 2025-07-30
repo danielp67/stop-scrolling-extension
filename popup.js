@@ -1,3 +1,5 @@
+// Import custom i18n module
+import { initI18n, getMessage } from './i18n.js';
 // DOM Elements
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
@@ -52,80 +54,55 @@ let currentStatistics = {
 };
 
 // Replace i18n message placeholders
-function replaceI18nMessages() {
-  // Process all text nodes in the document
-  const walker = document.createTreeWalker(
-    document.body,
-    NodeFilter.SHOW_TEXT,
-    null,
-    false
-  );
+async function replaceI18nMessages() {
+  // Initialize i18n module
+  await initI18n();
 
-  let node;
-  while (node = walker.nextNode()) {
-    if (node.nodeValue && node.nodeValue.includes('__MSG_')) {
-      const matches = node.nodeValue.match(/__MSG_(\w+)__/g);
-      if (matches) {
-        let newValue = node.nodeValue;
-        matches.forEach(match => {
-          const messageName = match.replace(/__MSG_(\w+)__/, '$1');
-          const translation = chrome.i18n.getMessage(messageName);
-          if (translation) {
-            newValue = newValue.replace(match, translation);
-          }
-        });
-        node.nodeValue = newValue;
+  // First, handle elements with direct text content
+  document.querySelectorAll('*').forEach( async element => {
+    if (element.childNodes.length === 1 && element.childNodes[0].nodeType === Node.TEXT_NODE) {
+      const text = element.textContent.trim();
+      if (text.match(/^__MSG_\w+__$/)) {
+        const messageName = text.match(/__MSG_(\w+)__/)[1];
+        const translatedMessage = await getMessage(messageName);
+        if (translatedMessage) {
+          element.textContent = translatedMessage;
+        }
       }
+    }
+  });
+
+  // Then, title tag specifically
+  const title = document.querySelector('title');
+  if (title && title.textContent.trim().match(/^__MSG_\w+__$/)) {
+    const messageName = title.textContent.trim().match(/__MSG_(\w+)__/)[1];
+    const translatedMessage = await getMessage(messageName);
+    if (translatedMessage) {
+      title.textContent = translatedMessage;
     }
   }
 
-  // Check for message placeholders in attributes
-  const elements = document.querySelectorAll('*');
-  elements.forEach(element => {
-    // Check attributes like title, placeholder, etc.
-    ['title', 'placeholder', 'alt', 'aria-label'].forEach(attr => {
-      if (element.hasAttribute(attr)) {
-        const attrValue = element.getAttribute(attr);
-        if (attrValue && attrValue.includes('__MSG_')) {
-          const matches = attrValue.match(/__MSG_(\w+)__/g);
-          if (matches) {
-            let newValue = attrValue;
-            matches.forEach(match => {
-              const messageName = match.replace(/__MSG_(\w+)__/, '$1');
-              const translation = chrome.i18n.getMessage(messageName);
-              if (translation) {
-                newValue = newValue.replace(match, translation);
-              }
-            });
-            element.setAttribute(attr, newValue);
-          }
-        }
+  // Finally, handle text nodes that are direct children of elements
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while (node = walker.nextNode()) {
+    const text = node.nodeValue.trim();
+    if (text.match(/^__MSG_\w+__$/)) {
+      const messageName = text.match(/__MSG_(\w+)__/)[1];
+      const translatedMessage = await getMessage(messageName);
+      if (translatedMessage) {
+        node.nodeValue = translatedMessage;
       }
-    });
-  });
-
-  // Update document title
-  if (document.title && document.title.includes('__MSG_')) {
-    const matches = document.title.match(/__MSG_(\w+)__/g);
-    if (matches) {
-      let newTitle = document.title;
-      matches.forEach(match => {
-        const messageName = match.replace(/__MSG_(\w+)__/, '$1');
-        const translation = chrome.i18n.getMessage(messageName);
-        if (translation) {
-          newTitle = newTitle.replace(match, translation);
-        }
-      });
-      document.title = newTitle;
     }
   }
 }
 
 // Initialize popup
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   // Check if we have a language override from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
-  const langOverride = urlParams.get('lang');
+ // const langOverride = urlParams.get('lang');
+  let langOverride = 'en';
 
   if (langOverride) {
     // Override Chrome's i18n.getUILanguage to use our specified language
@@ -136,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Replace i18n messages immediately to avoid showing placeholders
-  replaceI18nMessages();
+  await replaceI18nMessages();
 
   // Set up tab switching
   setupTabs();
