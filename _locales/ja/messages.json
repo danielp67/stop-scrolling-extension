@@ -55,6 +55,206 @@
     "message": "これは介入が始まる前のスクロール量です。",
     "description": "しきい値に関する注記"
   },
+  "interventionLevels": {
+    "message": "介入レベル",
+    "description": "介入レベルセクションのタイトル"
+  },
+  "interventionDescription": {
+    "message": "スクロールリミッターはスクロールを続けると段階的な介入を行います：",
+    "description": "介入レベルの説明"
+  },
+  "level1Title": {
+    "message": "レベル1：減速",
+    "description": "レベル1介入のタイトル"
+  },
+  "level1Description": {
+    "message": "しきい値を超えると、スクロールが遅くなり、意識的なブラウジングを促します。",
+    "description": "レベル1介入の説明"
+  },
+  "level1Multiplier": {
+    "message": "レベル1しきい値乗数",
+    "description": "レベル1乗数のラベル"
+  },
+  "level2Title": {
+    "message": "レベル2：視覚効果",
+    "description": "レベル2介入のタイトル"
+  },
+  "level2Description": {
+    "message": "スクロールを続けると、画面の振動や暗転などの視覚効果が適用されます。",
+    "description": "レベル2介入の説明"
+  },
+  "level2Multiplier": {
+    "message": "レベル2しきい値乗数",
+    "description": "レベル2乗数のラベル"
+  },
+  "level3Title": {
+    "message": "レベル3：スクロールブロック",
+    "description": "レベル3介入のタイトル"
+  },
+  "level3Description": {
+    "message": "最終的な介入として、休憩を促すメッセージとともにスクロールがブロックされます。",
+    "description": "レベル3介入の説明"
+  },
+  "level3Multiplier": {
+    "message": "レベル3しきい値乗数",
+    "description": "レベル3乗数のラベル"
+  },
+  "multiplierNote": {
+    "message": "（しきい値×乗数）ピクセルのスクロールで有効になります。",
+    "description": "乗数に関する注記"
+  },
+  "timeRestrictions": {
+    "message": "時間制限",
+    "description": "時間制限セクションのタイトル"
+  },
+  "enableTimeRestrictions": {
+    "message": "時間ベースの制限を有効にする",
+    "description": "時間制限トグルのラベル"
+  },
+  "timeRestrictionsDescription": {
+    "message": "これらの時間帯では、スクロールがより積極的に制限されます：",
+    "description": "時間制限の説明"
+  },
+  "restrictAfter": {
+    "message": "制限開始時間：",
+    "description": "制限開始時間のラベル"
+  },
+  "restrictUntil": {
+    "message": "制限終了時間：",
+    "description": "制限終了時間のラベル"
+  },
+  "time8pm": {
+    "message": "午後8時",
+    "description": "時間オプション"
+  },
+  "time9pm": {
+    "message": "午後9時",
+    "description": "時間オプション"
+  },
+  "time10pm": {
+    "message": "午後10時",
+    "description": "時間オプション"
+  },
+  "time11pm": {
+    "message": "午後11時",
+    "description": "時間オプション"
+  },
+  "time12am": {
+    "message": "午前0時",
+    "description": "時間オプション"
+  },
+  "time5am": {
+    "message": "午前5時",
+    "description": "時間オプション"
+  },
+  "time6am": {
+    "message": "午前6時",
+    "description": "時間オプション"
+  },
+  "time7am": {
+    "message": "午前7時",
+    "description": "時間オプション"
+  },
+  "time8am": {
+    "message": "午前8時",
+    "description": "時間オプション"
+  },
+  "time9am": {
+    "message": "午前9時",
+    "description": "時間オプション"
+  },
+  "restrictionLevel": {
+    "message": "制限レベル",
+    "description": "制限レベルのラベル"
+  },
+  "restrictionLevel1": {
+    "message": "レベル1 - 減速のみ",
+    "description": "制限レベルオプション"
+  },
+  "restrictionLevel2": {
+    "message": "レベル2 - 視覚効果",
+    "description": "制限レベルオプション"
+  },
+  "restrictionLevel3": {
+    "message": "レベル3 - スクロールブロック",
+    "description": "制限レベルオプション"
+  },
+  "targetSites": {
+    "message": "特定のサイトを対象にする",
+    "description": "対象サイトセクションのタイトル"
+  },
+  "targetSitesDescription": {
+    "message": "スクロールを制限したいウェブサイトを追加します。空のままにすると、すべてのサイトを監視します。",
+    "description": "対象サイトの説明"
+  },
+  "siteInputPlaceholder": {
+    "message": "例：youtube.com, twitter.com",
+    "description": "サイト入力のプレースホルダー"
+  },
+  "addSite": {
+    "message": "サイトを追加",
+    "description": "サイト追加ボタンのテキスト"
+  },
+  "siteInputNote": {
+    "message": "「http://」や「www.」なしでドメイン名を入力してください（例：「youtube.com」）",
+    "description": "サイト入力形式に関する注記"
+  },
+  "appearanceSettings": {
+    "message": "外観設定",
+    "description": "外観設定セクションのタイトル"
+  },
+  "language": {
+    "message": "言語",
+    "description": "言語セレクタのラベル"
+  },
+  "languageNote": {
+    "message": "変更は拡張機能を再読み込みした後に有効になります。",
+    "description": "言語変更に関する注記"
+  },
+  "darkMode": {
+    "message": "ダークモード",
+    "description": "ダークモードトグルのラベル"
+  },
+  "useSystemTheme": {
+    "message": "システムのテーマ設定を使用する",
+    "description": "システムテーマトグルのラベル"
+  },
+  "notificationSettings": {
+    "message": "通知設定",
+    "description": "通知設定セクションのタイトル"
+  },
+  "enableSoundNotifications": {
+    "message": "音声通知を有効にする",
+    "description": "音声通知トグルのラベル"
+  },
+  "enableVisualNotifications": {
+    "message": "視覚通知を有効にする",
+    "description": "視覚通知トグルのラベル"
+  },
+  "resetData": {
+    "message": "データのリセット",
+    "description": "データリセットセクションのタイトル"
+  },
+  "resetDataDescription": {
+    "message": "スクロール統計をクリアして新たに始めます。",
+    "description": "データリセットの説明"
+  },
+  "resetDailyData": {
+    "message": "今日のデータをリセット",
+    "description": "日次データリセットボタンのテキスト"
+  },
+  "resetWeeklyData": {
+    "message": "週間データをリセット",
+    "description": "週間データリセットボタンのテキスト"
+  },
+  "resetAllData": {
+    "message": "すべてのデータをリセット",
+    "description": "全データリセットボタンのテキスト"
+  },
+  "footerText": {
+    "message": "スクロール リミッター © 2023 - 休憩をとりましょう。意識的にスクロールしましょう。",
+    "description": "フッターテキスト"
+  },
   "saveSettings": {
     "message": "設定を保存",
     "description": "保存ボタンのテキスト"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "キャンセル",
     "description": "キャンセルボタンのテキスト"
+  },
+  "statistics": {
+    "message": "統計",
+    "description": "統計タブのタイトル"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "設定タブのタイトル"
+  },
+  "todaysScrolling": {
+    "message": "今日のスクロール",
+    "description": "今日のスクロール統計のタイトル"
+  },
+  "minutes": {
+    "message": "分",
+    "description": "分のラベル"
+  },
+  "meters": {
+    "message": "メートル",
+    "description": "メートルのラベル"
+  },
+  "currentSession": {
+    "message": "現在のセッション",
+    "description": "現在のセッション統計のタイトル"
+  },
+  "interventionStatus": {
+    "message": "介入状態",
+    "description": "介入状態のタイトル"
+  },
+  "noInterventionActive": {
+    "message": "有効な介入なし",
+    "description": "介入がアクティブでない場合の状態"
+  },
+  "viewFullReport": {
+    "message": "完全なレポートを表示",
+    "description": "完全なレポート表示ボタンのテキスト"
+  },
+  "resetSession": {
+    "message": "セッションをリセット",
+    "description": "セッションリセットボタンのテキスト"
+  },
+  "pixels": {
+    "message": "ピクセル",
+    "description": "ピクセルのラベル"
+  },
+  "moreOptions": {
+    "message": "その他のオプション",
+    "description": "その他のオプションボタンのテキスト"
   }
 }

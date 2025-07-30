@@ -55,6 +55,206 @@
     "message": "Dies ist die Menge an Scrollen, bevor Interventionen beginnen.",
     "description": "Hinweis zum Schwellenwert"
   },
+  "interventionLevels": {
+    "message": "Interventionsstufen",
+    "description": "Titel des Abschnitts für Interventionsstufen"
+  },
+  "interventionDescription": {
+    "message": "Scroll-Begrenzer verwendet progressive Interventionen, während Sie weiter scrollen:",
+    "description": "Beschreibung der Interventionsstufen"
+  },
+  "level1Title": {
+    "message": "Stufe 1: Verlangsamung",
+    "description": "Titel für Intervention der Stufe 1"
+  },
+  "level1Description": {
+    "message": "Wenn Sie den Schwellenwert überschreiten, wird das Scrollen verlangsamt, um achtsames Browsen zu fördern.",
+    "description": "Beschreibung für Intervention der Stufe 1"
+  },
+  "level1Multiplier": {
+    "message": "Stufe 1 Schwellenwert-Multiplikator",
+    "description": "Bezeichnung für den Multiplikator der Stufe 1"
+  },
+  "level2Title": {
+    "message": "Stufe 2: Visuelle Effekte",
+    "description": "Titel für Intervention der Stufe 2"
+  },
+  "level2Description": {
+    "message": "Wenn Sie weiter scrollen, werden visuelle Effekte wie Bildschirmvibration und Abdunkelung angewendet.",
+    "description": "Beschreibung für Intervention der Stufe 2"
+  },
+  "level2Multiplier": {
+    "message": "Stufe 2 Schwellenwert-Multiplikator",
+    "description": "Bezeichnung für den Multiplikator der Stufe 2"
+  },
+  "level3Title": {
+    "message": "Stufe 3: Scroll-Blockierung",
+    "description": "Titel für Intervention der Stufe 3"
+  },
+  "level3Description": {
+    "message": "Als letzte Intervention wird das Scrollen mit einer Nachricht blockiert, die Sie zu einer Pause ermutigt.",
+    "description": "Beschreibung für Intervention der Stufe 3"
+  },
+  "level3Multiplier": {
+    "message": "Stufe 3 Schwellenwert-Multiplikator",
+    "description": "Bezeichnung für den Multiplikator der Stufe 3"
+  },
+  "multiplierNote": {
+    "message": "Aktiviert bei (Schwellenwert × Multiplikator) Pixeln des Scrollens.",
+    "description": "Hinweis zum Multiplikator"
+  },
+  "timeRestrictions": {
+    "message": "Zeitbeschränkungen",
+    "description": "Titel des Abschnitts für Zeitbeschränkungen"
+  },
+  "enableTimeRestrictions": {
+    "message": "Zeitbasierte Beschränkungen aktivieren",
+    "description": "Bezeichnung für den Zeitbeschränkungs-Schalter"
+  },
+  "timeRestrictionsDescription": {
+    "message": "Während dieser Stunden wird das Scrollen aggressiver eingeschränkt:",
+    "description": "Beschreibung der Zeitbeschränkungen"
+  },
+  "restrictAfter": {
+    "message": "Beschränken nach:",
+    "description": "Bezeichnung für die Zeit nach der Beschränkung"
+  },
+  "restrictUntil": {
+    "message": "Bis:",
+    "description": "Bezeichnung für die Zeit bis zur Beschränkung"
+  },
+  "time8pm": {
+    "message": "20:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time9pm": {
+    "message": "21:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time10pm": {
+    "message": "22:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time11pm": {
+    "message": "23:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time12am": {
+    "message": "00:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time5am": {
+    "message": "05:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time6am": {
+    "message": "06:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time7am": {
+    "message": "07:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time8am": {
+    "message": "08:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "time9am": {
+    "message": "09:00 Uhr",
+    "description": "Zeitoption"
+  },
+  "restrictionLevel": {
+    "message": "Beschränkungsstufe",
+    "description": "Bezeichnung für die Beschränkungsstufe"
+  },
+  "restrictionLevel1": {
+    "message": "Stufe 1 - Nur Verlangsamung",
+    "description": "Option für Beschränkungsstufe"
+  },
+  "restrictionLevel2": {
+    "message": "Stufe 2 - Visuelle Effekte",
+    "description": "Option für Beschränkungsstufe"
+  },
+  "restrictionLevel3": {
+    "message": "Stufe 3 - Scroll-Blockierung",
+    "description": "Option für Beschränkungsstufe"
+  },
+  "targetSites": {
+    "message": "Zielseiten",
+    "description": "Titel des Abschnitts für Zielseiten"
+  },
+  "targetSitesDescription": {
+    "message": "Fügen Sie Websites hinzu, auf denen Sie das Scrollen einschränken möchten. Lassen Sie es leer, um alle Seiten zu überwachen.",
+    "description": "Beschreibung der Zielseiten"
+  },
+  "siteInputPlaceholder": {
+    "message": "z.B. youtube.com, twitter.com",
+    "description": "Platzhalter für die Seiteneingabe"
+  },
+  "addSite": {
+    "message": "Seite hinzufügen",
+    "description": "Text des Buttons zum Hinzufügen einer Seite"
+  },
+  "siteInputNote": {
+    "message": "Geben Sie Domainnamen ohne \"http://\" oder \"www.\" ein (z.B. \"youtube.com\")",
+    "description": "Hinweis zum Format der Seiteneingabe"
+  },
+  "appearanceSettings": {
+    "message": "Darstellungseinstellungen",
+    "description": "Titel des Abschnitts für Darstellungseinstellungen"
+  },
+  "language": {
+    "message": "Sprache",
+    "description": "Bezeichnung für den Sprachauswähler"
+  },
+  "languageNote": {
+    "message": "Änderungen werden nach dem Neuladen der Erweiterung wirksam.",
+    "description": "Hinweis zu Sprachänderungen"
+  },
+  "darkMode": {
+    "message": "Dunkler Modus",
+    "description": "Bezeichnung für den Dunkelmodus-Schalter"
+  },
+  "useSystemTheme": {
+    "message": "Systemdesign-Einstellungen verwenden",
+    "description": "Bezeichnung für den Systemdesign-Schalter"
+  },
+  "notificationSettings": {
+    "message": "Benachrichtigungseinstellungen",
+    "description": "Titel des Abschnitts für Benachrichtigungseinstellungen"
+  },
+  "enableSoundNotifications": {
+    "message": "Tonbenachrichtigungen aktivieren",
+    "description": "Bezeichnung für den Tonbenachrichtigungs-Schalter"
+  },
+  "enableVisualNotifications": {
+    "message": "Visuelle Benachrichtigungen aktivieren",
+    "description": "Bezeichnung für den visuellen Benachrichtigungs-Schalter"
+  },
+  "resetData": {
+    "message": "Daten zurücksetzen",
+    "description": "Titel des Abschnitts zum Zurücksetzen von Daten"
+  },
+  "resetDataDescription": {
+    "message": "Löschen Sie Ihre Scroll-Statistiken und beginnen Sie von vorne.",
+    "description": "Beschreibung zum Zurücksetzen von Daten"
+  },
+  "resetDailyData": {
+    "message": "Heutige Daten zurücksetzen",
+    "description": "Text des Buttons zum Zurücksetzen der täglichen Daten"
+  },
+  "resetWeeklyData": {
+    "message": "Wöchentliche Daten zurücksetzen",
+    "description": "Text des Buttons zum Zurücksetzen der wöchentlichen Daten"
+  },
+  "resetAllData": {
+    "message": "Alle Daten zurücksetzen",
+    "description": "Text des Buttons zum Zurücksetzen aller Daten"
+  },
+  "footerText": {
+    "message": "Scroll-Begrenzer © 2023 - Machen Sie Pausen. Scrollen Sie achtsam.",
+    "description": "Fußzeilentext"
+  },
   "saveSettings": {
     "message": "Einstellungen speichern",
     "description": "Text des Speichern-Buttons"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "Abbrechen",
     "description": "Text des Abbrechen-Buttons"
+  },
+  "statistics": {
+    "message": "Statistiken",
+    "description": "Titel des Statistik-Tabs"
+  },
+  "settings": {
+    "message": "Einstellungen",
+    "description": "Titel des Einstellungen-Tabs"
+  },
+  "todaysScrolling": {
+    "message": "Heutiges Scrollen",
+    "description": "Titel für die heutigen Scroll-Statistiken"
+  },
+  "minutes": {
+    "message": "Minuten",
+    "description": "Bezeichnung für Minuten"
+  },
+  "meters": {
+    "message": "Meter",
+    "description": "Bezeichnung für Meter"
+  },
+  "currentSession": {
+    "message": "Aktuelle Sitzung",
+    "description": "Titel für die Statistiken der aktuellen Sitzung"
+  },
+  "interventionStatus": {
+    "message": "Interventionsstatus",
+    "description": "Titel für den Interventionsstatus"
+  },
+  "noInterventionActive": {
+    "message": "Keine Intervention aktiv",
+    "description": "Status, wenn keine Intervention aktiv ist"
+  },
+  "viewFullReport": {
+    "message": "Vollständigen Bericht anzeigen",
+    "description": "Text des Buttons zum Anzeigen des vollständigen Berichts"
+  },
+  "resetSession": {
+    "message": "Sitzung zurücksetzen",
+    "description": "Text des Buttons zum Zurücksetzen der Sitzung"
+  },
+  "pixels": {
+    "message": "Pixel",
+    "description": "Bezeichnung für Pixel"
+  },
+  "moreOptions": {
+    "message": "Weitere Optionen",
+    "description": "Text des Buttons für weitere Optionen"
   }
 }

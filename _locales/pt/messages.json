@@ -55,6 +55,206 @@
     "message": "Esta é a quantidade de rolagem antes que as intervenções comecem.",
     "description": "Note about threshold"
   },
+  "interventionLevels": {
+    "message": "Níveis de Intervenção",
+    "description": "Title of the intervention levels section"
+  },
+  "interventionDescription": {
+    "message": "O Limitador de Rolagem usa intervenções progressivas conforme você continua rolando:",
+    "description": "Description of intervention levels"
+  },
+  "level1Title": {
+    "message": "Nível 1: Desacelerar",
+    "description": "Title for level 1 intervention"
+  },
+  "level1Description": {
+    "message": "Quando você excede o limite, a rolagem será desacelerada para incentivar a navegação consciente.",
+    "description": "Description for level 1 intervention"
+  },
+  "level1Multiplier": {
+    "message": "Multiplicador de Limite Nível 1",
+    "description": "Label for level 1 multiplier"
+  },
+  "level2Title": {
+    "message": "Nível 2: Efeitos Visuais",
+    "description": "Title for level 2 intervention"
+  },
+  "level2Description": {
+    "message": "Se você continuar rolando, efeitos visuais como vibração da tela e escurecimento serão aplicados.",
+    "description": "Description for level 2 intervention"
+  },
+  "level2Multiplier": {
+    "message": "Multiplicador de Limite Nível 2",
+    "description": "Label for level 2 multiplier"
+  },
+  "level3Title": {
+    "message": "Nível 3: Bloquear Rolagem",
+    "description": "Title for level 3 intervention"
+  },
+  "level3Description": {
+    "message": "Como intervenção final, a rolagem será bloqueada com uma mensagem incentivando você a fazer uma pausa.",
+    "description": "Description for level 3 intervention"
+  },
+  "level3Multiplier": {
+    "message": "Multiplicador de Limite Nível 3",
+    "description": "Label for level 3 multiplier"
+  },
+  "multiplierNote": {
+    "message": "Ativa em (Limite × Multiplicador) pixels de rolagem.",
+    "description": "Note about multiplier"
+  },
+  "timeRestrictions": {
+    "message": "Restrições de Tempo",
+    "description": "Title of the time restrictions section"
+  },
+  "enableTimeRestrictions": {
+    "message": "Habilitar restrições baseadas em tempo",
+    "description": "Label for time restrictions toggle"
+  },
+  "timeRestrictionsDescription": {
+    "message": "Durante estas horas, a rolagem será restringida mais agressivamente:",
+    "description": "Description of time restrictions"
+  },
+  "restrictAfter": {
+    "message": "Restringir após:",
+    "description": "Label for restrict after time"
+  },
+  "restrictUntil": {
+    "message": "Até:",
+    "description": "Label for restrict until time"
+  },
+  "time8pm": {
+    "message": "20:00",
+    "description": "Time option"
+  },
+  "time9pm": {
+    "message": "21:00",
+    "description": "Time option"
+  },
+  "time10pm": {
+    "message": "22:00",
+    "description": "Time option"
+  },
+  "time11pm": {
+    "message": "23:00",
+    "description": "Time option"
+  },
+  "time12am": {
+    "message": "00:00",
+    "description": "Time option"
+  },
+  "time5am": {
+    "message": "05:00",
+    "description": "Time option"
+  },
+  "time6am": {
+    "message": "06:00",
+    "description": "Time option"
+  },
+  "time7am": {
+    "message": "07:00",
+    "description": "Time option"
+  },
+  "time8am": {
+    "message": "08:00",
+    "description": "Time option"
+  },
+  "time9am": {
+    "message": "09:00",
+    "description": "Time option"
+  },
+  "restrictionLevel": {
+    "message": "Nível de Restrição",
+    "description": "Label for restriction level"
+  },
+  "restrictionLevel1": {
+    "message": "Nível 1 - Apenas Desacelerar",
+    "description": "Restriction level option"
+  },
+  "restrictionLevel2": {
+    "message": "Nível 2 - Efeitos Visuais",
+    "description": "Restriction level option"
+  },
+  "restrictionLevel3": {
+    "message": "Nível 3 - Bloquear Rolagem",
+    "description": "Restriction level option"
+  },
+  "targetSites": {
+    "message": "Sites Específicos Alvo",
+    "description": "Title of the target sites section"
+  },
+  "targetSitesDescription": {
+    "message": "Adicione sites onde você deseja limitar a rolagem. Deixe vazio para monitorar todos os sites.",
+    "description": "Description of target sites"
+  },
+  "siteInputPlaceholder": {
+    "message": "ex., youtube.com, twitter.com",
+    "description": "Placeholder for site input"
+  },
+  "addSite": {
+    "message": "Adicionar Site",
+    "description": "Button text for adding a site"
+  },
+  "siteInputNote": {
+    "message": "Digite nomes de domínio sem \"http://\" ou \"www.\" (ex., \"youtube.com\")",
+    "description": "Note about site input format"
+  },
+  "appearanceSettings": {
+    "message": "Configurações de Aparência",
+    "description": "Title of the appearance settings section"
+  },
+  "language": {
+    "message": "Idioma",
+    "description": "Label for language selector"
+  },
+  "languageNote": {
+    "message": "As alterações terão efeito após recarregar a extensão.",
+    "description": "Note about language changes"
+  },
+  "darkMode": {
+    "message": "Modo Escuro",
+    "description": "Label for dark mode toggle"
+  },
+  "useSystemTheme": {
+    "message": "Usar preferências de tema do sistema",
+    "description": "Label for system theme toggle"
+  },
+  "notificationSettings": {
+    "message": "Configurações de Notificação",
+    "description": "Title of the notification settings section"
+  },
+  "enableSoundNotifications": {
+    "message": "Habilitar notificações sonoras",
+    "description": "Label for sound notifications toggle"
+  },
+  "enableVisualNotifications": {
+    "message": "Habilitar notificações visuais",
+    "description": "Label for visual notifications toggle"
+  },
+  "resetData": {
+    "message": "Redefinir Dados",
+    "description": "Title of the reset data section"
+  },
+  "resetDataDescription": {
+    "message": "Limpe suas estatísticas de rolagem e comece de novo.",
+    "description": "Description of reset data"
+  },
+  "resetDailyData": {
+    "message": "Redefinir Dados do Dia",
+    "description": "Button text for resetting daily data"
+  },
+  "resetWeeklyData": {
+    "message": "Redefinir Dados da Semana",
+    "description": "Button text for resetting weekly data"
+  },
+  "resetAllData": {
+    "message": "Redefinir Todos os Dados",
+    "description": "Button text for resetting all data"
+  },
+  "footerText": {
+    "message": "Limitador de Rolagem © 2023 - Faça pausas. Role conscientemente.",
+    "description": "Footer text"
+  },
   "saveSettings": {
     "message": "Salvar Configurações",
     "description": "Save button text"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "Cancelar",
     "description": "Cancel button text"
+  },
+  "statistics": {
+    "message": "Estatísticas",
+    "description": "Tab title for statistics"
+  },
+  "settings": {
+    "message": "Configurações",
+    "description": "Tab title for settings"
+  },
+  "todaysScrolling": {
+    "message": "Rolagem de Hoje",
+    "description": "Title for today's scrolling statistics"
+  },
+  "minutes": {
+    "message": "Minutos",
+    "description": "Label for minutes"
+  },
+  "meters": {
+    "message": "Metros",
+    "description": "Label for meters"
+  },
+  "currentSession": {
+    "message": "Sessão Atual",
+    "description": "Title for current session statistics"
+  },
+  "interventionStatus": {
+    "message": "Status de Intervenção",
+    "description": "Title for intervention status"
+  },
+  "noInterventionActive": {
+    "message": "Nenhuma intervenção ativa",
+    "description": "Status when no intervention is active"
+  },
+  "viewFullReport": {
+    "message": "Ver Relatório Completo",
+    "description": "Button text for viewing full report"
+  },
+  "resetSession": {
+    "message": "Redefinir Sessão",
+    "description": "Button text for resetting session"
+  },
+  "pixels": {
+    "message": "pixels",
+    "description": "Label for pixels"
+  },
+  "moreOptions": {
+    "message": "Mais Opções",
+    "description": "Button text for more options"
   }
 }

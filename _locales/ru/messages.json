@@ -55,6 +55,206 @@
     "message": "Это количество прокрутки до начала вмешательств.",
     "description": "Примечание о пороге"
   },
+  "interventionLevels": {
+    "message": "Уровни вмешательства",
+    "description": "Заголовок раздела уровней вмешательства"
+  },
+  "interventionDescription": {
+    "message": "Ограничитель прокрутки использует прогрессивные вмешательства по мере продолжения прокрутки:",
+    "description": "Описание уровней вмешательства"
+  },
+  "level1Title": {
+    "message": "Уровень 1: Замедление",
+    "description": "Заголовок для вмешательства уровня 1"
+  },
+  "level1Description": {
+    "message": "Когда вы превышаете порог, прокрутка будет замедлена, чтобы способствовать осознанному просмотру.",
+    "description": "Описание для вмешательства уровня 1"
+  },
+  "level1Multiplier": {
+    "message": "Множитель порога уровня 1",
+    "description": "Метка для множителя уровня 1"
+  },
+  "level2Title": {
+    "message": "Уровень 2: Визуальные эффекты",
+    "description": "Заголовок для вмешательства уровня 2"
+  },
+  "level2Description": {
+    "message": "Если вы продолжаете прокрутку, будут применены визуальные эффекты, такие как вибрация экрана и затемнение.",
+    "description": "Описание для вмешательства уровня 2"
+  },
+  "level2Multiplier": {
+    "message": "Множитель порога уровня 2",
+    "description": "Метка для множителя уровня 2"
+  },
+  "level3Title": {
+    "message": "Уровень 3: Блокировка прокрутки",
+    "description": "Заголовок для вмешательства уровня 3"
+  },
+  "level3Description": {
+    "message": "В качестве финального вмешательства, прокрутка будет заблокирована с сообщением, побуждающим вас сделать перерыв.",
+    "description": "Описание для вмешательства уровня 3"
+  },
+  "level3Multiplier": {
+    "message": "Множитель порога уровня 3",
+    "description": "Метка для множителя уровня 3"
+  },
+  "multiplierNote": {
+    "message": "Активируется при (Порог × Множитель) пикселей прокрутки.",
+    "description": "Примечание о множителе"
+  },
+  "timeRestrictions": {
+    "message": "Временные ограничения",
+    "description": "Заголовок раздела временных ограничений"
+  },
+  "enableTimeRestrictions": {
+    "message": "Включить ограничения по времени",
+    "description": "Метка для переключателя временных ограничений"
+  },
+  "timeRestrictionsDescription": {
+    "message": "В течение этих часов прокрутка будет ограничена более агрессивно:",
+    "description": "Описание временных ограничений"
+  },
+  "restrictAfter": {
+    "message": "Ограничить после:",
+    "description": "Метка для времени начала ограничения"
+  },
+  "restrictUntil": {
+    "message": "До:",
+    "description": "Метка для времени окончания ограничения"
+  },
+  "time8pm": {
+    "message": "20:00",
+    "description": "Вариант времени"
+  },
+  "time9pm": {
+    "message": "21:00",
+    "description": "Вариант времени"
+  },
+  "time10pm": {
+    "message": "22:00",
+    "description": "Вариант времени"
+  },
+  "time11pm": {
+    "message": "23:00",
+    "description": "Вариант времени"
+  },
+  "time12am": {
+    "message": "00:00",
+    "description": "Вариант времени"
+  },
+  "time5am": {
+    "message": "05:00",
+    "description": "Вариант времени"
+  },
+  "time6am": {
+    "message": "06:00",
+    "description": "Вариант времени"
+  },
+  "time7am": {
+    "message": "07:00",
+    "description": "Вариант времени"
+  },
+  "time8am": {
+    "message": "08:00",
+    "description": "Вариант времени"
+  },
+  "time9am": {
+    "message": "09:00",
+    "description": "Вариант времени"
+  },
+  "restrictionLevel": {
+    "message": "Уровень ограничения",
+    "description": "Метка для уровня ограничения"
+  },
+  "restrictionLevel1": {
+    "message": "Уровень 1 - Только замедление",
+    "description": "Вариант уровня ограничения"
+  },
+  "restrictionLevel2": {
+    "message": "Уровень 2 - Визуальные эффекты",
+    "description": "Вариант уровня ограничения"
+  },
+  "restrictionLevel3": {
+    "message": "Уровень 3 - Блокировка прокрутки",
+    "description": "Вариант уровня ограничения"
+  },
+  "targetSites": {
+    "message": "Целевые сайты",
+    "description": "Заголовок раздела целевых сайтов"
+  },
+  "targetSitesDescription": {
+    "message": "Добавьте веб-сайты, на которых вы хотите ограничить прокрутку. Оставьте пустым для мониторинга всех сайтов.",
+    "description": "Описание целевых сайтов"
+  },
+  "siteInputPlaceholder": {
+    "message": "например, youtube.com, twitter.com",
+    "description": "Заполнитель для ввода сайта"
+  },
+  "addSite": {
+    "message": "Добавить сайт",
+    "description": "Текст кнопки для добавления сайта"
+  },
+  "siteInputNote": {
+    "message": "Введите доменные имена без \"http://\" или \"www.\" (например, \"youtube.com\")",
+    "description": "Примечание о формате ввода сайта"
+  },
+  "appearanceSettings": {
+    "message": "Настройки внешнего вида",
+    "description": "Заголовок раздела настроек внешнего вида"
+  },
+  "language": {
+    "message": "Язык",
+    "description": "Метка для селектора языка"
+  },
+  "languageNote": {
+    "message": "Изменения вступят в силу после перезагрузки расширения.",
+    "description": "Примечание об изменениях языка"
+  },
+  "darkMode": {
+    "message": "Темный режим",
+    "description": "Метка для переключателя темного режима"
+  },
+  "useSystemTheme": {
+    "message": "Использовать системные настройки темы",
+    "description": "Метка для переключателя системной темы"
+  },
+  "notificationSettings": {
+    "message": "Настройки уведомлений",
+    "description": "Заголовок раздела настроек уведомлений"
+  },
+  "enableSoundNotifications": {
+    "message": "Включить звуковые уведомления",
+    "description": "Метка для переключателя звуковых уведомлений"
+  },
+  "enableVisualNotifications": {
+    "message": "Включить визуальные уведомления",
+    "description": "Метка для переключателя визуальных уведомлений"
+  },
+  "resetData": {
+    "message": "Сбросить данные",
+    "description": "Заголовок раздела сброса данных"
+  },
+  "resetDataDescription": {
+    "message": "Очистите статистику прокрутки и начните заново.",
+    "description": "Описание сброса данных"
+  },
+  "resetDailyData": {
+    "message": "Сбросить данные за сегодня",
+    "description": "Текст кнопки для сброса ежедневных данных"
+  },
+  "resetWeeklyData": {
+    "message": "Сбросить данные за неделю",
+    "description": "Текст кнопки для сброса еженедельных данных"
+  },
+  "resetAllData": {
+    "message": "Сбросить все данные",
+    "description": "Текст кнопки для сброса всех данных"
+  },
+  "footerText": {
+    "message": "Ограничитель прокрутки © 2023 - Делайте перерывы. Прокручивайте осознанно.",
+    "description": "Текст нижнего колонтитула"
+  },
   "saveSettings": {
     "message": "Сохранить настройки",
     "description": "Текст кнопки сохранения"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "Отмена",
     "description": "Текст кнопки отмены"
+  },
+  "statistics": {
+    "message": "Статистика",
+    "description": "Заголовок вкладки статистики"
+  },
+  "settings": {
+    "message": "Настройки",
+    "description": "Заголовок вкладки настроек"
+  },
+  "todaysScrolling": {
+    "message": "Прокрутка за сегодня",
+    "description": "Заголовок для статистики прокрутки за сегодня"
+  },
+  "minutes": {
+    "message": "Минуты",
+    "description": "Метка для минут"
+  },
+  "meters": {
+    "message": "Метры",
+    "description": "Метка для метров"
+  },
+  "currentSession": {
+    "message": "Текущая сессия",
+    "description": "Заголовок для статистики текущей сессии"
+  },
+  "interventionStatus": {
+    "message": "Статус вмешательства",
+    "description": "Заголовок для статуса вмешательства"
+  },
+  "noInterventionActive": {
+    "message": "Нет активных вмешательств",
+    "description": "Статус, когда нет активных вмешательств"
+  },
+  "viewFullReport": {
+    "message": "Просмотреть полный отчет",
+    "description": "Текст кнопки для просмотра полного отчета"
+  },
+  "resetSession": {
+    "message": "Сбросить сессию",
+    "description": "Текст кнопки для сброса сессии"
+  },
+  "pixels": {
+    "message": "пикселей",
+    "description": "Метка для пикселей"
+  },
+  "moreOptions": {
+    "message": "Дополнительные опции",
+    "description": "Текст кнопки для дополнительных опций"
   }
 }

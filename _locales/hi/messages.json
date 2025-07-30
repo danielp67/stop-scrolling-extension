@@ -55,6 +55,206 @@
     "message": "यह हस्तक्षेप शुरू होने से पहले स्क्रॉलिंग की मात्रा है।",
     "description": "थ्रेशोल्ड के बारे में नोट"
   },
+  "interventionLevels": {
+    "message": "हस्तक्षेप स्तर",
+    "description": "हस्तक्षेप स्तर अनुभाग का शीर्षक"
+  },
+  "interventionDescription": {
+    "message": "स्क्रॉल लिमिटर आपके स्क्रॉलिंग जारी रखने पर प्रगतिशील हस्तक्षेप का उपयोग करता है:",
+    "description": "हस्तक्षेप स्तरों का विवरण"
+  },
+  "level1Title": {
+    "message": "स्तर 1: धीमा करें",
+    "description": "स्तर 1 हस्तक्षेप के लिए शीर्षक"
+  },
+  "level1Description": {
+    "message": "जब आप थ्रेशोल्ड से अधिक हो जाते हैं, तो सचेत ब्राउज़िंग को प्रोत्साहित करने के लिए स्क्रॉलिंग धीमी हो जाएगी।",
+    "description": "स्तर 1 हस्तक्षेप के लिए विवरण"
+  },
+  "level1Multiplier": {
+    "message": "स्तर 1 थ्रेशोल्ड गुणक",
+    "description": "स्तर 1 गुणक के लिए लेबल"
+  },
+  "level2Title": {
+    "message": "स्तर 2: दृश्य प्रभाव",
+    "description": "स्तर 2 हस्तक्षेप के लिए शीर्षक"
+  },
+  "level2Description": {
+    "message": "यदि आप स्क्रॉलिंग जारी रखते हैं, तो स्क्रीन कंपन और धुंधलापन जैसे दृश्य प्रभाव लागू किए जाएंगे।",
+    "description": "स्तर 2 हस्तक्षेप के लिए विवरण"
+  },
+  "level2Multiplier": {
+    "message": "स्तर 2 थ्रेशोल्ड गुणक",
+    "description": "स्तर 2 गुणक के लिए लेबल"
+  },
+  "level3Title": {
+    "message": "स्तर 3: स्क्रॉलिंग ब्लॉक करें",
+    "description": "स्तर 3 हस्तक्षेप के लिए शीर्षक"
+  },
+  "level3Description": {
+    "message": "अंतिम हस्तक्षेप के रूप में, स्क्रॉलिंग को एक संदेश के साथ ब्लॉक कर दिया जाएगा जो आपको ब्रेक लेने के लिए प्रोत्साहित करता है।",
+    "description": "स्तर 3 हस्तक्षेप के लिए विवरण"
+  },
+  "level3Multiplier": {
+    "message": "स्तर 3 थ्रेशोल्ड गुणक",
+    "description": "स्तर 3 गुणक के लिए लेबल"
+  },
+  "multiplierNote": {
+    "message": "स्क्रॉलिंग के (थ्रेशोल्ड × गुणक) पिक्सेल पर सक्रिय होता है।",
+    "description": "गुणक के बारे में नोट"
+  },
+  "timeRestrictions": {
+    "message": "समय प्रतिबंध",
+    "description": "समय प्रतिबंध अनुभाग का शीर्षक"
+  },
+  "enableTimeRestrictions": {
+    "message": "समय-आधारित प्रतिबंध सक्षम करें",
+    "description": "समय प्रतिबंध टॉगल के लिए लेबल"
+  },
+  "timeRestrictionsDescription": {
+    "message": "इन घंटों के दौरान, स्क्रॉलिंग को अधिक आक्रामक रूप से प्रतिबंधित किया जाएगा:",
+    "description": "समय प्रतिबंधों का विवरण"
+  },
+  "restrictAfter": {
+    "message": "इसके बाद प्रतिबंधित करें:",
+    "description": "प्रतिबंध के बाद के समय के लिए लेबल"
+  },
+  "restrictUntil": {
+    "message": "तब तक:",
+    "description": "प्रतिबंध तक के समय के लिए लेबल"
+  },
+  "time8pm": {
+    "message": "शाम 8:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time9pm": {
+    "message": "शाम 9:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time10pm": {
+    "message": "रात 10:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time11pm": {
+    "message": "रात 11:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time12am": {
+    "message": "रात 12:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time5am": {
+    "message": "सुबह 5:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time6am": {
+    "message": "सुबह 6:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time7am": {
+    "message": "सुबह 7:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time8am": {
+    "message": "सुबह 8:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "time9am": {
+    "message": "सुबह 9:00 बजे",
+    "description": "समय विकल्प"
+  },
+  "restrictionLevel": {
+    "message": "प्रतिबंध स्तर",
+    "description": "प्रतिबंध स्तर के लिए लेबल"
+  },
+  "restrictionLevel1": {
+    "message": "स्तर 1 - केवल धीमा करें",
+    "description": "प्रतिबंध स्तर विकल्प"
+  },
+  "restrictionLevel2": {
+    "message": "स्तर 2 - दृश्य प्रभाव",
+    "description": "प्रतिबंध स्तर विकल्प"
+  },
+  "restrictionLevel3": {
+    "message": "स्तर 3 - स्क्रॉलिंग ब्लॉक करें",
+    "description": "प्रतिबंध स्तर विकल्प"
+  },
+  "targetSites": {
+    "message": "लक्षित विशिष्ट साइटें",
+    "description": "लक्षित साइटों के अनुभाग का शीर्षक"
+  },
+  "targetSitesDescription": {
+    "message": "उन वेबसाइटों को जोड़ें जहां आप स्क्रॉलिंग को सीमित करना चाहते हैं। सभी साइटों की निगरानी के लिए खाली छोड़ दें।",
+    "description": "लक्षित साइटों का विवरण"
+  },
+  "siteInputPlaceholder": {
+    "message": "उदाहरण, youtube.com, twitter.com",
+    "description": "साइट इनपुट के लिए प्लेसहोल्डर"
+  },
+  "addSite": {
+    "message": "साइट जोड़ें",
+    "description": "साइट जोड़ने के लिए बटन टेक्स्ट"
+  },
+  "siteInputNote": {
+    "message": "\"http://\" या \"www.\" के बिना डोमेन नाम दर्ज करें (उदाहरण, \"youtube.com\")",
+    "description": "साइट इनपुट प्रारूप के बारे में नोट"
+  },
+  "appearanceSettings": {
+    "message": "उपस्थिति सेटिंग्स",
+    "description": "उपस्थिति सेटिंग्स अनुभाग का शीर्षक"
+  },
+  "language": {
+    "message": "भाषा",
+    "description": "भाषा चयनकर्ता के लिए लेबल"
+  },
+  "languageNote": {
+    "message": "एक्सटेंशन को पुनः लोड करने के बाद परिवर्तन प्रभावी होंगे।",
+    "description": "भाषा परिवर्तनों के बारे में नोट"
+  },
+  "darkMode": {
+    "message": "डार्क मोड",
+    "description": "डार्क मोड टॉगल के लिए लेबल"
+  },
+  "useSystemTheme": {
+    "message": "सिस्टम थीम प्राथमिकताओं का उपयोग करें",
+    "description": "सिस्टम थीम टॉगल के लिए लेबल"
+  },
+  "notificationSettings": {
+    "message": "सूचना सेटिंग्स",
+    "description": "सूचना सेटिंग्स अनुभाग का शीर्षक"
+  },
+  "enableSoundNotifications": {
+    "message": "ध्वनि सूचनाएं सक्षम करें",
+    "description": "ध्वनि सूचनाएं टॉगल के लिए लेबल"
+  },
+  "enableVisualNotifications": {
+    "message": "दृश्य सूचनाएं सक्षम करें",
+    "description": "दृश्य सूचनाएं टॉगल के लिए लेबल"
+  },
+  "resetData": {
+    "message": "डेटा रीसेट करें",
+    "description": "डेटा रीसेट अनुभाग का शीर्षक"
+  },
+  "resetDataDescription": {
+    "message": "अपने स्क्रॉलिंग आंकड़े साफ़ करें और नए सिरे से शुरू करें।",
+    "description": "डेटा रीसेट का विवरण"
+  },
+  "resetDailyData": {
+    "message": "आज का डेटा रीसेट करें",
+    "description": "दैनिक डेटा रीसेट करने के लिए बटन टेक्स्ट"
+  },
+  "resetWeeklyData": {
+    "message": "साप्ताहिक डेटा रीसेट करें",
+    "description": "साप्ताहिक डेटा रीसेट करने के लिए बटन टेक्स्ट"
+  },
+  "resetAllData": {
+    "message": "सभी डेटा रीसेट करें",
+    "description": "सभी डेटा रीसेट करने के लिए बटन टेक्स्ट"
+  },
+  "footerText": {
+    "message": "स्क्रॉल लिमिटर © 2023 - ब्रेक लें। सचेत रूप से स्क्रॉल करें।",
+    "description": "फुटर टेक्स्ट"
+  },
   "saveSettings": {
     "message": "सेटिंग्स सहेजें",
     "description": "सहेजें बटन टेक्स्ट"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "रद्द करें",
     "description": "रद्द करें बटन टेक्स्ट"
+  },
+  "statistics": {
+    "message": "आंकड़े",
+    "description": "आंकड़े टैब का शीर्षक"
+  },
+  "settings": {
+    "message": "सेटिंग्स",
+    "description": "सेटिंग्स टैब का शीर्षक"
+  },
+  "todaysScrolling": {
+    "message": "आज की स्क्रॉलिंग",
+    "description": "आज की स्क्रॉलिंग आंकड़ों का शीर्षक"
+  },
+  "minutes": {
+    "message": "मिनट",
+    "description": "मिनट के लिए लेबल"
+  },
+  "meters": {
+    "message": "मीटर",
+    "description": "मीटर के लिए लेबल"
+  },
+  "currentSession": {
+    "message": "वर्तमान सत्र",
+    "description": "वर्तमान सत्र आंकड़ों का शीर्षक"
+  },
+  "interventionStatus": {
+    "message": "हस्तक्षेप स्थिति",
+    "description": "हस्तक्षेप स्थिति का शीर्षक"
+  },
+  "noInterventionActive": {
+    "message": "कोई हस्तक्षेप सक्रिय नहीं",
+    "description": "जब कोई हस्तक्षेप सक्रिय नहीं है तब स्थिति"
+  },
+  "viewFullReport": {
+    "message": "पूरी रिपोर्ट देखें",
+    "description": "पूरी रिपोर्ट देखने के लिए बटन टेक्स्ट"
+  },
+  "resetSession": {
+    "message": "सत्र रीसेट करें",
+    "description": "सत्र रीसेट करने के लिए बटन टेक्स्ट"
+  },
+  "pixels": {
+    "message": "पिक्सेल",
+    "description": "पिक्सेल के लिए लेबल"
+  },
+  "moreOptions": {
+    "message": "अधिक विकल्प",
+    "description": "अधिक विकल्प बटन के लिए टेक्स्ट"
   }
 }

@@ -55,6 +55,206 @@
     "message": "Questa è la quantità di scorrimento prima che inizino gli interventi.",
     "description": "Note about threshold"
   },
+  "interventionLevels": {
+    "message": "Livelli di Intervento",
+    "description": "Title of the intervention levels section"
+  },
+  "interventionDescription": {
+    "message": "Il Limitatore di Scorrimento utilizza interventi progressivi mentre continui a scorrere:",
+    "description": "Description of intervention levels"
+  },
+  "level1Title": {
+    "message": "Livello 1: Rallentamento",
+    "description": "Title for level 1 intervention"
+  },
+  "level1Description": {
+    "message": "Quando superi la soglia, lo scorrimento sarà rallentato per incoraggiare una navigazione più consapevole.",
+    "description": "Description for level 1 intervention"
+  },
+  "level1Multiplier": {
+    "message": "Moltiplicatore Soglia Livello 1",
+    "description": "Label for level 1 multiplier"
+  },
+  "level2Title": {
+    "message": "Livello 2: Effetti Visivi",
+    "description": "Title for level 2 intervention"
+  },
+  "level2Description": {
+    "message": "Se continui a scorrere, verranno applicati effetti visivi come vibrazione dello schermo e oscuramento.",
+    "description": "Description for level 2 intervention"
+  },
+  "level2Multiplier": {
+    "message": "Moltiplicatore Soglia Livello 2",
+    "description": "Label for level 2 multiplier"
+  },
+  "level3Title": {
+    "message": "Livello 3: Blocco Scorrimento",
+    "description": "Title for level 3 intervention"
+  },
+  "level3Description": {
+    "message": "Come intervento finale, lo scorrimento sarà bloccato con un messaggio che ti incoraggia a fare una pausa.",
+    "description": "Description for level 3 intervention"
+  },
+  "level3Multiplier": {
+    "message": "Moltiplicatore Soglia Livello 3",
+    "description": "Label for level 3 multiplier"
+  },
+  "multiplierNote": {
+    "message": "Si attiva a (Soglia × Moltiplicatore) pixel di scorrimento.",
+    "description": "Note about multiplier"
+  },
+  "timeRestrictions": {
+    "message": "Restrizioni di Tempo",
+    "description": "Title of the time restrictions section"
+  },
+  "enableTimeRestrictions": {
+    "message": "Abilita restrizioni basate sul tempo",
+    "description": "Label for time restrictions toggle"
+  },
+  "timeRestrictionsDescription": {
+    "message": "Durante queste ore, lo scorrimento sarà limitato più aggressivamente:",
+    "description": "Description of time restrictions"
+  },
+  "restrictAfter": {
+    "message": "Limita dopo:",
+    "description": "Label for restrict after time"
+  },
+  "restrictUntil": {
+    "message": "Fino a:",
+    "description": "Label for restrict until time"
+  },
+  "time8pm": {
+    "message": "20:00",
+    "description": "Time option"
+  },
+  "time9pm": {
+    "message": "21:00",
+    "description": "Time option"
+  },
+  "time10pm": {
+    "message": "22:00",
+    "description": "Time option"
+  },
+  "time11pm": {
+    "message": "23:00",
+    "description": "Time option"
+  },
+  "time12am": {
+    "message": "00:00",
+    "description": "Time option"
+  },
+  "time5am": {
+    "message": "05:00",
+    "description": "Time option"
+  },
+  "time6am": {
+    "message": "06:00",
+    "description": "Time option"
+  },
+  "time7am": {
+    "message": "07:00",
+    "description": "Time option"
+  },
+  "time8am": {
+    "message": "08:00",
+    "description": "Time option"
+  },
+  "time9am": {
+    "message": "09:00",
+    "description": "Time option"
+  },
+  "restrictionLevel": {
+    "message": "Livello di Restrizione",
+    "description": "Label for restriction level"
+  },
+  "restrictionLevel1": {
+    "message": "Livello 1 - Solo Rallentamento",
+    "description": "Restriction level option"
+  },
+  "restrictionLevel2": {
+    "message": "Livello 2 - Effetti Visivi",
+    "description": "Restriction level option"
+  },
+  "restrictionLevel3": {
+    "message": "Livello 3 - Blocco Scorrimento",
+    "description": "Restriction level option"
+  },
+  "targetSites": {
+    "message": "Siti Specifici Target",
+    "description": "Title of the target sites section"
+  },
+  "targetSitesDescription": {
+    "message": "Aggiungi siti web dove vuoi limitare lo scorrimento. Lascia vuoto per monitorare tutti i siti.",
+    "description": "Description of target sites"
+  },
+  "siteInputPlaceholder": {
+    "message": "es., youtube.com, twitter.com",
+    "description": "Placeholder for site input"
+  },
+  "addSite": {
+    "message": "Aggiungi Sito",
+    "description": "Button text for adding a site"
+  },
+  "siteInputNote": {
+    "message": "Inserisci nomi di dominio senza \"http://\" o \"www.\" (es., \"youtube.com\")",
+    "description": "Note about site input format"
+  },
+  "appearanceSettings": {
+    "message": "Impostazioni Aspetto",
+    "description": "Title of the appearance settings section"
+  },
+  "language": {
+    "message": "Lingua",
+    "description": "Label for language selector"
+  },
+  "languageNote": {
+    "message": "Le modifiche avranno effetto dopo aver ricaricato l'estensione.",
+    "description": "Note about language changes"
+  },
+  "darkMode": {
+    "message": "Modalità Scura",
+    "description": "Label for dark mode toggle"
+  },
+  "useSystemTheme": {
+    "message": "Usa preferenze tema di sistema",
+    "description": "Label for system theme toggle"
+  },
+  "notificationSettings": {
+    "message": "Impostazioni Notifiche",
+    "description": "Title of the notification settings section"
+  },
+  "enableSoundNotifications": {
+    "message": "Abilita notifiche sonore",
+    "description": "Label for sound notifications toggle"
+  },
+  "enableVisualNotifications": {
+    "message": "Abilita notifiche visive",
+    "description": "Label for visual notifications toggle"
+  },
+  "resetData": {
+    "message": "Reimposta Dati",
+    "description": "Title of the reset data section"
+  },
+  "resetDataDescription": {
+    "message": "Cancella le tue statistiche di scorrimento e ricomincia da capo.",
+    "description": "Description of reset data"
+  },
+  "resetDailyData": {
+    "message": "Reimposta Dati Giornalieri",
+    "description": "Button text for resetting daily data"
+  },
+  "resetWeeklyData": {
+    "message": "Reimposta Dati Settimanali",
+    "description": "Button text for resetting weekly data"
+  },
+  "resetAllData": {
+    "message": "Reimposta Tutti i Dati",
+    "description": "Button text for resetting all data"
+  },
+  "footerText": {
+    "message": "Limitatore di Scorrimento © 2023 - Fai pause. Scorri consapevolmente.",
+    "description": "Footer text"
+  },
   "saveSettings": {
     "message": "Salva Impostazioni",
     "description": "Save button text"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "Annulla",
     "description": "Cancel button text"
+  },
+  "statistics": {
+    "message": "Statistiche",
+    "description": "Tab title for statistics"
+  },
+  "settings": {
+    "message": "Impostazioni",
+    "description": "Tab title for settings"
+  },
+  "todaysScrolling": {
+    "message": "Scorrimento di Oggi",
+    "description": "Title for today's scrolling statistics"
+  },
+  "minutes": {
+    "message": "Minuti",
+    "description": "Label for minutes"
+  },
+  "meters": {
+    "message": "Metri",
+    "description": "Label for meters"
+  },
+  "currentSession": {
+    "message": "Sessione Corrente",
+    "description": "Title for current session statistics"
+  },
+  "interventionStatus": {
+    "message": "Stato Intervento",
+    "description": "Title for intervention status"
+  },
+  "noInterventionActive": {
+    "message": "Nessun intervento attivo",
+    "description": "Status when no intervention is active"
+  },
+  "viewFullReport": {
+    "message": "Visualizza Rapporto Completo",
+    "description": "Button text for viewing full report"
+  },
+  "resetSession": {
+    "message": "Reimposta Sessione",
+    "description": "Button text for resetting session"
+  },
+  "pixels": {
+    "message": "pixel",
+    "description": "Label for pixels"
+  },
+  "moreOptions": {
+    "message": "Più Opzioni",
+    "description": "Button text for more options"
   }
 }

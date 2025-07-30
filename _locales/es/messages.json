@@ -55,6 +55,206 @@
     "message": "Esta es la cantidad de desplazamiento antes de que comiencen las intervenciones.",
     "description": "Nota sobre el umbral"
   },
+  "interventionLevels": {
+    "message": "Niveles de Intervención",
+    "description": "Título de la sección de niveles de intervención"
+  },
+  "interventionDescription": {
+    "message": "Limitador de Desplazamiento utiliza intervenciones progresivas a medida que continúas desplazándote:",
+    "description": "Descripción de los niveles de intervención"
+  },
+  "level1Title": {
+    "message": "Nivel 1: Reducir velocidad",
+    "description": "Título para la intervención de nivel 1"
+  },
+  "level1Description": {
+    "message": "Cuando excedes el umbral, el desplazamiento se ralentizará para fomentar una navegación más consciente.",
+    "description": "Descripción para la intervención de nivel 1"
+  },
+  "level1Multiplier": {
+    "message": "Multiplicador de umbral de nivel 1",
+    "description": "Etiqueta para el multiplicador de nivel 1"
+  },
+  "level2Title": {
+    "message": "Nivel 2: Efectos visuales",
+    "description": "Título para la intervención de nivel 2"
+  },
+  "level2Description": {
+    "message": "Si continúas desplazándote, se aplicarán efectos visuales como vibración de pantalla y oscurecimiento.",
+    "description": "Descripción para la intervención de nivel 2"
+  },
+  "level2Multiplier": {
+    "message": "Multiplicador de umbral de nivel 2",
+    "description": "Etiqueta para el multiplicador de nivel 2"
+  },
+  "level3Title": {
+    "message": "Nivel 3: Bloquear desplazamiento",
+    "description": "Título para la intervención de nivel 3"
+  },
+  "level3Description": {
+    "message": "Como intervención final, el desplazamiento se bloqueará con un mensaje que te anima a tomar un descanso.",
+    "description": "Descripción para la intervención de nivel 3"
+  },
+  "level3Multiplier": {
+    "message": "Multiplicador de umbral de nivel 3",
+    "description": "Etiqueta para el multiplicador de nivel 3"
+  },
+  "multiplierNote": {
+    "message": "Se activa en (Umbral × Multiplicador) píxeles de desplazamiento.",
+    "description": "Nota sobre el multiplicador"
+  },
+  "timeRestrictions": {
+    "message": "Restricciones de tiempo",
+    "description": "Título de la sección de restricciones de tiempo"
+  },
+  "enableTimeRestrictions": {
+    "message": "Habilitar restricciones basadas en tiempo",
+    "description": "Etiqueta para activar restricciones de tiempo"
+  },
+  "timeRestrictionsDescription": {
+    "message": "Durante estas horas, el desplazamiento se restringirá más agresivamente:",
+    "description": "Descripción de las restricciones de tiempo"
+  },
+  "restrictAfter": {
+    "message": "Restringir después de:",
+    "description": "Etiqueta para restringir después de cierta hora"
+  },
+  "restrictUntil": {
+    "message": "Hasta:",
+    "description": "Etiqueta para restringir hasta cierta hora"
+  },
+  "time8pm": {
+    "message": "8:00 PM",
+    "description": "Opción de hora"
+  },
+  "time9pm": {
+    "message": "9:00 PM",
+    "description": "Opción de hora"
+  },
+  "time10pm": {
+    "message": "10:00 PM",
+    "description": "Opción de hora"
+  },
+  "time11pm": {
+    "message": "11:00 PM",
+    "description": "Opción de hora"
+  },
+  "time12am": {
+    "message": "12:00 AM",
+    "description": "Opción de hora"
+  },
+  "time5am": {
+    "message": "5:00 AM",
+    "description": "Opción de hora"
+  },
+  "time6am": {
+    "message": "6:00 AM",
+    "description": "Opción de hora"
+  },
+  "time7am": {
+    "message": "7:00 AM",
+    "description": "Opción de hora"
+  },
+  "time8am": {
+    "message": "8:00 AM",
+    "description": "Opción de hora"
+  },
+  "time9am": {
+    "message": "9:00 AM",
+    "description": "Opción de hora"
+  },
+  "restrictionLevel": {
+    "message": "Nivel de restricción",
+    "description": "Etiqueta para el nivel de restricción"
+  },
+  "restrictionLevel1": {
+    "message": "Nivel 1 - Solo reducir velocidad",
+    "description": "Opción de nivel de restricción"
+  },
+  "restrictionLevel2": {
+    "message": "Nivel 2 - Efectos visuales",
+    "description": "Opción de nivel de restricción"
+  },
+  "restrictionLevel3": {
+    "message": "Nivel 3 - Bloquear desplazamiento",
+    "description": "Opción de nivel de restricción"
+  },
+  "targetSites": {
+    "message": "Sitios específicos objetivo",
+    "description": "Título de la sección de sitios objetivo"
+  },
+  "targetSitesDescription": {
+    "message": "Añade sitios web donde quieras limitar el desplazamiento. Deja vacío para monitorear todos los sitios.",
+    "description": "Descripción de sitios objetivo"
+  },
+  "siteInputPlaceholder": {
+    "message": "p.ej., youtube.com, twitter.com",
+    "description": "Placeholder para la entrada de sitio"
+  },
+  "addSite": {
+    "message": "Añadir sitio",
+    "description": "Texto del botón para añadir un sitio"
+  },
+  "siteInputNote": {
+    "message": "Introduce nombres de dominio sin \"http://\" o \"www.\" (p.ej., \"youtube.com\")",
+    "description": "Nota sobre el formato de entrada de sitio"
+  },
+  "appearanceSettings": {
+    "message": "Configuración de apariencia",
+    "description": "Título de la sección de configuración de apariencia"
+  },
+  "language": {
+    "message": "Idioma",
+    "description": "Etiqueta para el selector de idioma"
+  },
+  "languageNote": {
+    "message": "Los cambios tendrán efecto después de recargar la extensión.",
+    "description": "Nota sobre los cambios de idioma"
+  },
+  "darkMode": {
+    "message": "Modo oscuro",
+    "description": "Etiqueta para el interruptor de modo oscuro"
+  },
+  "useSystemTheme": {
+    "message": "Usar preferencias de tema del sistema",
+    "description": "Etiqueta para el interruptor de tema del sistema"
+  },
+  "notificationSettings": {
+    "message": "Configuración de notificaciones",
+    "description": "Título de la sección de configuración de notificaciones"
+  },
+  "enableSoundNotifications": {
+    "message": "Habilitar notificaciones de sonido",
+    "description": "Etiqueta para el interruptor de notificaciones de sonido"
+  },
+  "enableVisualNotifications": {
+    "message": "Habilitar notificaciones visuales",
+    "description": "Etiqueta para el interruptor de notificaciones visuales"
+  },
+  "resetData": {
+    "message": "Restablecer datos",
+    "description": "Título de la sección de restablecimiento de datos"
+  },
+  "resetDataDescription": {
+    "message": "Borra tus estadísticas de desplazamiento y comienza de nuevo.",
+    "description": "Descripción del restablecimiento de datos"
+  },
+  "resetDailyData": {
+    "message": "Restablecer datos de hoy",
+    "description": "Texto del botón para restablecer datos diarios"
+  },
+  "resetWeeklyData": {
+    "message": "Restablecer datos semanales",
+    "description": "Texto del botón para restablecer datos semanales"
+  },
+  "resetAllData": {
+    "message": "Restablecer todos los datos",
+    "description": "Texto del botón para restablecer todos los datos"
+  },
+  "footerText": {
+    "message": "Limitador de Desplazamiento © 2023 - Toma descansos. Desplázate conscientemente.",
+    "description": "Texto del pie de página"
+  },
   "saveSettings": {
     "message": "Guardar configuración",
     "description": "Texto del botón de guardar"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "Cancelar",
     "description": "Texto del botón de cancelar"
+  },
+  "statistics": {
+    "message": "Estadísticas",
+    "description": "Título de la pestaña de estadísticas"
+  },
+  "settings": {
+    "message": "Configuración",
+    "description": "Título de la pestaña de configuración"
+  },
+  "todaysScrolling": {
+    "message": "Desplazamiento de hoy",
+    "description": "Título para las estadísticas de desplazamiento de hoy"
+  },
+  "minutes": {
+    "message": "Minutos",
+    "description": "Etiqueta para minutos"
+  },
+  "meters": {
+    "message": "Metros",
+    "description": "Etiqueta para metros"
+  },
+  "currentSession": {
+    "message": "Sesión actual",
+    "description": "Título para las estadísticas de la sesión actual"
+  },
+  "interventionStatus": {
+    "message": "Estado de intervención",
+    "description": "Título para el estado de intervención"
+  },
+  "noInterventionActive": {
+    "message": "Ninguna intervención activa",
+    "description": "Estado cuando no hay intervención activa"
+  },
+  "viewFullReport": {
+    "message": "Ver informe completo",
+    "description": "Texto del botón para ver el informe completo"
+  },
+  "resetSession": {
+    "message": "Restablecer sesión",
+    "description": "Texto del botón para restablecer la sesión"
+  },
+  "pixels": {
+    "message": "píxeles",
+    "description": "Etiqueta para píxeles"
+  },
+  "moreOptions": {
+    "message": "Más opciones",
+    "description": "Texto del botón para más opciones"
   }
 }

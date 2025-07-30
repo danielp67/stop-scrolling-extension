@@ -55,6 +55,206 @@
     "message": "هذه هي كمية التمرير قبل بدء التدخلات.",
     "description": "ملاحظة حول الحد"
   },
+  "interventionLevels": {
+    "message": "مستويات التدخل",
+    "description": "عنوان قسم مستويات التدخل"
+  },
+  "interventionDescription": {
+    "message": "يستخدم محدد التمرير تدخلات تدريجية مع استمرارك في التمرير:",
+    "description": "وصف مستويات التدخل"
+  },
+  "level1Title": {
+    "message": "المستوى 1: إبطاء",
+    "description": "عنوان للتدخل من المستوى 1"
+  },
+  "level1Description": {
+    "message": "عندما تتجاوز الحد، سيتم إبطاء التمرير لتشجيع التصفح الواعي.",
+    "description": "وصف للتدخل من المستوى 1"
+  },
+  "level1Multiplier": {
+    "message": "مضاعف حد المستوى 1",
+    "description": "تسمية لمضاعف المستوى 1"
+  },
+  "level2Title": {
+    "message": "المستوى 2: تأثيرات مرئية",
+    "description": "عنوان للتدخل من المستوى 2"
+  },
+  "level2Description": {
+    "message": "إذا استمريت في التمرير، سيتم تطبيق تأثيرات مرئية مثل اهتزاز الشاشة وتعتيمها.",
+    "description": "وصف للتدخل من المستوى 2"
+  },
+  "level2Multiplier": {
+    "message": "مضاعف حد المستوى 2",
+    "description": "تسمية لمضاعف المستوى 2"
+  },
+  "level3Title": {
+    "message": "المستوى 3: منع التمرير",
+    "description": "عنوان للتدخل من المستوى 3"
+  },
+  "level3Description": {
+    "message": "كتدخل نهائي، سيتم منع التمرير مع رسالة تشجعك على أخذ استراحة.",
+    "description": "وصف للتدخل من المستوى 3"
+  },
+  "level3Multiplier": {
+    "message": "مضاعف حد المستوى 3",
+    "description": "تسمية لمضاعف المستوى 3"
+  },
+  "multiplierNote": {
+    "message": "يتم التنشيط عند (الحد × المضاعف) بكسل من التمرير.",
+    "description": "ملاحظة حول المضاعف"
+  },
+  "timeRestrictions": {
+    "message": "قيود الوقت",
+    "description": "عنوان قسم قيود الوقت"
+  },
+  "enableTimeRestrictions": {
+    "message": "تمكين القيود المستندة إلى الوقت",
+    "description": "تسمية لتبديل قيود الوقت"
+  },
+  "timeRestrictionsDescription": {
+    "message": "خلال هذه الساعات، سيتم تقييد التمرير بشكل أكثر حدة:",
+    "description": "وصف قيود الوقت"
+  },
+  "restrictAfter": {
+    "message": "تقييد بعد:",
+    "description": "تسمية لوقت التقييد بعد"
+  },
+  "restrictUntil": {
+    "message": "حتى:",
+    "description": "تسمية لوقت التقييد حتى"
+  },
+  "time8pm": {
+    "message": "8:00 مساءً",
+    "description": "خيار الوقت"
+  },
+  "time9pm": {
+    "message": "9:00 مساءً",
+    "description": "خيار الوقت"
+  },
+  "time10pm": {
+    "message": "10:00 مساءً",
+    "description": "خيار الوقت"
+  },
+  "time11pm": {
+    "message": "11:00 مساءً",
+    "description": "خيار الوقت"
+  },
+  "time12am": {
+    "message": "12:00 صباحًا",
+    "description": "خيار الوقت"
+  },
+  "time5am": {
+    "message": "5:00 صباحًا",
+    "description": "خيار الوقت"
+  },
+  "time6am": {
+    "message": "6:00 صباحًا",
+    "description": "خيار الوقت"
+  },
+  "time7am": {
+    "message": "7:00 صباحًا",
+    "description": "خيار الوقت"
+  },
+  "time8am": {
+    "message": "8:00 صباحًا",
+    "description": "خيار الوقت"
+  },
+  "time9am": {
+    "message": "9:00 صباحًا",
+    "description": "خيار الوقت"
+  },
+  "restrictionLevel": {
+    "message": "مستوى التقييد",
+    "description": "تسمية لمستوى التقييد"
+  },
+  "restrictionLevel1": {
+    "message": "المستوى 1 - إبطاء فقط",
+    "description": "خيار مستوى التقييد"
+  },
+  "restrictionLevel2": {
+    "message": "المستوى 2 - تأثيرات مرئية",
+    "description": "خيار مستوى التقييد"
+  },
+  "restrictionLevel3": {
+    "message": "المستوى 3 - منع التمرير",
+    "description": "خيار مستوى التقييد"
+  },
+  "targetSites": {
+    "message": "استهداف مواقع محددة",
+    "description": "عنوان قسم المواقع المستهدفة"
+  },
+  "targetSitesDescription": {
+    "message": "أضف مواقع الويب التي تريد تحديد التمرير فيها. اتركها فارغة لمراقبة جميع المواقع.",
+    "description": "وصف المواقع المستهدفة"
+  },
+  "siteInputPlaceholder": {
+    "message": "مثال: youtube.com, twitter.com",
+    "description": "نص توضيحي لإدخال الموقع"
+  },
+  "addSite": {
+    "message": "إضافة موقع",
+    "description": "نص زر إضافة موقع"
+  },
+  "siteInputNote": {
+    "message": "أدخل أسماء النطاقات بدون \"http://\" أو \"www.\" (مثال: \"youtube.com\")",
+    "description": "ملاحظة حول تنسيق إدخال الموقع"
+  },
+  "appearanceSettings": {
+    "message": "إعدادات المظهر",
+    "description": "عنوان قسم إعدادات المظهر"
+  },
+  "language": {
+    "message": "اللغة",
+    "description": "تسمية لمحدد اللغة"
+  },
+  "languageNote": {
+    "message": "ستصبح التغييرات سارية بعد إعادة تحميل الإضافة.",
+    "description": "ملاحظة حول تغييرات اللغة"
+  },
+  "darkMode": {
+    "message": "الوضع الداكن",
+    "description": "تسمية لتبديل الوضع الداكن"
+  },
+  "useSystemTheme": {
+    "message": "استخدام تفضيلات سمة النظام",
+    "description": "تسمية لتبديل سمة النظام"
+  },
+  "notificationSettings": {
+    "message": "إعدادات الإشعارات",
+    "description": "عنوان قسم إعدادات الإشعارات"
+  },
+  "enableSoundNotifications": {
+    "message": "تمكين إشعارات الصوت",
+    "description": "تسمية لتبديل إشعارات الصوت"
+  },
+  "enableVisualNotifications": {
+    "message": "تمكين الإشعارات المرئية",
+    "description": "تسمية لتبديل الإشعارات المرئية"
+  },
+  "resetData": {
+    "message": "إعادة تعيين البيانات",
+    "description": "عنوان قسم إعادة تعيين البيانات"
+  },
+  "resetDataDescription": {
+    "message": "امسح إحصائيات التمرير الخاصة بك وابدأ من جديد.",
+    "description": "وصف إعادة تعيين البيانات"
+  },
+  "resetDailyData": {
+    "message": "إعادة تعيين بيانات اليوم",
+    "description": "نص زر إعادة تعيين البيانات اليومية"
+  },
+  "resetWeeklyData": {
+    "message": "إعادة تعيين البيانات الأسبوعية",
+    "description": "نص زر إعادة تعيين البيانات الأسبوعية"
+  },
+  "resetAllData": {
+    "message": "إعادة تعيين جميع البيانات",
+    "description": "نص زر إعادة تعيين جميع البيانات"
+  },
+  "footerText": {
+    "message": "محدد التمرير © 2023 - خذ استراحات. قم بالتمرير بوعي.",
+    "description": "نص التذييل"
+  },
   "saveSettings": {
     "message": "حفظ الإعدادات",
     "description": "نص زر الحفظ"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "إلغاء",
     "description": "نص زر الإلغاء"
+  },
+  "statistics": {
+    "message": "الإحصائيات",
+    "description": "عنوان علامة تبويب الإحصائيات"
+  },
+  "settings": {
+    "message": "الإعدادات",
+    "description": "عنوان علامة تبويب الإعدادات"
+  },
+  "todaysScrolling": {
+    "message": "تمرير اليوم",
+    "description": "عنوان إحصائيات تمرير اليوم"
+  },
+  "minutes": {
+    "message": "دقائق",
+    "description": "تسمية للدقائق"
+  },
+  "meters": {
+    "message": "أمتار",
+    "description": "تسمية للأمتار"
+  },
+  "currentSession": {
+    "message": "الجلسة الحالية",
+    "description": "عنوان إحصائيات الجلسة الحالية"
+  },
+  "interventionStatus": {
+    "message": "حالة التدخل",
+    "description": "عنوان حالة التدخل"
+  },
+  "noInterventionActive": {
+    "message": "لا يوجد تدخل نشط",
+    "description": "الحالة عندما لا يكون هناك تدخل نشط"
+  },
+  "viewFullReport": {
+    "message": "عرض التقرير الكامل",
+    "description": "نص زر عرض التقرير الكامل"
+  },
+  "resetSession": {
+    "message": "إعادة تعيين الجلسة",
+    "description": "نص زر إعادة تعيين الجلسة"
+  },
+  "pixels": {
+    "message": "بكسل",
+    "description": "تسمية للبكسل"
+  },
+  "moreOptions": {
+    "message": "المزيد من الخيارات",
+    "description": "نص زر المزيد من الخيارات"
   }
 }

@@ -55,6 +55,206 @@
     "message": "这是干预开始前的滚动量。",
     "description": "关于阈值的注释"
   },
+  "interventionLevels": {
+    "message": "干预级别",
+    "description": "干预级别部分标题"
+  },
+  "interventionDescription": {
+    "message": "滚动限制器在您继续滚动时使用渐进式干预：",
+    "description": "干预级别的描述"
+  },
+  "level1Title": {
+    "message": "级别1：减速",
+    "description": "级别1干预的标题"
+  },
+  "level1Description": {
+    "message": "当您超过阈值时，滚动将被减速以鼓励有意识的浏览。",
+    "description": "级别1干预的描述"
+  },
+  "level1Multiplier": {
+    "message": "级别1阈值乘数",
+    "description": "级别1乘数的标签"
+  },
+  "level2Title": {
+    "message": "级别2：视觉效果",
+    "description": "级别2干预的标题"
+  },
+  "level2Description": {
+    "message": "如果您继续滚动，将应用屏幕振动和变暗等视觉效果。",
+    "description": "级别2干预的描述"
+  },
+  "level2Multiplier": {
+    "message": "级别2阈值乘数",
+    "description": "级别2乘数的标签"
+  },
+  "level3Title": {
+    "message": "级别3：阻止滚动",
+    "description": "级别3干预的标题"
+  },
+  "level3Description": {
+    "message": "作为最终干预，滚动将被阻止，并显示一条鼓励您休息的消息。",
+    "description": "级别3干预的描述"
+  },
+  "level3Multiplier": {
+    "message": "级别3阈值乘数",
+    "description": "级别3乘数的标签"
+  },
+  "multiplierNote": {
+    "message": "在滚动（阈值×乘数）像素时激活。",
+    "description": "关于乘数的注释"
+  },
+  "timeRestrictions": {
+    "message": "时间限制",
+    "description": "时间限制部分标题"
+  },
+  "enableTimeRestrictions": {
+    "message": "启用基于时间的限制",
+    "description": "时间限制开关的标签"
+  },
+  "timeRestrictionsDescription": {
+    "message": "在这些时间段内，滚动将被更积极地限制：",
+    "description": "时间限制的描述"
+  },
+  "restrictAfter": {
+    "message": "限制开始时间：",
+    "description": "限制开始时间的标签"
+  },
+  "restrictUntil": {
+    "message": "直到：",
+    "description": "限制结束时间的标签"
+  },
+  "time8pm": {
+    "message": "晚上8:00",
+    "description": "时间选项"
+  },
+  "time9pm": {
+    "message": "晚上9:00",
+    "description": "时间选项"
+  },
+  "time10pm": {
+    "message": "晚上10:00",
+    "description": "时间选项"
+  },
+  "time11pm": {
+    "message": "晚上11:00",
+    "description": "时间选项"
+  },
+  "time12am": {
+    "message": "凌晨12:00",
+    "description": "时间选项"
+  },
+  "time5am": {
+    "message": "早上5:00",
+    "description": "时间选项"
+  },
+  "time6am": {
+    "message": "早上6:00",
+    "description": "时间选项"
+  },
+  "time7am": {
+    "message": "早上7:00",
+    "description": "时间选项"
+  },
+  "time8am": {
+    "message": "早上8:00",
+    "description": "时间选项"
+  },
+  "time9am": {
+    "message": "早上9:00",
+    "description": "时间选项"
+  },
+  "restrictionLevel": {
+    "message": "限制级别",
+    "description": "限制级别的标签"
+  },
+  "restrictionLevel1": {
+    "message": "级别1 - 仅减速",
+    "description": "限制级别选项"
+  },
+  "restrictionLevel2": {
+    "message": "级别2 - 视觉效果",
+    "description": "限制级别选项"
+  },
+  "restrictionLevel3": {
+    "message": "级别3 - 阻止滚动",
+    "description": "限制级别选项"
+  },
+  "targetSites": {
+    "message": "目标特定网站",
+    "description": "目标网站部分标题"
+  },
+  "targetSitesDescription": {
+    "message": "添加您想要限制滚动的网站。留空以监控所有网站。",
+    "description": "目标网站的描述"
+  },
+  "siteInputPlaceholder": {
+    "message": "例如，youtube.com, twitter.com",
+    "description": "网站输入的占位符"
+  },
+  "addSite": {
+    "message": "添加网站",
+    "description": "添加网站按钮文本"
+  },
+  "siteInputNote": {
+    "message": "输入不带\"http://\"或\"www.\"的域名（例如，\"youtube.com\"）",
+    "description": "关于网站输入格式的注释"
+  },
+  "appearanceSettings": {
+    "message": "外观设置",
+    "description": "外观设置部分标题"
+  },
+  "language": {
+    "message": "语言",
+    "description": "语言选择器的标签"
+  },
+  "languageNote": {
+    "message": "更改将在重新加载扩展后生效。",
+    "description": "关于语言更改的注释"
+  },
+  "darkMode": {
+    "message": "深色模式",
+    "description": "深色模式开关的标签"
+  },
+  "useSystemTheme": {
+    "message": "使用系统主题偏好",
+    "description": "系统主题开关的标签"
+  },
+  "notificationSettings": {
+    "message": "通知设置",
+    "description": "通知设置部分标题"
+  },
+  "enableSoundNotifications": {
+    "message": "启用声音通知",
+    "description": "声音通知开关的标签"
+  },
+  "enableVisualNotifications": {
+    "message": "启用视觉通知",
+    "description": "视觉通知开关的标签"
+  },
+  "resetData": {
+    "message": "重置数据",
+    "description": "重置数据部分标题"
+  },
+  "resetDataDescription": {
+    "message": "清除您的滚动统计并重新开始。",
+    "description": "重置数据的描述"
+  },
+  "resetDailyData": {
+    "message": "重置今日数据",
+    "description": "重置每日数据按钮文本"
+  },
+  "resetWeeklyData": {
+    "message": "重置每周数据",
+    "description": "重置每周数据按钮文本"
+  },
+  "resetAllData": {
+    "message": "重置所有数据",
+    "description": "重置所有数据按钮文本"
+  },
+  "footerText": {
+    "message": "滚动限制器 © 2023 - 休息一下。有意识地滚动。",
+    "description": "页脚文本"
+  },
   "saveSettings": {
     "message": "保存设置",
     "description": "保存按钮文本"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "取消",
     "description": "取消按钮文本"
+  },
+  "statistics": {
+    "message": "统计",
+    "description": "统计选项卡标题"
+  },
+  "settings": {
+    "message": "设置",
+    "description": "设置选项卡标题"
+  },
+  "todaysScrolling": {
+    "message": "今日滚动",
+    "description": "今日滚动统计标题"
+  },
+  "minutes": {
+    "message": "分钟",
+    "description": "分钟标签"
+  },
+  "meters": {
+    "message": "米",
+    "description": "米标签"
+  },
+  "currentSession": {
+    "message": "当前会话",
+    "description": "当前会话统计标题"
+  },
+  "interventionStatus": {
+    "message": "干预状态",
+    "description": "干预状态标题"
+  },
+  "noInterventionActive": {
+    "message": "无活动干预",
+    "description": "无活动干预时的状态"
+  },
+  "viewFullReport": {
+    "message": "查看完整报告",
+    "description": "查看完整报告按钮文本"
+  },
+  "resetSession": {
+    "message": "重置会话",
+    "description": "重置会话按钮文本"
+  },
+  "pixels": {
+    "message": "像素",
+    "description": "像素标签"
+  },
+  "moreOptions": {
+    "message": "更多选项",
+    "description": "更多选项按钮文本"
   }
 }

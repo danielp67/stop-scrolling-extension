@@ -55,6 +55,206 @@
     "message": "這是干預開始前的捲動量。",
     "description": "關於閾值的註釋"
   },
+  "interventionLevels": {
+    "message": "干預級別",
+    "description": "干預級別部分標題"
+  },
+  "interventionDescription": {
+    "message": "捲動限制器在您繼續捲動時使用漸進式干預：",
+    "description": "干預級別的描述"
+  },
+  "level1Title": {
+    "message": "級別1：減速",
+    "description": "級別1干預的標題"
+  },
+  "level1Description": {
+    "message": "當您超過閾值時，捲動將被減速以鼓勵有意識的瀏覽。",
+    "description": "級別1干預的描述"
+  },
+  "level1Multiplier": {
+    "message": "級別1閾值乘數",
+    "description": "級別1乘數的標籤"
+  },
+  "level2Title": {
+    "message": "級別2：視覺效果",
+    "description": "級別2干預的標題"
+  },
+  "level2Description": {
+    "message": "如果您繼續捲動，將應用螢幕振動和變暗等視覺效果。",
+    "description": "級別2干預的描述"
+  },
+  "level2Multiplier": {
+    "message": "級別2閾值乘數",
+    "description": "級別2乘數的標籤"
+  },
+  "level3Title": {
+    "message": "級別3：阻止捲動",
+    "description": "級別3干預的標題"
+  },
+  "level3Description": {
+    "message": "作為最終干預，捲動將被阻止，並顯示一條鼓勵您休息的訊息。",
+    "description": "級別3干預的描述"
+  },
+  "level3Multiplier": {
+    "message": "級別3閾值乘數",
+    "description": "級別3乘數的標籤"
+  },
+  "multiplierNote": {
+    "message": "在捲動（閾值×乘數）像素時啟動。",
+    "description": "關於乘數的註釋"
+  },
+  "timeRestrictions": {
+    "message": "時間限制",
+    "description": "時間限制部分標題"
+  },
+  "enableTimeRestrictions": {
+    "message": "啟用基於時間的限制",
+    "description": "時間限制開關的標籤"
+  },
+  "timeRestrictionsDescription": {
+    "message": "在這些時間段內，捲動將被更積極地限制：",
+    "description": "時間限制的描述"
+  },
+  "restrictAfter": {
+    "message": "限制開始時間：",
+    "description": "限制開始時間的標籤"
+  },
+  "restrictUntil": {
+    "message": "直到：",
+    "description": "限制結束時間的標籤"
+  },
+  "time8pm": {
+    "message": "晚上8:00",
+    "description": "時間選項"
+  },
+  "time9pm": {
+    "message": "晚上9:00",
+    "description": "時間選項"
+  },
+  "time10pm": {
+    "message": "晚上10:00",
+    "description": "時間選項"
+  },
+  "time11pm": {
+    "message": "晚上11:00",
+    "description": "時間選項"
+  },
+  "time12am": {
+    "message": "凌晨12:00",
+    "description": "時間選項"
+  },
+  "time5am": {
+    "message": "早上5:00",
+    "description": "時間選項"
+  },
+  "time6am": {
+    "message": "早上6:00",
+    "description": "時間選項"
+  },
+  "time7am": {
+    "message": "早上7:00",
+    "description": "時間選項"
+  },
+  "time8am": {
+    "message": "早上8:00",
+    "description": "時間選項"
+  },
+  "time9am": {
+    "message": "早上9:00",
+    "description": "時間選項"
+  },
+  "restrictionLevel": {
+    "message": "限制級別",
+    "description": "限制級別的標籤"
+  },
+  "restrictionLevel1": {
+    "message": "級別1 - 僅減速",
+    "description": "限制級別選項"
+  },
+  "restrictionLevel2": {
+    "message": "級別2 - 視覺效果",
+    "description": "限制級別選項"
+  },
+  "restrictionLevel3": {
+    "message": "級別3 - 阻止捲動",
+    "description": "限制級別選項"
+  },
+  "targetSites": {
+    "message": "目標特定網站",
+    "description": "目標網站部分標題"
+  },
+  "targetSitesDescription": {
+    "message": "添加您想要限制捲動的網站。留空以監控所有網站。",
+    "description": "目標網站的描述"
+  },
+  "siteInputPlaceholder": {
+    "message": "例如，youtube.com, twitter.com",
+    "description": "網站輸入的佔位符"
+  },
+  "addSite": {
+    "message": "添加網站",
+    "description": "添加網站按鈕文字"
+  },
+  "siteInputNote": {
+    "message": "輸入不帶\"http://\"或\"www.\"的域名（例如，\"youtube.com\"）",
+    "description": "關於網站輸入格式的註釋"
+  },
+  "appearanceSettings": {
+    "message": "外觀設定",
+    "description": "外觀設定部分標題"
+  },
+  "language": {
+    "message": "語言",
+    "description": "語言選擇器的標籤"
+  },
+  "languageNote": {
+    "message": "更改將在重新載入擴充功能後生效。",
+    "description": "關於語言更改的註釋"
+  },
+  "darkMode": {
+    "message": "深色模式",
+    "description": "深色模式開關的標籤"
+  },
+  "useSystemTheme": {
+    "message": "使用系統主題偏好",
+    "description": "系統主題開關的標籤"
+  },
+  "notificationSettings": {
+    "message": "通知設定",
+    "description": "通知設定部分標題"
+  },
+  "enableSoundNotifications": {
+    "message": "啟用聲音通知",
+    "description": "聲音通知開關的標籤"
+  },
+  "enableVisualNotifications": {
+    "message": "啟用視覺通知",
+    "description": "視覺通知開關的標籤"
+  },
+  "resetData": {
+    "message": "重置數據",
+    "description": "重置數據部分標題"
+  },
+  "resetDataDescription": {
+    "message": "清除您的捲動統計並重新開始。",
+    "description": "重置數據的描述"
+  },
+  "resetDailyData": {
+    "message": "重置今日數據",
+    "description": "重置每日數據按鈕文字"
+  },
+  "resetWeeklyData": {
+    "message": "重置每週數據",
+    "description": "重置每週數據按鈕文字"
+  },
+  "resetAllData": {
+    "message": "重置所有數據",
+    "description": "重置所有數據按鈕文字"
+  },
+  "footerText": {
+    "message": "捲動限制器 © 2023 - 休息一下。有意識地捲動。",
+    "description": "頁腳文字"
+  },
   "saveSettings": {
     "message": "儲存設定",
     "description": "儲存按鈕文字"
@@ -62,5 +262,53 @@
   "cancelSettings": {
     "message": "取消",
     "description": "取消按鈕文字"
+  },
+  "statistics": {
+    "message": "統計",
+    "description": "統計選項卡標題"
+  },
+  "settings": {
+    "message": "設定",
+    "description": "設定選項卡標題"
+  },
+  "todaysScrolling": {
+    "message": "今日捲動",
+    "description": "今日捲動統計標題"
+  },
+  "minutes": {
+    "message": "分鐘",
+    "description": "分鐘標籤"
+  },
+  "meters": {
+    "message": "公尺",
+    "description": "公尺標籤"
+  },
+  "currentSession": {
+    "message": "當前會話",
+    "description": "當前會話統計標題"
+  },
+  "interventionStatus": {
+    "message": "干預狀態",
+    "description": "干預狀態標題"
+  },
+  "noInterventionActive": {
+    "message": "無活動干預",
+    "description": "無活動干預時的狀態"
+  },
+  "viewFullReport": {
+    "message": "查看完整報告",
+    "description": "查看完整報告按鈕文字"
+  },
+  "resetSession": {
+    "message": "重置會話",
+    "description": "重置會話按鈕文字"
+  },
+  "pixels": {
+    "message": "像素",
+    "description": "像素標籤"
+  },
+  "moreOptions": {
+    "message": "更多選項",
+    "description": "更多選項按鈕文字"
   }
 }
