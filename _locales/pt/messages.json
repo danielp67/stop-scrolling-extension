@@ -15,6 +15,10 @@
     "message": "Configure seus limites de rolagem e preferências",
     "description": "Subtitle of the options page"
   },
+  "scrollThreshold": {
+    "message": "Limite de Rolagem",
+    "description": "Title of the scroll threshold section"
+  },
   "thresholdSettings": {
     "message": "Configurações de Limite de Rolagem",
     "description": "Title of the threshold settings section"

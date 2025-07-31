@@ -15,6 +15,10 @@
     "message": "Configurez vos limites de défilement et vos préférences",
     "description": "Sous-titre de la page d'options"
   },
+  "scrollThreshold": {
+    "message": "Seuil de défilement",
+    "description": "Titre de la section du seuil de défilement"
+  },
   "thresholdSettings": {
     "message": "Paramètres de seuil de défilement",
     "description": "Titre de la section des paramètres de seuil"

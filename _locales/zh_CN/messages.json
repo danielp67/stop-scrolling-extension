@@ -15,6 +15,10 @@
     "message": "配置您的滚动限制和偏好设置",
     "description": "选项页面副标题"
   },
+  "scrollThreshold": {
+    "message": "滚动阈值",
+    "description": "滚动阈值部分标题"
+  },
   "thresholdSettings": {
     "message": "滚动阈值设置",
     "description": "阈值设置部分标题"

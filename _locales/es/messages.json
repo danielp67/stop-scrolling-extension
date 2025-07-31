@@ -15,6 +15,10 @@
     "message": "Configure sus límites de desplazamiento y preferencias",
     "description": "Subtítulo de la página de opciones"
   },
+  "scrollThreshold": {
+    "message": "Umbral de desplazamiento",
+    "description": "Título de la sección del umbral de desplazamiento"
+  },
   "thresholdSettings": {
     "message": "Configuración del umbral de desplazamiento",
     "description": "Título de la sección de configuración del umbral"

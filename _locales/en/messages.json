@@ -15,6 +15,10 @@
     "message": "Configure your scrolling limits and preferences",
     "description": "Subtitle of the options page"
   },
+  "scrollThreshold": {
+    "message": "Scroll Threshold",
+    "description": "Title of the scroll threshold section"
+  },
   "thresholdSettings": {
     "message": "Scroll Threshold Settings",
     "description": "Title of the threshold settings section"

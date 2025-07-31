@@ -15,6 +15,10 @@
     "message": "تكوين حدود التمرير والتفضيلات الخاصة بك",
     "description": "العنوان الفرعي لصفحة الخيارات"
   },
+  "scrollThreshold": {
+    "message": "حد التمرير",
+    "description": "عنوان قسم حد التمرير"
+  },
   "thresholdSettings": {
     "message": "إعدادات حد التمرير",
     "description": "عنوان قسم إعدادات الحد"

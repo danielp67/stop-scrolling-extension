@@ -15,6 +15,10 @@
     "message": "Configura i tuoi limiti di scorrimento e preferenze",
     "description": "Subtitle of the options page"
   },
+  "scrollThreshold": {
+    "message": "Soglia di Scorrimento",
+    "description": "Title of the scroll threshold section"
+  },
   "thresholdSettings": {
     "message": "Impostazioni Soglia di Scorrimento",
     "description": "Title of the threshold settings section"

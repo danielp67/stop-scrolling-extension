@@ -15,6 +15,10 @@
     "message": "配置您的捲動限制和偏好設定",
     "description": "選項頁面副標題"
   },
+  "scrollThreshold": {
+    "message": "捲動閾值",
+    "description": "捲動閾值部分標題"
+  },
   "thresholdSettings": {
     "message": "捲動閾值設定",
     "description": "閾值設定部分標題"

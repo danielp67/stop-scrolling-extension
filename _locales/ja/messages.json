@@ -15,6 +15,10 @@
     "message": "スクロール制限と設定を構成する",
     "description": "オプションページのサブタイトル"
   },
+  "scrollThreshold": {
+    "message": "スクロールしきい値",
+    "description": "スクロールしきい値セクションのタイトル"
+  },
   "thresholdSettings": {
     "message": "スクロールしきい値設定",
     "description": "しきい値設定セクションのタイトル"

@@ -15,6 +15,10 @@
     "message": "Konfigurieren Sie Ihre Scroll-Limits und Präferenzen",
     "description": "Untertitel der Optionsseite"
   },
+  "scrollThreshold": {
+    "message": "Scroll-Schwellenwert",
+    "description": "Bezeichnung des Schwellenwerts"
+  },
   "thresholdSettings": {
     "message": "Schwellenwert-Einstellungen",
     "description": "Titel des Abschnitts für Schwellenwert-Einstellungen"

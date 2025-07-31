@@ -11,8 +11,8 @@
     <header>
       <h1>Stop Scrolling</h1>
       <div class="tabs">
-        <button class="tab-btn active" data-tab="stats">__MSG_statistics__</button>
-        <button class="tab-btn" data-tab="settings">__MSG_settings__</button>
+        <button class="tab-btn active" data-tab="stats" data-label>__MSG_statistics__</button>
+        <button class="tab-btn" data-tab="settings" data-label>__MSG_settings__</button>
       </div>
     </header>
 
@@ -20,111 +20,111 @@
       <!-- Statistics Tab -->
       <section id="stats" class="tab-content active">
         <div class="stat-card">
-          <h2>__MSG_todaysScrolling__</h2>
+          <h2 data-label>__MSG_todaysScrolling__</h2>
           <div class="stat-grid">
             <div class="stat-item">
               <span class="stat-value" id="todayTime">0</span>
-              <span class="stat-label">__MSG_minutes__</span>
+              <span class="stat-label" data-label>__MSG_minutes__</span>
             </div>
             <div class="stat-item">
               <span class="stat-value" id="todayDistance">0</span>
-              <span class="stat-label">__MSG_meters__</span>
+              <span class="stat-label" data-label>__MSG_meters__</span>
             </div>
           </div>
         </div>
 
         <div class="stat-card">
-          <h2>__MSG_currentSession__</h2>
+          <h2 data-label>__MSG_currentSession__</h2>
           <div class="stat-grid">
             <div class="stat-item">
               <span class="stat-value" id="sessionTime">0</span>
-              <span class="stat-label">__MSG_minutes__</span>
+              <span class="stat-label" data-label>__MSG_minutes__</span>
             </div>
             <div class="stat-item">
               <span class="stat-value" id="sessionDistance">0</span>
-              <span class="stat-label">__MSG_meters__</span>
+              <span class="stat-label" data-label>__MSG_meters__</span>
             </div>
           </div>
         </div>
 
         <div class="stat-card">
-          <h2>__MSG_interventionStatus__</h2>
+          <h2 data-label>__MSG_interventionStatus__</h2>
           <div class="intervention-status">
             <div class="progress-bar">
               <div class="progress" id="thresholdProgress"></div>
             </div>
-            <div class="status-text" id="statusText">__MSG_noInterventionActive__</div>
+            <div class="status-text" id="statusText" data-label>__MSG_noInterventionActive__</div>
           </div>
         </div>
 
         <div class="buttons">
-          <button id="viewReportBtn">__MSG_viewFullReport__</button>
-          <button id="resetBtn">__MSG_resetSession__</button>
+          <button id="viewReportBtn" data-label>__MSG_viewFullReport__</button>
+          <button id="resetBtn" data-label>__MSG_resetSession__</button>
         </div>
       </section>
 
       <!-- Settings Tab -->
       <section id="settings" class="tab-content">
         <div class="setting-card">
-          <h2>__MSG_scrollThreshold__</h2>
+          <h2 data-label>__MSG_scrollThreshold__</h2>
           <div class="slider-container">
             <input type="range" min="1000" max="20000" step="1000" value="5000" id="thresholdSlider">
             <div class="slider-value">
-              <span id="thresholdValue">5000</span> __MSG_pixels__
+              <span id="thresholdValue">5000</span><span style="margin-left:5px" data-label> __MSG_pixels__</span>
             </div>
           </div>
         </div>
 
         <div class="setting-card">
-          <h2>__MSG_timeRestrictions__</h2>
+          <h2 data-label>__MSG_timeRestrictions__</h2>
           <div class="toggle-container">
             <label class="toggle">
               <input type="checkbox" id="timeRestrictionToggle">
               <span class="toggle-slider"></span>
             </label>
-            <span>__MSG_enableTimeRestrictions__</span>
+            <span data-label>__MSG_enableTimeRestrictions__</span>
           </div>
           <div class="time-settings" id="timeSettings">
             <div class="time-input">
-              <label for="afterHour">__MSG_restrictAfter__</label>
+              <label for="afterHour" data-label>__MSG_restrictAfter__</label>
               <select id="afterHour">
-                <option value="20">__MSG_time8pm__</option>
-                <option value="21">__MSG_time9pm__</option>
-                <option value="22">__MSG_time10pm__</option>
-                <option value="23" selected>__MSG_time11pm__</option>
-                <option value="0">__MSG_time12am__</option>
+                <option value="20" data-label>__MSG_time8pm__</option>
+                <option value="21" data-label>__MSG_time9pm__</option>
+                <option value="22" data-label>__MSG_time10pm__</option>
+                <option value="23" data-label selected>__MSG_time11pm__</option>
+                <option value="0" data-label>__MSG_time12am__</option>
               </select>
             </div>
             <div class="time-input">
               <label for="beforeHour">__MSG_restrictUntil__</label>
               <select id="beforeHour">
-                <option value="5">__MSG_time5am__</option>
-                <option value="6" selected>__MSG_time6am__</option>
-                <option value="7">__MSG_time7am__</option>
-                <option value="8">__MSG_time8am__</option>
-                <option value="9">__MSG_time9am__</option>
+                <option value="5" data-label>__MSG_time5am__</option>
+                <option value="6" data-label selected>__MSG_time6am__</option>
+                <option value="7" data-label>__MSG_time7am__</option>
+                <option value="8" data-label>__MSG_time8am__</option>
+                <option value="9" data-label>__MSG_time9am__</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="setting-card">
-          <h2>__MSG_targetSites__</h2>
+          <h2 data-label>__MSG_targetSites__</h2>
           <div class="site-input">
-            <input type="text" id="siteInput" placeholder="__MSG_siteInputPlaceholder__">
-            <button id="addSiteBtn">__MSG_addSite__</button>
+            <input type="text" id="siteInput" data-label placeholder="e.g., youtube.com, twitter.com",>
+            <button id="addSiteBtn" data-label>__MSG_addSite__</button>
           </div>
           <div class="site-list" id="siteList">
             <!-- Sites will be added here dynamically -->
           </div>
           <div class="site-note">
-            <p>__MSG_siteInputNote__</p>
+            <p data-label>__MSG_siteInputNote__</p>
           </div>
         </div>
 
         <div class="buttons">
-          <button id="saveSettingsBtn">__MSG_saveSettings__</button>
-          <button id="moreOptionsBtn" class="btn-secondary">__MSG_moreOptions__</button>
+          <button id="saveSettingsBtn" class="btn-primary" data-label>__MSG_saveSettings__</button>
+          <button id="moreOptionsBtn" class="btn-secondary" data-label>__MSG_moreOptions__</button>
         </div>
       </section>
     </main>
