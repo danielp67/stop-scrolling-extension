@@ -1,5 +1,5 @@
 // Import custom i18n module
-import { initI18n, getMessage } from './i18n.js';
+import { initI18n, getMessage } from '../i18n.js';
 // DOM Elements
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
@@ -545,5 +545,5 @@ function resetSession() {
 
 // Open report page
 function openReportPage() {
-  chrome.tabs.create({url: 'report.html'});
+  chrome.tabs.create({url: 'report/report.html'});
 }

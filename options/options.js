@@ -1,5 +1,5 @@
 // Import custom i18n module
-import { initI18n, getMessage, setLanguage } from './i18n.js';
+import { initI18n, getMessage, setLanguage } from '../i18n.js';
 // DOM Elements
 const limitTypeSelect = document.getElementById('limitType');
 const pixelsThresholdGroup = document.getElementById('pixelsThresholdGroup');
@@ -565,7 +565,7 @@ function saveSettings() {
 
     // Update the current language in the i18n module
     setLanguage(currentSettings.appearance.language);
-
+console.log("currentSettings.appearance.language:", currentSettings.appearance.language);
     // Reload the page to apply changes
     if (currentSettings.appearance.language !== originalLanguage) {
       // Reload all extension pages to apply the new language

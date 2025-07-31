@@ -23,14 +23,14 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "images/icon128.png",
       "48": "images/icon128.png",
       "128": "images/icon128.png"
     }
   },
-  "options_page": "options.html",
+  "options_page": "options/options.html",
   "icons": {
     "16": "images/icon128.png",
     "48": "images/icon128.png",

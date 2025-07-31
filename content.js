@@ -253,8 +253,8 @@ function blockScrolling() {
     setTimeout(() => {
       const continueButton = document.createElement('button');
       continueButton.textContent = 'Continue anyway';
-      continueButton.style.padding = '10px 20px';
-      continueButton.style.marginTop = '20px';
+      continueButton.style.padding = '50px';
+      continueButton.style.margin = '50px';
       continueButton.style.backgroundColor = '#4CAF50';
       continueButton.style.border = 'none';
       continueButton.style.borderRadius = '5px';
