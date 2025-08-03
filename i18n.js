@@ -5,7 +5,7 @@ let currentLanguage = '';
 function initI18n() {
   return new Promise((resolve) => {
     chrome.storage.sync.get(['defaultLanguage'], (result) => {
-      currentLanguage = result.defaultLanguage || '';
+      currentLanguage = result.defaultLanguage ?? 'en';
       resolve(currentLanguage);
     });
   });
@@ -14,8 +14,8 @@ function initI18n() {
 // Get message with respect to user's language preference
 async function getMessage(messageName, substitutions) {
   // If language preference is not loaded yet, load it
-  if (!currentLanguage && currentLanguage !== '') {
-    await initI18n();
+  if (!currentLanguage || currentLanguage !== '') {
+   currentLanguage = await initI18n();
   }
   
   // If no language preference is set, use Chrome's default i18n
@@ -26,6 +26,7 @@ async function getMessage(messageName, substitutions) {
   // Try to fetch the message from the preferred language
   try {
     // First try to get the message from the user's preferred language
+    console.log("geloo");
     const response = await fetch(chrome.runtime.getURL(`_locales/${currentLanguage}/messages.json`));
     if (response.ok) {
       const messages = await response.json();
@@ -56,7 +57,7 @@ async function getMessage(messageName, substitutions) {
 
 // Update the current language
 function setLanguage(language) {
-  currentLanguage = language;
+  chrome.storage.sync.set({ defaultLanguage: language });
 }
 
 export { initI18n, getMessage, setLanguage };

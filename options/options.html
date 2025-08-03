@@ -10,159 +10,159 @@
   <div class="container">
     <header>
       <h1>Stop Scrolling - Options</h1>
-      <p class="subtitle">__MSG_optionsSubtitle__</p>
+      <p class="subtitle" data-label>__MSG_optionsSubtitle__</p>
     </header>
 
     <main>
       <section id="thresholdSection">
-        <h2>__MSG_thresholdSettings__</h2>
+        <h2 data-label>__MSG_thresholdSettings__</h2>
         <div class="form-group">
-          <label for="limitType">__MSG_limitType__</label>
+          <label for="limitType" data-label>__MSG_limitType__</label>
           <select id="limitType">
-            <option value="pixels">__MSG_limitTypePixels__</option>
-            <option value="meters">__MSG_limitTypeMeters__</option>
-            <option value="time">__MSG_limitTypeTime__</option>
-            <option value="both">__MSG_limitTypeBoth__</option>
+            <option value="pixels" data-label>__MSG_limitTypePixels__</option>
+            <option value="meters" data-label>__MSG_limitTypeMeters__</option>
+            <option value="time" data-label>__MSG_limitTypeTime__</option>
+            <option value="both" data-label>__MSG_limitTypeBoth__</option>
           </select>
         </div>
 
         <div class="form-group" id="pixelsThresholdGroup">
-          <label for="scrollThreshold">__MSG_pixelsThreshold__</label>
+          <label for="scrollThreshold" data-label>__MSG_pixelsThreshold__</label>
           <div class="slider-container">
             <input type="range" min="1000" max="20000" step="1000" value="5000" id="scrollThreshold">
             <div class="slider-value">
               <span id="scrollThresholdValue">5000</span> pixels
             </div>
           </div>
-          <p class="site-note">__MSG_thresholdNote__</p>
+          <p class="site-note" data-label>__MSG_thresholdNote__</p>
         </div>
 
         <div class="form-group" id="metersThresholdGroup" style="display: none;">
-          <label for="metersThreshold">__MSG_metersThreshold__</label>
+          <label for="metersThreshold" data-label>__MSG_metersThreshold__</label>
           <div class="slider-container">
             <input type="range" min="1" max="50" step="1" value="5" id="metersThreshold">
             <div class="slider-value">
               <span id="metersThresholdValue">5</span> meters
             </div>
           </div>
-          <p class="site-note">__MSG_thresholdNote__</p>
+          <p class="site-note" data-label>__MSG_thresholdNote__</p>
         </div>
 
         <div class="form-group" id="timeThresholdGroup" style="display: none;">
-          <label for="timeThreshold">__MSG_timeThreshold__</label>
+          <label for="timeThreshold" data-label>__MSG_timeThreshold__</label>
           <div class="slider-container">
             <input type="range" min="30" max="1800" step="30" value="300" id="timeThreshold">
             <div class="slider-value">
               <span id="timeThresholdValue">300</span> seconds (5 minutes)
             </div>
           </div>
-          <p class="site-note">__MSG_thresholdNote__</p>
+          <p class="site-note" data-label>__MSG_thresholdNote__</p>
         </div>
       </section>
 
       <section id="interventionSection">
-        <h2>__MSG_interventionLevels__</h2>
-        <p>__MSG_interventionDescription__</p>
+        <h2 data-label>__MSG_interventionLevels__</h2>
+        <p data-label>__MSG_interventionDescription__</p>
 
         <div class="level-settings">
           <div class="level-title">
             <span class="level-badge level-1">1</span>
-            __MSG_level1Title__
+            <span data-label>__MSG_level1Title__</span>
           </div>
-          <p class="level-description">
+          <p class="level-description" data-label>
             __MSG_level1Description__
           </p>
           <div class="form-group">
-            <label for="level1Multiplier">__MSG_level1Multiplier__</label>
+            <label for="level1Multiplier" data-label>__MSG_level1Multiplier__</label>
             <input type="number" id="level1Multiplier" min="1" max="2" step="0.1" value="1">
-            <p class="site-note">__MSG_multiplierNote__</p>
+            <p class="site-note" data-label>__MSG_multiplierNote__</p>
           </div>
         </div>
 
         <div class="level-settings">
           <div class="level-title">
             <span class="level-badge level-2">2</span>
-            __MSG_level2Title__
+            <span data-label>__MSG_level2Title__</span>
           </div>
-          <p class="level-description">
+          <p class="level-description" data-label>
             __MSG_level2Description__
           </p>
           <div class="form-group">
-            <label for="level2Multiplier">__MSG_level2Multiplier__</label>
+            <label for="level2Multiplier" data-label>__MSG_level2Multiplier__</label>
             <input type="number" id="level2Multiplier" min="1.1" max="3" step="0.1" value="2">
-            <p class="site-note">__MSG_multiplierNote__</p>
+            <p class="site-note" data-label>__MSG_multiplierNote__</p>
           </div>
         </div>
 
         <div class="level-settings">
           <div class="level-title">
             <span class="level-badge level-3">3</span>
-            __MSG_level3Title__
+            <span data-label>__MSG_level3Title__</span>
           </div>
-          <p class="level-description">
+          <p class="level-description" data-label>
             __MSG_level3Description__
           </p>
           <div class="form-group">
-            <label for="level3Multiplier">__MSG_level3Multiplier__</label>
+            <label for="level3Multiplier" data-label>__MSG_level3Multiplier__</label>
             <input type="number" id="level3Multiplier" min="1.2" max="5" step="0.1" value="3">
-            <p class="site-note">__MSG_multiplierNote__</p>
+            <p class="site-note" data-label>__MSG_multiplierNote__</p>
           </div>
         </div>
       </section>
 
       <section id="timeSection">
-        <h2>__MSG_timeRestrictions__</h2>
+        <h2 data-label>__MSG_timeRestrictions__</h2>
         <div class="toggle-container">
           <label class="toggle">
             <input type="checkbox" id="timeRestrictionToggle">
             <span class="toggle-slider"></span>
           </label>
-          <span>__MSG_enableTimeRestrictions__</span>
+          <span data-label>__MSG_enableTimeRestrictions__</span>
         </div>
 
         <div class="time-settings" id="timeSettings">
-          <p>__MSG_timeRestrictionsDescription__</p>
+          <p data-label>__MSG_timeRestrictionsDescription__</p>
 
           <div class="time-input">
-            <label for="afterHour">__MSG_restrictAfter__</label>
+            <label for="afterHour" data-label>__MSG_restrictAfter__</label>
             <select id="afterHour">
-              <option value="20">__MSG_time8pm__</option>
-              <option value="21">__MSG_time9pm__</option>
-              <option value="22">__MSG_time10pm__</option>
-              <option value="23" selected>__MSG_time11pm__</option>
-              <option value="0">__MSG_time12am__</option>
+              <option value="20" data-label>__MSG_time8pm__</option>
+              <option value="21" data-label>__MSG_time9pm__</option>
+              <option value="22" data-label>__MSG_time10pm__</option>
+              <option value="23" data-label selected>__MSG_time11pm__</option>
+              <option value="0" data-label>__MSG_time12am__</option>
             </select>
           </div>
 
           <div class="time-input">
-            <label for="beforeHour">__MSG_restrictUntil__</label>
+            <label for="beforeHour" data-label>__MSG_restrictUntil__</label>
             <select id="beforeHour">
-              <option value="5">__MSG_time5am__</option>
-              <option value="6" selected>__MSG_time6am__</option>
-              <option value="7">__MSG_time7am__</option>
-              <option value="8">__MSG_time8am__</option>
-              <option value="9">__MSG_time9am__</option>
+              <option value="5" data-label>__MSG_time5am__</option>
+              <option value="6" data-label selected>__MSG_time6am__</option>
+              <option value="7" data-label>__MSG_time7am__</option>
+              <option value="8" data-label>__MSG_time8am__</option>
+              <option value="9" data-label>__MSG_time9am__</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="restrictionLevel">__MSG_restrictionLevel__</label>
+            <label for="restrictionLevel" data-label>__MSG_restrictionLevel__</label>
             <select id="restrictionLevel">
-              <option value="1">__MSG_restrictionLevel1__</option>
-              <option value="2">__MSG_restrictionLevel2__</option>
-              <option value="3" selected>__MSG_restrictionLevel3__</option>
+              <option value="1" data-label>__MSG_restrictionLevel1__</option>
+              <option value="2" data-label>__MSG_restrictionLevel2__</option>
+              <option value="3" data-label selected>__MSG_restrictionLevel3__</option>
             </select>
           </div>
         </div>
       </section>
 
       <section id="sitesSection">
-        <h2>__MSG_targetSites__</h2>
-        <p>__MSG_targetSitesDescription__</p>
+        <h2 data-label>__MSG_targetSites__</h2>
+        <p data-label>__MSG_targetSitesDescription__</p>
 
         <div class="site-input">
-          <input type="text" id="siteInput" placeholder="__MSG_siteInputPlaceholder__">
-          <button id="addSiteBtn">__MSG_addSite__</button>
+          <input type="text" id="siteInput" placeholder="e.g., youtube.com, twitter.com">
+          <button id="addSiteBtn" data-label>__MSG_addSite__</button>
         </div>
 
         <div class="site-list" id="siteList">
@@ -170,15 +170,15 @@
         </div>
 
         <div class="site-note">
-          <p>__MSG_siteInputNote__</p>
+          <p data-label>__MSG_siteInputNote__</p>
         </div>
       </section>
 
       <section id="appearanceSection">
-        <h2>__MSG_appearanceSettings__</h2>
+        <h2 data-label>__MSG_appearanceSettings__</h2>
 
         <div class="form-group">
-          <label for="languageSelect">__MSG_language__</label>
+          <label for="languageSelect" data-label>__MSG_language__</label>
           <select id="languageSelect">
             <option value="ar">العربية</option>
             <option value="de">Deutsch</option>
@@ -193,7 +193,7 @@
             <option value="zh_CN">中文 (简体)</option>
             <option value="zh_TW">中文 (繁體)</option>
           </select>
-          <p class="site-note">__MSG_languageNote__</p>
+          <p class="site-note" data-label>__MSG_languageNote__</p>
         </div>
 
         <div class="toggle-container">
@@ -201,7 +201,7 @@
             <input type="checkbox" id="darkModeToggle">
             <span class="toggle-slider"></span>
           </label>
-          <span>__MSG_darkMode__</span>
+          <span data-label>__MSG_darkMode__</span>
         </div>
 
         <div class="toggle-container">
@@ -209,18 +209,18 @@
             <input type="checkbox" id="systemThemeToggle" checked>
             <span class="toggle-slider"></span>
           </label>
-          <span>__MSG_useSystemTheme__</span>
+          <span data-label>__MSG_useSystemTheme__</span>
         </div>
       </section>
 
       <section id="notificationSection">
-        <h2>__MSG_notificationSettings__</h2>
+        <h2 data-label>__MSG_notificationSettings__</h2>
         <div class="toggle-container">
           <label class="toggle">
             <input type="checkbox" id="soundToggle" checked>
             <span class="toggle-slider"></span>
           </label>
-          <span>__MSG_enableSoundNotifications__</span>
+          <span data-label>__MSG_enableSoundNotifications__</span>
         </div>
 
         <div class="toggle-container">
@@ -228,24 +228,24 @@
             <input type="checkbox" id="visualToggle" checked>
             <span class="toggle-slider"></span>
           </label>
-          <span>__MSG_enableVisualNotifications__</span>
+          <span data-label>__MSG_enableVisualNotifications__</span>
         </div>
       </section>
 
       <section id="resetSection">
-        <h2>__MSG_resetData__</h2>
-        <p>__MSG_resetDataDescription__</p>
+        <h2 data-label>__MSG_resetData__</h2>
+        <p data-label>__MSG_resetDataDescription__</p>
 
         <div class="buttons">
-          <button id="resetDailyBtn" class="btn-secondary">__MSG_resetDailyData__</button>
-          <button id="resetWeeklyBtn" class="btn-secondary">__MSG_resetWeeklyData__</button>
-          <button id="resetAllBtn" class="btn-danger">__MSG_resetAllData__</button>
+          <button id="resetDailyBtn" class="btn-secondary" data-label>__MSG_resetDailyData__</button>
+          <button id="resetWeeklyBtn" class="btn-secondary" data-label>__MSG_resetWeeklyData__</button>
+          <button id="resetAllBtn" class="btn-danger" data-label>__MSG_resetAllData__</button>
         </div>
       </section>
 
       <div class="buttons">
-        <button id="saveBtn">__MSG_saveSettings__</button>
-        <button id="cancelBtn" class="btn-secondary">__MSG_cancelSettings__</button>
+        <button id="saveBtn" class="btn-primary" data-label>__MSG_saveSettings__</button>
+        <button id="cancelBtn" class="btn-secondary" data-label>__MSG_cancelSettings__</button>
       </div>
     </main>
 

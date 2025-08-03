@@ -99,7 +99,7 @@ async function replaceI18nMessages() {
   await initI18n();
 
   // First, handle elements with direct text content
-  document.querySelectorAll('*').forEach( async element => {
+  document.querySelectorAll('[data-label]').forEach(  async element => {
     if (element.childNodes.length === 1 && element.childNodes[0].nodeType === Node.TEXT_NODE) {
       const text = element.textContent.trim();
       if (text.match(/^__MSG_\w+__$/)) {
@@ -111,31 +111,8 @@ async function replaceI18nMessages() {
       }
     }
   });
-
-  // Then, title tag specifically
-  const title = document.querySelector('title');
-  if (title && title.textContent.trim().match(/^__MSG_\w+__$/)) {
-    const messageName = title.textContent.trim().match(/__MSG_(\w+)__/)[1];
-    const translatedMessage = await getMessage(messageName);
-    if (translatedMessage) {
-      title.textContent = translatedMessage;
-    }
-  }
-
-  // Finally, handle text nodes that are direct children of elements
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let node;
-  while (node = walker.nextNode()) {
-    const text = node.nodeValue.trim();
-    if (text.match(/^__MSG_\w+__$/)) {
-      const messageName = text.match(/__MSG_(\w+)__/)[1];
-      const translatedMessage = await getMessage(messageName);
-      if (translatedMessage) {
-        node.nodeValue = translatedMessage;
-      }
-    }
-  }
 }
+
 // Load settings from storage
 function loadSettings() {
   chrome.storage.sync.get([
@@ -268,9 +245,10 @@ function updateUI() {
 
   // Appearance settings
   // Set language dropdown to match the actual language being used by Chrome's i18n system
-  const currentUILanguage = chrome.i18n.getUILanguage();
-  console.log('Current UI Language:', currentUILanguage);
-  console.log('Original Language:', chrome.i18n.getUILanguage());
+  //  const currentUILanguage = chrome.i18n.getUILanguage();
+
+  console.log('Current UI Languages :', currentUILanguage);
+  console.log('Original Languages. :', chrome.i18n.getUILanguage());
   // Check if the UI language is available in our dropdown
   const languageOptions = Array.from(languageSelect.options).map(option => option.value);
   if (languageOptions.includes(currentUILanguage)) {

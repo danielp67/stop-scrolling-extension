@@ -59,7 +59,7 @@ async function replaceI18nMessages() {
   await initI18n();
 
   // First, handle elements with direct text content
-  document.querySelectorAll('[data-label]').forEach( async element => {
+  document.querySelectorAll('[data-label]').forEach(  async element => {
     if (element.childNodes.length === 1 && element.childNodes[0].nodeType === Node.TEXT_NODE) {
       const text = element.textContent.trim();
       if (text.match(/^__MSG_\w+__$/)) {
@@ -71,30 +71,6 @@ async function replaceI18nMessages() {
       }
     }
   });
-/*
-  // Then, title tag specifically
-  const title = document.querySelector('title');
-  if (title && title.textContent.trim().match(/^__MSG_\w+__$/)) {
-    const messageName = title.textContent.trim().match(/__MSG_(\w+)__/)[1];
-    const translatedMessage = await getMessage(messageName);
-    if (translatedMessage) {
-      title.textContent = translatedMessage;
-    }
-  }
-
-  // Finally, handle text nodes that are direct children of elements
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let node;
-  while (node = walker.nextNode()) {
-    const text = node.nodeValue.trim();
-    if (text.match(/^__MSG_\w+__$/)) {
-      const messageName = text.match(/__MSG_(\w+)__/)[1];
-      const translatedMessage = await getMessage(messageName);
-      if (translatedMessage) {
-        node.nodeValue = translatedMessage;
-      }
-    }
-  }*/
 }
 
 // Initialize popup
