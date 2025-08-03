@@ -26,7 +26,6 @@ async function getMessage(messageName, substitutions) {
   // Try to fetch the message from the preferred language
   try {
     // First try to get the message from the user's preferred language
-    console.log("geloo");
     const response = await fetch(chrome.runtime.getURL(`_locales/${currentLanguage}/messages.json`));
     if (response.ok) {
       const messages = await response.json();

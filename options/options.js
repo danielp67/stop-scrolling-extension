@@ -68,20 +68,6 @@ let originalLanguage = 'en';
 
 // Initialize options page
 document.addEventListener('DOMContentLoaded', async function() {
-  // Check if we have a language override from URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log("urlParams", urlParams);
- // const langOverride = urlParams.get('lang');
-let langOverride = 'en';
-/*  if (langOverride) {
-    // Override Chrome's i18n.getUILanguage to use our specified language
-    const originalGetUILanguage = chrome.i18n.getUILanguage();
-    console.log("originalGetUILanguage", originalGetUILanguage);
-    chrome.i18n.getUILanguage = function() {
-      console.log("langOverride",langOverride);
-      return langOverride;
-    };
-  }*/
 
   // Replace i18n messages immediately to avoid showing placeholders
   await replaceI18nMessages();
@@ -163,6 +149,7 @@ function loadSettings() {
       currentSettings.appearance = result.appearance;
       // Store the original language for comparison when saving
       originalLanguage = currentSettings.appearance.language;
+      languageSelect.value = currentSettings.appearance.language;
     }
 
     // Check system theme preference if enabled
@@ -243,20 +230,13 @@ function updateUI() {
   soundToggle.checked = currentSettings.notifications.sound;
   visualToggle.checked = currentSettings.notifications.visual;
 
-  // Appearance settings
-  // Set language dropdown to match the actual language being used by Chrome's i18n system
-  //  const currentUILanguage = chrome.i18n.getUILanguage();
-
-  console.log('Current UI Languages :', currentUILanguage);
-  console.log('Original Languages. :', chrome.i18n.getUILanguage());
-  // Check if the UI language is available in our dropdown
-  const languageOptions = Array.from(languageSelect.options).map(option => option.value);
-  if (languageOptions.includes(currentUILanguage)) {
-    languageSelect.value = currentUILanguage;
-    currentSettings.appearance.language = currentUILanguage;
-  } else {
+  if(currentSettings.appearance.language ){
     languageSelect.value = currentSettings.appearance.language;
   }
+  else{
+    languageSelect.value = 'en';
+  }
+
   darkModeToggle.checked = currentSettings.appearance.darkMode;
   systemThemeToggle.checked = currentSettings.appearance.useSystemTheme;
 
@@ -349,8 +329,6 @@ function setupEventListeners() {
   // Language select
   languageSelect.addEventListener('change', function() {
     currentSettings.appearance.language = this.value;
-    console.log('Language changed to', this.value);
-    console.log('Current settings:', currentSettings);
     // Show message about reloading immediately when language is changed
     showStatusMessage('Language changed. Changes will take effect after saving settings and reloading the extension.', 'success');
   });
@@ -543,7 +521,6 @@ function saveSettings() {
 
     // Update the current language in the i18n module
     setLanguage(currentSettings.appearance.language);
-console.log("currentSettings.appearance.language:", currentSettings.appearance.language);
     // Reload the page to apply changes
     if (currentSettings.appearance.language !== originalLanguage) {
       // Reload all extension pages to apply the new language
