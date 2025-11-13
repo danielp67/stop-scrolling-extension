@@ -356,7 +356,7 @@ function playAlertSound() {
 function playBlockSound() {
   if (chrome && chrome.runtime) {
     try {
-      const audio = new Audio(chrome.runtime.getURL('sounds/block.mp3'));
+      const audio = new Audio(chrome.runtime.getURL('sounds/alert.mp3'));
       audio.play().catch(e => console.log('Sound play failed:', e));
     } catch (e) {
       console.log('Error playing block sound:', e);
@@ -389,16 +389,36 @@ function checkTimeRestrictions() {
   if (chrome && chrome.storage) {
     try {
       chrome.storage.sync.get('timeRestrictions', function(result) {
-        if (result.timeRestrictions) {
+        if (result.timeRestrictions && result.timeRestrictions.enabled) {
           const now = new Date();
           const currentHour = now.getHours();
+          const afterHour = result.timeRestrictions.afterHour;
+          const beforeHour = result.timeRestrictions.beforeHour;
 
-          // Example: restrict after 11 PM (23:00)
-          if (result.timeRestrictions.afterHour && currentHour >= result.timeRestrictions.afterHour) {
+          let isRestricted = false;
+
+          if (afterHour < beforeHour) {
+            // Restriction crosses midnight
+            if (currentHour >= afterHour || currentHour < beforeHour) {
+              isRestricted = true;
+            }
+          } else {
+            // Restriction does not cross midnight
+            if (currentHour >= afterHour && currentHour < beforeHour) {
+              isRestricted = true;
+            }
+          }
+
+          if (isRestricted) {
             isTimeRestricted = true;
             blockScrolling();
             if (messageElement) {
-              messageElement.textContent = "Scrolling is restricted during this time. Come back tomorrow!";
+              messageElement.textContent = "Scrolling is restricted during this time. Come back later!";
+            }
+          } else {
+            isTimeRestricted = false;
+            if (messageElement) {
+              messageElement.textContent = "";
             }
           }
         }

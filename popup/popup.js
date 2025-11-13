@@ -287,7 +287,7 @@ function updateStatisticsUI() {
   todayTimeElement.textContent = timeInMinutes;
 
   // Convert pixels to meters for display (rough approximation)
-  const distanceInMeters = Math.round(currentStatistics.daily.scrollDistance / 1000);
+  const distanceInMeters = Math.round(currentStatistics.daily.scrollDistance / 10000);
   todayDistanceElement.textContent = distanceInMeters;
 }
 
@@ -298,8 +298,8 @@ function updateSessionUI() {
   sessionTimeElement.textContent = timeInMinutes;
 
   // Convert pixels to meters for display
-  const distanceInMeters = Math.round(currentStatistics.session.scrollDistance / 1000);
-  sessionDistanceElement.textContent = distanceInMeters;
+  const distanceInMeters = Math.round(currentStatistics.session.scrollDistance / 10000);
+  sessionDistanceElement.textContent = distanceInMeters.toString();
 }
 
 // Update intervention status

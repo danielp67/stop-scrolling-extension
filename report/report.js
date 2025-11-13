@@ -40,7 +40,7 @@ let currentPeriod = 'week';
 let statisticsData = null;
 
 // Conversion constants
-const PIXELS_PER_METER = 3023.62; // Adjusted to make 5 scrolls equal 5 meters
+const PIXELS_PER_METER = 3023.62; // Adjusted to make 5 scrolls equal 1 meter
 
 // Initialize the report page
 document.addEventListener('DOMContentLoaded', function() {
@@ -149,6 +149,7 @@ function loadStatistics() {
   chrome.storage.local.get('statistics', function(result) {
     if (result.statistics) {
       statisticsData = result.statistics;
+      console.log(statisticsData);
 
       // Initialize all charts and tables
       initializeCharts();
@@ -267,8 +268,8 @@ function updateSummaryStatistics() {
   // Update UI
   document.getElementById('totalScrollTime').textContent = Math.round(totalScrollTime / 60); // Convert to minutes
   document.getElementById('totalScrollDistance').textContent = Math.round(totalScrollDistance / PIXELS_PER_METER); // Convert to meters
-  document.getElementById('thresholdExceededCount').textContent = thresholdExceeded;
-  document.getElementById('blockingTriggeredCount').textContent = blockingTriggered;
+  document.getElementById('thresholdExceededCount').textContent = Math.round(thresholdExceeded/100);
+  document.getElementById('blockingTriggeredCount').textContent = Math.round(blockingTriggered/100);
 }
 
 // Get data for the current week
