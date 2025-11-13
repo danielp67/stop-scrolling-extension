@@ -1,10 +1,13 @@
-# Stop Scrolling
+# Stop Scrolling![icon](images/icon128.png) 
 
-![banner](images/banner.png)
+
+![banner](images/banner.png) 
 
 **Stop Scrolling** is a free Chrome extension designed to help you manage your scrolling habits, take mindful breaks, and reduce time spent on targeted websites. Set thresholds by pixels, meters, or time, schedule restrictions, and get notifications to stay in control of your online activity.
 
-![options](images/option.png)
+
+![options](images/option1.png)
+
 
 ## Features
 
